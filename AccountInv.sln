@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountInv", "AccountInv\AccountInv.csproj", "{D87D7E15-181B-4D19-A77D-2CC368FB6CDF}"
-EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DB", "DB\DB.sqlproj", "{F45815D9-92EA-4FB1-9F66-9EEA4E274EAD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,12 +15,6 @@ Global
 		{D87D7E15-181B-4D19-A77D-2CC368FB6CDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D87D7E15-181B-4D19-A77D-2CC368FB6CDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D87D7E15-181B-4D19-A77D-2CC368FB6CDF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F45815D9-92EA-4FB1-9F66-9EEA4E274EAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F45815D9-92EA-4FB1-9F66-9EEA4E274EAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F45815D9-92EA-4FB1-9F66-9EEA4E274EAD}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{F45815D9-92EA-4FB1-9F66-9EEA4E274EAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F45815D9-92EA-4FB1-9F66-9EEA4E274EAD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F45815D9-92EA-4FB1-9F66-9EEA4E274EAD}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
