@@ -15,33 +15,33 @@
         <Columns>
             <asp:TemplateField>
                 <ItemTemplate>
-                    <asp:Label ID="lblphone" runat="server" Text="<%#Eval("Phone") %>"></asp:Label>
+                    <asp:Label ID="lblphone" runat="server" Text='<%#Eval("Phone") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
                  <asp:TemplateField>
                 <ItemTemplate>
-                       <asp:Label ID="lblname" runat="server" Text="<%#Eval("Name") %>"></asp:Label>
+                       <asp:Label ID="lblname" runat="server" Text='<%#Eval("Name") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField>
                 <ItemTemplate>
-                    <asp:Label ID="lblaccountType" runat="server" Text="<%#Eval("Type") %>"></asp:Label>
+                    <asp:Label ID="lblaccountType" runat="server" Text='<%#Eval("Type") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
               <asp:TemplateField>
                 <ItemTemplate>
-                      <asp:Label ID="lbladdress" runat="server" Text="<%#Eval("Address") %>"></asp:Label>
+                      <asp:Label ID="lbladdress" runat="server" Text='<%#Eval("Address") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
              <asp:TemplateField>
                 <ItemTemplate>
-                    <asp:Button ID="btnUpdate" OnCommand="btnUpdate_Command" CommandArgument="<%#Eval("ID") %>" runat="server" Text="Update" />
+                    <asp:Button ID="btnUpdate" OnCommand="btnUpdate_Command" CommandArgument='<%#Eval("ID") %>' runat="server" Text="Update" />
                     
                 </ItemTemplate>
             </asp:TemplateField>
              <asp:TemplateField>
                 <ItemTemplate>
-                <asp:Button ID="btndelete" OnCommand="btndelete_Command" CommandArgument="<%#Eval("ID") %>" runat="server" Text="Delete" />
+                <asp:Button ID="btndelete" OnCommand="btndelete_Command" CommandArgument='<%#Eval("ID") %>' runat="server" Text="Delete" />
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>

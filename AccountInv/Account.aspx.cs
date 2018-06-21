@@ -21,7 +21,7 @@ namespace AccountInv
         public void AccountInfo()
         {
                 con.Open();
-                string constring = "select * from Account where Active=true";
+                string constring = "select * from Account";
                 SqlCommand cmd = new SqlCommand(constring, con);
                 cmd.CommandType = CommandType.Text;
 
@@ -66,11 +66,16 @@ namespace AccountInv
             string phone=txtphone.Text;
             string address=txtaddress.Text;
             string accountType=txttype.Text;
-           con.Open();
-            string conString="insert into Account(Name,Type,Address,Phone,Active) values("+name+","+accountType+","+address+","+phone+",true)";
+            DateTime yearStart = DateTime.Now;
+            DateTime created = DateTime.Now;
+                
+            string conString="INSERT into Account(Code,Name,AlertnateCode,Type,Debit,Credit,Address,Phone,Email,Active,YearStart,Created)"
+                    + "VALUES(12,@name,32,@accountType,23,21,@address,@phone,55,true,@yearStart,@created)";
+
                 SqlCommand cmd = new SqlCommand(conString, con);
-                cmd.CommandType = CommandType.Text;
-              
+                //cmd.CommandType = CommandType.Text;
+                cmd.Parameters.Add("Name", SqlDbType.VarChar, 50).Value = name;
+                con.Open();
                 DataTable dt = new DataTable();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
