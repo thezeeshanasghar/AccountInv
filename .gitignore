@@ -244,3 +244,4 @@ ModelManifest.xml
 
 # ignoring jfm file
 *.jfm
+DB/DB.jfm
