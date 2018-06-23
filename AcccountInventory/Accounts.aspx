@@ -37,8 +37,11 @@
                 <form id="form1" runat="server">
                     <section>
                         <header class="major">
-                            <h2>Erat lacinia</h2>
+                            <h2>Accounts</h2>
                         </header>
+                         <asp:HyperLink ID="addNewAccount" href="AddAccount.aspx" runat="server" CssClass="button primary">Add New</asp:HyperLink>
+                        <br />
+                         <br />
                         <div class="table-wrapper">
                             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource1" AllowPaging="True" AllowSorting="True" CssClass="alt">
                                 <Columns>
