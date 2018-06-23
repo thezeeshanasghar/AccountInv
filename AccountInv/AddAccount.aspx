@@ -149,7 +149,7 @@
 
       </asp:formview>
 
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AccountInvConnectionString %>" SelectCommand="SELECT * FROM [Account]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Connection %>" SelectCommand="SELECT * FROM [Account]"></asp:SqlDataSource>
 
       <!-- This example uses Microsoft SQL Server and connects  -->
       <!-- to the Northwind sample database. Use an ASP.NET     -->
@@ -157,7 +157,7 @@
       <!-- from the Web.config file.                            -->
       <asp:sqldatasource id="SqlDataSource2"
         selectcommand="SELECT * FROM [Account]"
-        connectionstring="<%$ ConnectionStrings:AccountInvConnectionString %>" 
+        connectionstring="<%$ ConnectionStrings:Connection %>" 
         runat="server"/>
  
     </div>
