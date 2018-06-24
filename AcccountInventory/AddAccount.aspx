@@ -2,7 +2,7 @@
 
 <%@ Register Src="~/menu.ascx" TagPrefix="uc1" TagName="menu" %>
 
-
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxtool" %>
 <!DOCTYPE HTML>
 <!--
 	Editorial by HTML5 UP
@@ -10,14 +10,14 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-<head>
+<head runat="server">
     <title>Add Account</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
 </head>
 <body class="is-preload">
-
+   
     <!-- Wrapper -->
     <div id="wrapper">
 
@@ -38,181 +38,120 @@
                 </header>
 
                 <form id="form1" runat="server">
+                     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                     <section>
                         <header class="major">
                             <h2>Add New Account</h2>
                         </header>
                       
 
-                         <asp:FormView ID="FormView1" runat="server"   DefaultMode="Insert"
-                              
-                              DataKeyNames="ID" DataSourceID="SqlDataSource1">
-                             <EditItemTemplate>
-                                 ID:
-                                 <asp:Label ID="IDLabel1" runat="server" Text='<%# Eval("ID") %>' />
-                                 <br />
-                                 Code:
-                                 <asp:TextBox ID="CodeTextBox" runat="server" Text='<%# Bind("Code") %>' />
-                                 <br />
-                                 Name:
-                                 <asp:TextBox ID="NameTextBox" runat="server" Text='<%# Bind("Name") %>' />
-                                 <br />
-                                 AlternateCode:
-                                 <asp:TextBox ID="AlternateCodeTextBox" runat="server" Text='<%# Bind("AlternateCode") %>' />
-                                 <br />
-                                 Type:
-                                 <asp:TextBox ID="TypeTextBox" runat="server" Text='<%# Bind("Type") %>' />
-                                 <br />
-                                 Debit:
-                                 <asp:TextBox ID="DebitTextBox" runat="server" Text='<%# Bind("Debit") %>' />
-                                 <br />
-                                 Credit:
-                                 <asp:TextBox ID="CreditTextBox" runat="server" Text='<%# Bind("Credit") %>' />
-                                 <br />
-                                 Address:
-                                 <asp:TextBox ID="AddressTextBox" runat="server" Text='<%# Bind("Address") %>' />
-                                 <br />
-                                 Phone:
-                                 <asp:TextBox ID="PhoneTextBox" runat="server" Text='<%# Bind("Phone") %>' />
-                                 <br />
-                                 Email:
-                                 <asp:TextBox ID="EmailTextBox" runat="server" Text='<%# Bind("Email") %>' />
-                                 <br />
-                                 Active:
-                                 <asp:CheckBox ID="ActiveCheckBox" runat="server" Checked='<%# Bind("Active") %>' />
-                                 <br />
-                                 YearStart:
-                                 <asp:TextBox ID="YearStartTextBox" runat="server" Text='<%# Bind("YearStart") %>' />
-                                 <br />
-                                 Created:
-                                 <asp:TextBox ID="CreatedTextBox" runat="server" Text='<%# Bind("Created") %>' />
-                                 <br />
-                                 <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" CommandName="Update" Text="Update" />
-                                 &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
-                             </EditItemTemplate>
-                             <InsertItemTemplate>
-                                 Code:
-                                 <asp:TextBox ID="CodeTextBox" runat="server" Text='<%# Bind("Code") %>' />
-                                 <br />
-                                 Name:
-                                 <asp:TextBox ID="NameTextBox" runat="server" Text='<%# Bind("Name") %>' />
-                                 <br />
-                                 AlternateCode:
-                                 <asp:TextBox ID="AlternateCodeTextBox" runat="server" Text='<%# Bind("AlternateCode") %>' />
-                                 <br />
-                                 Type:
-                                 <asp:TextBox ID="TypeTextBox" runat="server" Text='<%# Bind("Type") %>' />
-                                 <br />
-                                 Debit:
-                                 <asp:TextBox ID="DebitTextBox" runat="server" Text='<%# Bind("Debit") %>' />
-                                 <br />
-                                 Credit:
-                                 <asp:TextBox ID="CreditTextBox" runat="server" Text='<%# Bind("Credit") %>' />
-                                 <br />
-                                 Address:
-                                 <asp:TextBox ID="AddressTextBox" runat="server" Text='<%# Bind("Address") %>' />
-                                 <br />
-                                 Phone:
-                                 <asp:TextBox ID="PhoneTextBox" runat="server" Text='<%# Bind("Phone") %>' />
-                                 <br />
-                                 Email:
-                                 <asp:TextBox ID="EmailTextBox" runat="server" Text='<%# Bind("Email") %>' />
-                                 <br />
-                                 Active:
-                                 <asp:CheckBox ID="ActiveCheckBox" runat="server" Checked='<%# Bind("Active") %>' />
-                                 <br />
-                                 YearStart:
-                                 <asp:TextBox ID="YearStartTextBox" runat="server" Text='<%# Bind("YearStart") %>' />
-                                 <br />
-                                 Created:
-                                 <asp:TextBox ID="CreatedTextBox" runat="server" Text='<%# Bind("Created") %>' />
-                                 <br />
-                                 <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" />
-                                 &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
-                             </InsertItemTemplate>
-                             <ItemTemplate>
-                                 ID:
-                                 <asp:Label ID="IDLabel" runat="server" Text='<%# Eval("ID") %>' />
-                                 <br />
-                                 Code:
-                                 <asp:Label ID="CodeLabel" runat="server" Text='<%# Bind("Code") %>' />
-                                 <br />
-                                 Name:
-                                 <asp:Label ID="NameLabel" runat="server" Text='<%# Bind("Name") %>' />
-                                 <br />
-                                 AlternateCode:
-                                 <asp:Label ID="AlternateCodeLabel" runat="server" Text='<%# Bind("AlternateCode") %>' />
-                                 <br />
-                                 Type:
-                                 <asp:Label ID="TypeLabel" runat="server" Text='<%# Bind("Type") %>' />
-                                 <br />
-                                 Debit:
-                                 <asp:Label ID="DebitLabel" runat="server" Text='<%# Bind("Debit") %>' />
-                                 <br />
-                                 Credit:
-                                 <asp:Label ID="CreditLabel" runat="server" Text='<%# Bind("Credit") %>' />
-                                 <br />
-                                 Address:
-                                 <asp:Label ID="AddressLabel" runat="server" Text='<%# Bind("Address") %>' />
-                                 <br />
-                                 Phone:
-                                 <asp:Label ID="PhoneLabel" runat="server" Text='<%# Bind("Phone") %>' />
-                                 <br />
-                                 Email:
-                                 <asp:Label ID="EmailLabel" runat="server" Text='<%# Bind("Email") %>' />
-                                 <br />
-                                 Active:
-                                 <asp:CheckBox ID="ActiveCheckBox" runat="server" Checked='<%# Bind("Active") %>' Enabled="false" />
-                                 <br />
-                                 YearStart:
-                                 <asp:Label ID="YearStartLabel" runat="server" Text='<%# Bind("YearStart") %>' />
-                                 <br />
-                                 Created:
-                                 <asp:Label ID="CreatedLabel" runat="server" Text='<%# Bind("Created") %>' />
-                                 <br />
+                        <asp:FormView ID="FormView1" runat="server" DefaultMode="Insert"
+                DataKeyNames="ID" DataSourceID="SqlDataSource1">
 
-                             </ItemTemplate>
-                        </asp:FormView>
+                <InsertItemTemplate>
+
+                    <div class="col-md-6">
+                        Code:
+                                 <asp:TextBox ID="CodeTextBox" runat="server" Text='<%# Bind("Code") %>' />
+                        <asp:RequiredFieldValidator ID="reqCode" runat="server" ForeColor="Red" ValidationGroup="insert" Display="Dynamic" ControlToValidate="CodeTextBox" ErrorMessage="Required"></asp:RequiredFieldValidator>
+
+                    </div>
+                    <div class="col-md-6">
+                        Name:
+                                 <asp:TextBox ID="NameTextBox" runat="server" Text='<%# Bind("Name") %>' />
+                        <asp:RequiredFieldValidator ID="reqname" runat="server" ValidationGroup="insert" Display="Dynamic" ForeColor="Red" ControlToValidate="NameTextBox" ErrorMessage="Required"></asp:RequiredFieldValidator>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+                        Alt Code:
+                                 <asp:TextBox ID="AlternateCodeTextBox" runat="server" Text='<%# Bind("AlternateCode") %>' />
+                    </div>
+                    <div class="col-md-6">
+                        Type:
                        
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=localhost\SQLEXPRESS;Initial Catalog=AccountInv;Integrated Security=True" ProviderName="System.Data.SqlClient"
-                            SelectCommand="SELECT * FROM [Account]" 
-                            DeleteCommand="DELETE FROM [Account] WHERE [ID] = @ID" 
-                            InsertCommand="INSERT INTO [Account] ([Code], [Name], [AlternateCode], [Type], [Debit], [Credit], [Address], [Phone], [Email], [Active], [YearStart], [Created]) VALUES (@Code, @Name, @AlternateCode, @Type, @Debit, @Credit, @Address, @Phone, @Email, @Active, @YearStart, @Created)" 
-                            UpdateCommand="UPDATE [Account] SET [Code] = @Code, [Name] = @Name, [AlternateCode] = @AlternateCode, [Type] = @Type, 
-                            [Debit] = @Debit, [Credit] = @Credit, [Address] = @Address, [Phone] = @Phone, [Email] = @Email, [Active] = @Active, 
-                            [YearStart] = @YearStart, [Created] = @Created WHERE [ID] = @ID">
-                            <DeleteParameters>
-                                <asp:Parameter Name="ID" Type="Int32" />
-                            </DeleteParameters>
-                            <InsertParameters>
-                                <asp:Parameter Name="Code" Type="String" />
-                                <asp:Parameter Name="Name" Type="String" />
-                                <asp:Parameter Name="AlternateCode" Type="String" />
-                                <asp:Parameter Name="Type" Type="String" />
-                                <asp:Parameter Name="Debit" Type="Int64" />
-                                <asp:Parameter Name="Credit" Type="Int64" />
-                                <asp:Parameter Name="Address" Type="String" />
-                                <asp:Parameter Name="Phone" Type="String" />
-                                <asp:Parameter Name="Email" Type="String" />
-                                <asp:Parameter Name="Active" Type="Boolean" />
-                                <asp:Parameter DbType="Date" Name="YearStart" />
-                                <asp:Parameter DbType="Date" Name="Created" />
-                            </InsertParameters>
-                            <UpdateParameters>
-                                <asp:Parameter Name="Code" Type="String" />
-                                <asp:Parameter Name="Name" Type="String" />
-                                <asp:Parameter Name="AlternateCode" Type="String" />
-                                <asp:Parameter Name="Type" Type="String" />
-                                <asp:Parameter Name="Debit" Type="Int64" />
-                                <asp:Parameter Name="Credit" Type="Int64" />
-                                <asp:Parameter Name="Address" Type="String" />
-                                <asp:Parameter Name="Phone" Type="String" />
-                                <asp:Parameter Name="Email" Type="String" />
-                                <asp:Parameter Name="Active" Type="Boolean" />
-                                <asp:Parameter DbType="Date" Name="YearStart" />
-                                <asp:Parameter DbType="Date" Name="Created" />
-                                <asp:Parameter Name="ID" Type="Int32" />
-                            </UpdateParameters>
+                                 <asp:TextBox ID="TypeTextBox" runat="server" Text='<%# Bind("Type") %>' />
+                        <asp:RequiredFieldValidator ID="reqtype" runat="server" ValidationGroup="insert" Display="Dynamic" ForeColor="Red" ControlToValidate="TypeTextBox" ErrorMessage="Required"></asp:RequiredFieldValidator>
+
+                    </div>
+
+                    <div class="col-md-6">
+                        Debit:
+                                 <asp:TextBox ID="DebitTextBox" runat="server" Text='<%# Bind("Debit") %>' />
+                        <asp:RequiredFieldValidator ID="regdebit" runat="server" ValidationGroup="insert" Display="Dynamic" ForeColor="Red" ControlToValidate="DebitTextBox" ErrorMessage="Required"></asp:RequiredFieldValidator>
+
+                    </div>
+                    <div class="col-md-6">
+                        Credit:
+                                 <asp:TextBox ID="CreditTextBox" runat="server" Text='<%# Bind("Credit") %>' />
+                        <asp:RequiredFieldValidator ID="regxcridet" ValidationGroup="insert" Display="Dynamic"
+                            runat="server" ForeColor="Red" ControlToValidate="CreditTextBox"
+                            ErrorMessage="Required"></asp:RequiredFieldValidator>
+
+                    </div>
+
+                    <div class="col-md-6">
+                        Address:
+                                 <asp:TextBox ID="AddressTextBox" runat="server" Text='<%# Bind("Address") %>' />
+                    </div>
+                    <div class="col-md-6">
+                        Phone:
+                                 <asp:TextBox ID="PhoneTextBox" runat="server" Text='<%# Bind("Phone") %>' />
+                        <asp:RegularExpressionValidator ID="regxphone" ValidationGroup="insert" runat="server" Display="Dynamic" ControlToValidate="PhoneTextBox"
+                            ValidationExpression="^((\+92)|(0092))-{0,1}\d{3}-{0,1}\d{7}$|^\d{11}$|^\d{4}-\d{7}$" ForeColor="Red"
+                            ErrorMessage="Phone number not in valid format"></asp:RegularExpressionValidator>
+
+                    </div>
+
+                    <div class="col-md-6">
+                        Email:
+                                 <asp:TextBox ID="EmailTextBox" runat="server" Text='<%# Bind("Email") %>' />
+                        <asp:RegularExpressionValidator ID="regemail" runat="server" ValidationGroup="insert" Display="Dynamic"
+                            ControlToValidate="EmailTextBox" ValidationExpression="^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$"
+                            ForeColor="Red" ErrorMessage="Email not in valid format"></asp:RegularExpressionValidator>
+
+                    </div>
+                    <div class="col-md-6" style="display: none">
+                        Active:
+                                 <asp:CheckBox ID="ActiveCheckBox" Text="true" runat="server" Checked='<%# Bind("Active") %>' />
+                    </div>
+
+                    <div class="col-md-6">
+                        YearStart:
+                       
+            
+                      <asp:TextBox ID="YearStartTextBox" runat="server" Text='<%# Bind("YearStart","{dd/MM/yyyy}") %>' />
+                        <ajaxtool:CalendarExtender ID="Calendar" runat="server" TodaysDateFormat="dd/mm/yyy" TargetControlID="YearStartTextBox" Format="dd/MM/yyyy"></ajaxtool:CalendarExtender>
+                        <asp:RequiredFieldValidator ID="reqyearstart" ValidationGroup="insert" Display="Dynamic"
+                            runat="server" ForeColor="Red" ControlToValidate="YearStartTextBox"
+                            ErrorMessage="Required"></asp:RequiredFieldValidator>
+                    </div>
+
+                    <br />
+                    <asp:LinkButton ID="InsertButton" CssClass="btn btn-success" ValidationGroup="insert" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" />
+                    &nbsp;<asp:LinkButton ID="InsertCancelButton" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
+                    <br />
+
+                </InsertItemTemplate>
+            </asp:FormView>
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
+       
+        InsertCommand="INSERT INTO [Account] ([Name], [AlternateCode], [Phone], [Email], [YearStart], [Type], [Address],[Code],[Active]) 
+      VALUES (@Name, @AlternateCode, @Phone, @Email, @YearStart, @Type, @Address,@Code,'true')">
+       
+                              <InsertParameters>
+
+            <asp:Parameter Name="Code" Type="String" />
+            <asp:Parameter Name="Name" Type="String" />
+            <asp:Parameter Name="AlternateCode" Type="String" />
+            <asp:Parameter Name="Phone" Type="String" />
+            <asp:Parameter Name="Email" Type="String" />
+            <asp:Parameter Name="Active" Type="String" />
+            <asp:Parameter DbType="Date" Name="YearStart" />
+            <asp:Parameter Name="Type" Type="String" />
+            <asp:Parameter Name="Address" Type="String" />
+        </InsertParameters>
                         </asp:SqlDataSource>
  
                         <asp:HyperLink ID="lnkAccount" href="Accounts.aspx" runat="server" >

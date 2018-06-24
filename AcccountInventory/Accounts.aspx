@@ -46,25 +46,59 @@
                         <br />
                          <br />
                         <div class="table-wrapper">
-                            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource1" AllowPaging="True" AllowSorting="True" CssClass="alt">
-                                <Columns>
-                                    <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" Visible="False" />
-                                    <asp:BoundField DataField="Code" HeaderText="Code" SortExpression="Code" />
-                                    <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
-                                    <asp:BoundField DataField="AlternateCode" HeaderText="AlternateCode" SortExpression="AlternateCode" />
-                                    <asp:BoundField DataField="Type" HeaderText="Type" SortExpression="Type" />
-                                    <asp:BoundField DataField="Debit" HeaderText="Debit" SortExpression="Debit" />
-                                    <asp:BoundField DataField="Credit" HeaderText="Credit" SortExpression="Credit" />
-                                    <asp:BoundField DataField="Address" HeaderText="Address" SortExpression="Address" />
-                                    <asp:BoundField DataField="Phone" HeaderText="Phone" SortExpression="Phone" />
-                                    <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
-                                    <asp:BoundField DataField="YearStart" HeaderText="YearStart" SortExpression="YearStart" />
-                                    <asp:BoundField DataField="Created" HeaderText="Created" SortExpression="Created" />
-                                    <asp:CheckBoxField DataField="Active" HeaderText="Active" SortExpression="Active" />
-                                </Columns>
-                            </asp:GridView>
-                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=localhost\sqlexpress;Initial Catalog=AccountInv;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [Account]"></asp:SqlDataSource>
-                        </div>
+                         <asp:GridView ID="accountGrid" AutoGenerateColumns="False" runat="server" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" CellPadding="4" DataKeyNames="ID">
+        <Columns>
+            <asp:BoundField DataField="Code" HeaderText="Code" SortExpression="Code" />
+            <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
+            <asp:BoundField DataField="AlternateCode" HeaderText="AlternateCode" SortExpression="AlternateCode" />
+            <asp:BoundField DataField="Type" HeaderText="Type" SortExpression="Type" />
+            <asp:BoundField DataField="Debit" HeaderText="Debit" SortExpression="Debit" />
+
+
+            <asp:BoundField DataField="Credit" HeaderText="Credit" SortExpression="Credit" />
+            <asp:BoundField DataField="Address" HeaderText="Address" SortExpression="Address" />
+            <asp:BoundField DataField="Phone" HeaderText="Phone" SortExpression="Phone" />
+
+            <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
+            <asp:BoundField DataField="YearStart" HeaderText="YearStart" SortExpression="YearStart" />
+             <asp:BoundField DataField="ID" Visible="false" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
+              <asp:CommandField ShowEditButton="True" />
+            <asp:TemplateField HeaderText="Delete">
+                <ItemTemplate>
+                    <asp:Button ID="deleteButton" runat="server" CommandName="Delete" Text="Delete"
+                        OnClientClick="return confirm('Are you sure you want to delete this record?');" />
+                </ItemTemplate>
+            </asp:TemplateField>
+        </Columns>
+
+      
+
+    </asp:GridView>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
+        SelectCommand="SELECT [Code], [Name], [AlternateCode], [Type], [Debit], [Credit], [Address], [Phone], [Email], [YearStart], [ID] FROM [Account]"
+         DeleteCommand="DELETE FROM [Account] WHERE [ID] = @ID" 
+       
+         
+        UpdateCommand="UPDATE [Account] SET [Code] = @Code, [Name] = @Name, [AlternateCode] = @AlternateCode, [Type] = @Type, [Debit] = @Debit, [Credit] = @Credit, [Address] = @Address, [Phone] = @Phone, [Email] = @Email, [YearStart] = @YearStart WHERE [ID] = @ID">
+        <DeleteParameters>
+            <asp:Parameter Name="ID" Type="Int32" />
+        </DeleteParameters>
+     
+        <UpdateParameters>
+            <asp:Parameter Name="Code" Type="String" />
+            <asp:Parameter Name="Name" Type="String" />
+            <asp:Parameter Name="AlternateCode" Type="String" />
+            <asp:Parameter Name="Type" Type="String" />
+            <asp:Parameter Name="Debit" Type="Int64" />
+            <asp:Parameter Name="Credit" Type="Int64" />
+            <asp:Parameter Name="Address" Type="String" />
+            <asp:Parameter Name="Phone" Type="String" />
+            <asp:Parameter Name="Email" Type="String" />
+            <asp:Parameter DbType="Date" Name="YearStart" />
+            <asp:Parameter Name="ID" Type="Int32" />
+        </UpdateParameters>
+    </asp:SqlDataSource>
+                             </div>
                     </section>
                 </form>
             </div>

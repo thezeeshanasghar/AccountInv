@@ -31,13 +31,13 @@ namespace AcccountInventory {
         protected global::System.Web.UI.WebControls.HyperLink addNewAccount;
         
         /// <summary>
-        /// GridView1 control.
+        /// accountGrid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView accountGrid;
         
         /// <summary>
         /// SqlDataSource1 control.
