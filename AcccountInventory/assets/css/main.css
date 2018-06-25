@@ -2400,8 +2400,8 @@ input, select, textarea {
 			}
 
 		table td {
-			padding: 0.75em 0.75em;
-		}
+    padding: 1.75em 5px;
+}
 
 		table th {
 			color: #3d4449;

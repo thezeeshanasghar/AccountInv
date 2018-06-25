@@ -15,6 +15,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        	table td {
+    padding: 1.75em 5px !important;
+}
+    </style>
 </head>
 <body class="is-preload">
 
@@ -58,9 +63,9 @@
         </asp:TemplateField>
             <asp:TemplateField HeaderText="Code Type" SortExpression="Name">
                 <ItemTemplate>
-                    <asp:TextBox ID="CodeTextBox" runat="server" Text='<%# Bind("Code") %>' />
-                      <asp:TextBox ID="AlternateCode" runat="server" Text='<%# Bind("AlternateCode") %>' />
-                      <asp:TextBox ID="Type" runat="server" Text='<%# Bind("Type") %>' /> 
+                    <asp:TextBox style="padding: 1.75em 10px;" ID="CodeTextBox" runat="server" Text='<%# Bind("Code") %>' />
+                      <asp:TextBox style="padding: 1.75em 10px;" ID="AlternateCode" runat="server" Text='<%# Bind("AlternateCode") %>' />
+                      <asp:TextBox style="padding: 1.75em 10px;" ID="Type" runat="server" Text='<%# Bind("Type") %>' /> 
                 </ItemTemplate>
             </asp:TemplateField>
           
