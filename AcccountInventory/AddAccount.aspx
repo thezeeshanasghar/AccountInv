@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="assets/css/main.css" />
 </head>
 <body class="is-preload">
-   
+
     <!-- Wrapper -->
     <div id="wrapper">
 
@@ -38,123 +38,131 @@
                 </header>
 
                 <form id="form1" runat="server">
-                     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                     <section>
                         <header class="major">
                             <h2>Add New Account</h2>
                         </header>
-                      
-
+                        
+                        <asp:Label ID="lblSuccessMessage" runat="server" Text="Label" CssClass="alert alert-success"> </asp:Label>
                         <asp:FormView ID="FormView1" runat="server" DefaultMode="Insert"
-                DataKeyNames="ID" DataSourceID="SqlDataSource1">
+                            DataKeyNames="ID" DataSourceID="SqlDataSource1">
 
-                <InsertItemTemplate>
+                            <InsertItemTemplate>
 
-                    <div class="col-md-6">
-                        Code:
+                                <div class="col-md-6">
+                                    Code:
                                  <asp:TextBox ID="CodeTextBox" runat="server" Text='<%# Bind("Code") %>' />
-                        <asp:RequiredFieldValidator ID="reqCode" runat="server" ForeColor="Red" ValidationGroup="insert" Display="Dynamic" ControlToValidate="CodeTextBox" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="reqCode" runat="server" ForeColor="Red" ValidationGroup="insert" Display="Dynamic" ControlToValidate="CodeTextBox" ErrorMessage="Required"></asp:RequiredFieldValidator>
 
-                    </div>
-                    <div class="col-md-6">
-                        Name:
+                                </div>
+                                <div class="col-md-6">
+                                    Name:
                                  <asp:TextBox ID="NameTextBox" runat="server" Text='<%# Bind("Name") %>' />
-                        <asp:RequiredFieldValidator ID="reqname" runat="server" ValidationGroup="insert" Display="Dynamic" ForeColor="Red" ControlToValidate="NameTextBox" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="reqname" runat="server" ValidationGroup="insert" Display="Dynamic" ForeColor="Red" ControlToValidate="NameTextBox" ErrorMessage="Required"></asp:RequiredFieldValidator>
 
-                    </div>
+                                </div>
 
 
-                    <div class="col-md-6">
-                        Alt Code:
+                                <div class="col-md-6">
+                                    Alt Code:
                                  <asp:TextBox ID="AlternateCodeTextBox" runat="server" Text='<%# Bind("AlternateCode") %>' />
-                    </div>
-                    <div class="col-md-6">
-                        Type:
-                       
-                                 <asp:TextBox ID="TypeTextBox" runat="server" Text='<%# Bind("Type") %>' />
-                        <asp:RequiredFieldValidator ID="reqtype" runat="server" ValidationGroup="insert" Display="Dynamic" ForeColor="Red" ControlToValidate="TypeTextBox" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                                </div>
+                                <div class="col-md-6">
+                                    Type:
+                        
+                                    <asp:DropDownList ID="ddType" runat="server" SelectedValue='<%# Bind("Type") %>' >
+                                        <asp:ListItem>H-1</asp:ListItem>
+                                        <asp:ListItem>H-2</asp:ListItem>
+                                        <asp:ListItem>T-0</asp:ListItem>
+                                    </asp:DropDownList>
 
-                    </div>
 
-                    <div class="col-md-6">
-                        Debit:
+
+                                    <asp:RequiredFieldValidator ID="reqtype" runat="server" ValidationGroup="insert" Display="Dynamic" ForeColor="Red" ControlToValidate="ddType" ErrorMessage="Required"></asp:RequiredFieldValidator>
+
+                                </div>
+
+                                <div class="col-md-6">
+                                    Debit:
                                  <asp:TextBox ID="DebitTextBox" runat="server" Text='<%# Bind("Debit") %>' />
-                        <asp:RequiredFieldValidator ID="regdebit" runat="server" ValidationGroup="insert" Display="Dynamic" ForeColor="Red" ControlToValidate="DebitTextBox" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="regdebit" runat="server" ValidationGroup="insert" Display="Dynamic" ForeColor="Red" ControlToValidate="DebitTextBox" ErrorMessage="Required"></asp:RequiredFieldValidator>
 
-                    </div>
-                    <div class="col-md-6">
-                        Credit:
+                                </div>
+                                <div class="col-md-6">
+                                    Credit:
                                  <asp:TextBox ID="CreditTextBox" runat="server" Text='<%# Bind("Credit") %>' />
-                        <asp:RequiredFieldValidator ID="regxcridet" ValidationGroup="insert" Display="Dynamic"
-                            runat="server" ForeColor="Red" ControlToValidate="CreditTextBox"
-                            ErrorMessage="Required"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="regxcridet" ValidationGroup="insert" Display="Dynamic"
+                                        runat="server" ForeColor="Red" ControlToValidate="CreditTextBox"
+                                        ErrorMessage="Required"></asp:RequiredFieldValidator>
 
-                    </div>
+                                </div>
 
-                    <div class="col-md-6">
-                        Address:
+                                <div class="col-md-6">
+                                    Address:
                                  <asp:TextBox ID="AddressTextBox" runat="server" Text='<%# Bind("Address") %>' />
-                    </div>
-                    <div class="col-md-6">
-                        Phone:
+                                </div>
+                                <div class="col-md-6">
+                                    Phone:
                                  <asp:TextBox ID="PhoneTextBox" runat="server" Text='<%# Bind("Phone") %>' />
-                        <asp:RegularExpressionValidator ID="regxphone" ValidationGroup="insert" runat="server" Display="Dynamic" ControlToValidate="PhoneTextBox"
-                            ValidationExpression="^((\+92)|(0092))-{0,1}\d{3}-{0,1}\d{7}$|^\d{11}$|^\d{4}-\d{7}$" ForeColor="Red"
-                            ErrorMessage="Phone number not in valid format"></asp:RegularExpressionValidator>
+                                    <asp:RegularExpressionValidator ID="regxphone" ValidationGroup="insert" runat="server" Display="Dynamic" ControlToValidate="PhoneTextBox"
+                                        ValidationExpression="^((\+92)|(0092))-{0,1}\d{3}-{0,1}\d{7}$|^\d{11}$|^\d{4}-\d{7}$" ForeColor="Red"
+                                        ErrorMessage="Phone number not in valid format"></asp:RegularExpressionValidator>
 
-                    </div>
+                                </div>
 
-                    <div class="col-md-6">
-                        Email:
+                                <div class="col-md-6">
+                                    Email:
                                  <asp:TextBox ID="EmailTextBox" runat="server" Text='<%# Bind("Email") %>' />
-                        <asp:RegularExpressionValidator ID="regemail" runat="server" ValidationGroup="insert" Display="Dynamic"
-                            ControlToValidate="EmailTextBox" ValidationExpression="^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$"
-                            ForeColor="Red" ErrorMessage="Email not in valid format"></asp:RegularExpressionValidator>
+                                    <asp:RegularExpressionValidator ID="regemail" runat="server" ValidationGroup="insert" Display="Dynamic"
+                                        ControlToValidate="EmailTextBox" ValidationExpression="^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$"
+                                        ForeColor="Red" ErrorMessage="Email not in valid format"></asp:RegularExpressionValidator>
 
-                    </div>
-                    <div class="col-md-6" style="display: none">
-                        Active:
+                                </div>
+                                <div class="col-md-6" style="display: none">
+                                    Active:
                                  <asp:CheckBox ID="ActiveCheckBox" Text="true" runat="server" Checked='<%# Bind("Active") %>' />
-                    </div>
+                                </div>
 
-                    <div class="col-md-6">
-                        YearStart:
+                                <div class="col-md-6">
+                                    YearStart:
                        
             
-                      <asp:TextBox ID="YearStartTextBox" runat="server" Text='<%# Bind("YearStart","{dd/MM/yyyy}") %>' />
-                        <ajaxtool:CalendarExtender ID="Calendar" runat="server" TodaysDateFormat="dd/mm/yyy" TargetControlID="YearStartTextBox" Format="dd/MM/yyyy"></ajaxtool:CalendarExtender>
-                        <asp:RequiredFieldValidator ID="reqyearstart" ValidationGroup="insert" Display="Dynamic"
+                      <asp:TextBox ID="YearStartTextBox" runat="server"  Text='<%# Bind("YearStart") %>' />
+                                  <%--   <ajaxtool:CalendarExtender ID="Calendar" runat="server" TodaysDateFormat="dd-MM-yyyy"
+                                         TargetControlID="YearStartTextBox" Format="dd-MM-yyyy"></ajaxtool:CalendarExtender>
+                       <asp:RequiredFieldValidator ID="reqyearstart" ValidationGroup="insert" Display="Dynamic"
                             runat="server" ForeColor="Red" ControlToValidate="YearStartTextBox"
-                            ErrorMessage="Required"></asp:RequiredFieldValidator>
-                    </div>
+                            ErrorMessage="Required"></asp:RequiredFieldValidator>,"{dd-MM-yyyy}" --%>
+                                </div>
 
-                    <br />
-                    <asp:LinkButton ID="InsertButton" CssClass="btn btn-success" ValidationGroup="insert" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" />
-                    &nbsp;<asp:LinkButton ID="InsertCancelButton" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
-                    <br />
+                                <br />
+                                <asp:LinkButton ID="InsertButton" CssClass="btn btn-success" ValidationGroup="insert" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" />
+                                &nbsp;<asp:LinkButton ID="InsertCancelButton" CssClass="btn btn-default" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
+                                <br />
 
-                </InsertItemTemplate>
-            </asp:FormView>
+                            </InsertItemTemplate>
+                        </asp:FormView>
                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
-       
-        InsertCommand="INSERT INTO [Account] ([Name], [AlternateCode], [Phone], [Email], [YearStart], [Type], [Address],[Code],[Active]) 
-      VALUES (@Name, @AlternateCode, @Phone, @Email, @YearStart, @Type, @Address,@Code,'true')">
-       
-                              <InsertParameters>
+                            InsertCommand="INSERT INTO [Account] ([Name], [AlternateCode], [Phone], [Email], [YearStart], [Type], [Address],[Code],[Active],[Debit],[Credit]) 
+      VALUES (@Name, @AlternateCode, @Phone, @Email, @YearStart, @Type, @Address,@Code,'true',@Debit,@Credit)"
+                            OnInserted="AccountInserted">
 
-            <asp:Parameter Name="Code" Type="String" />
-            <asp:Parameter Name="Name" Type="String" />
-            <asp:Parameter Name="AlternateCode" Type="String" />
-            <asp:Parameter Name="Phone" Type="String" />
-            <asp:Parameter Name="Email" Type="String" />
-            <asp:Parameter Name="Active" Type="String" />
-            <asp:Parameter DbType="Date" Name="YearStart" />
-            <asp:Parameter Name="Type" Type="String" />
-            <asp:Parameter Name="Address" Type="String" />
-        </InsertParameters>
+                            <InsertParameters>
+
+                                <asp:Parameter Name="Code" Type="String" />
+                                <asp:Parameter Name="Name" Type="String" />
+                                <asp:Parameter Name="AlternateCode" Type="String" />
+                                <asp:Parameter Name="Phone" Type="String" />
+                                <asp:Parameter Name="Email" Type="String" />
+                                <asp:Parameter Name="Active" Type="String" />
+                                <asp:Parameter DbType="Date" Name="YearStart" />
+                                <asp:Parameter Name="Type" Type="String" />
+                                <asp:Parameter Name="Address" Type="String" />
+                            </InsertParameters>
                         </asp:SqlDataSource>
- 
-                        <asp:HyperLink ID="lnkAccount" href="Accounts.aspx" runat="server" >
+
+                        <asp:HyperLink ID="lnkAccount" href="Accounts.aspx" runat="server">
                             Back To List
                         </asp:HyperLink>
 
@@ -163,8 +171,8 @@
             </div>
         </div>
 
-        <uc1:menu runat="server" id="menu" />
-        
+        <uc1:menu runat="server" ID="menu" />
+
     </div>
 
     <!-- Scripts -->

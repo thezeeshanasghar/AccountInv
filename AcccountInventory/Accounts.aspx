@@ -10,7 +10,7 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-<head>
+<head runat="server">
     <title>Editorial by HTML5 UP</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -27,7 +27,7 @@
 
                 <!-- Header -->
                 <header id="header">
-                    <a href="index.html" class="logo"><strong>Editorial</strong> by HTML5 UP</a>
+                    <a href="#" class="logo"><strong>Editorial</strong> by HTML5 UP</a>
                     <ul class="icons">
                         <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
                         <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
@@ -46,12 +46,25 @@
                         <br />
                          <br />
                         <div class="table-wrapper">
-                         <asp:GridView ID="accountGrid" AutoGenerateColumns="False" runat="server" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" CellPadding="4" DataKeyNames="ID">
+                         <asp:GridView ID="accountGrid" AutoGenerateColumns="False" runat="server"
+                             OnRowDataBound="accountGrid_RowDataBound"
+                              DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#CC9966"
+                              BorderStyle="None" BorderWidth="1px" CellPadding="4" DataKeyNames="ID">
         <Columns>
-            <asp:BoundField DataField="Code" HeaderText="Code" SortExpression="Code" />
+            <asp:TemplateField>
+            <ItemTemplate>
+                <asp:Label ID="lblActive" Visible="false" runat="server" Text='<%# Eval("Active") %>' />
+            </ItemTemplate>
+        </asp:TemplateField>
+            <asp:TemplateField HeaderText="Code Type" SortExpression="Name">
+                <ItemTemplate>
+                    <asp:TextBox ID="CodeTextBox" runat="server" Text='<%# Bind("Code") %>' />
+                      <asp:TextBox ID="AlternateCode" runat="server" Text='<%# Bind("AlternateCode") %>' />
+                      <asp:TextBox ID="Type" runat="server" Text='<%# Bind("Type") %>' /> 
+                </ItemTemplate>
+            </asp:TemplateField>
+          
             <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
-            <asp:BoundField DataField="AlternateCode" HeaderText="AlternateCode" SortExpression="AlternateCode" />
-            <asp:BoundField DataField="Type" HeaderText="Type" SortExpression="Type" />
             <asp:BoundField DataField="Debit" HeaderText="Debit" SortExpression="Debit" />
 
 
@@ -60,7 +73,9 @@
             <asp:BoundField DataField="Phone" HeaderText="Phone" SortExpression="Phone" />
 
             <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
-            <asp:BoundField DataField="YearStart" HeaderText="YearStart" SortExpression="YearStart" />
+            <asp:BoundField DataField="YearStart" HeaderText="YearStart" SortExpression="YearStart" ApplyFormatInEditMode="true"  DataFormatString="{0:d}"  />
+            
+
              <asp:BoundField DataField="ID" Visible="false" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
               <asp:CommandField ShowEditButton="True" />
             <asp:TemplateField HeaderText="Delete">
@@ -75,14 +90,29 @@
 
     </asp:GridView>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
-        SelectCommand="SELECT [Code], [Name], [AlternateCode], [Type], [Debit], [Credit], [Address], [Phone], [Email], [YearStart], [ID] FROM [Account]"
-         DeleteCommand="DELETE FROM [Account] WHERE [ID] = @ID" 
+        SelectCommand="SELECT [Code], [Name], [AlternateCode], [Type], [Debit], [Credit], [Address], [Phone], [Email], [YearStart], [ID], [Active] FROM [Account]"
+         DeleteCommand="UPDATE [Account] SET [Active]='False'  WHERE [ID] = @ID" 
        
          
-        UpdateCommand="UPDATE [Account] SET [Code] = @Code, [Name] = @Name, [AlternateCode] = @AlternateCode, [Type] = @Type, [Debit] = @Debit, [Credit] = @Credit, [Address] = @Address, [Phone] = @Phone, [Email] = @Email, [YearStart] = @YearStart WHERE [ID] = @ID">
+        UpdateCommand="UPDATE [Account] SET [Code] = @Code, [Name] = @Name, [AlternateCode] = @AlternateCode, [Type] = @Type, [Debit] = @Debit, [Credit] = @Credit, [Address] = @Address, [Phone] = @Phone, [Email] = @Email, [YearStart] = @YearStart WHERE [ID] = @ID" 
+        InsertCommand="INSERT INTO [Account] ([Code], [Name], [AlternateCode], [Type], [Debit], [Credit], [Address], [Phone], [Email], [YearStart], [Active]) VALUES (@Code, @Name, @AlternateCode, @Type, @Debit, @Credit, @Address, @Phone, @Email, @YearStart, @Active)">
         <DeleteParameters>
             <asp:Parameter Name="ID" Type="Int32" />
         </DeleteParameters>
+     
+        <InsertParameters>
+            <asp:Parameter Name="Code" Type="String" />
+            <asp:Parameter Name="Name" Type="String" />
+            <asp:Parameter Name="AlternateCode" Type="String" />
+            <asp:Parameter Name="Type" Type="String" />
+            <asp:Parameter Name="Debit" Type="Int64" />
+            <asp:Parameter Name="Credit" Type="Int64" />
+            <asp:Parameter Name="Address" Type="String" />
+            <asp:Parameter Name="Phone" Type="String" />
+            <asp:Parameter Name="Email" Type="String" />
+            <asp:Parameter DbType="Date" Name="YearStart" />
+            <asp:Parameter Name="Active" Type="Boolean" />
+        </InsertParameters>
      
         <UpdateParameters>
             <asp:Parameter Name="Code" Type="String" />
@@ -95,6 +125,7 @@
             <asp:Parameter Name="Phone" Type="String" />
             <asp:Parameter Name="Email" Type="String" />
             <asp:Parameter DbType="Date" Name="YearStart" />
+            <asp:Parameter Name="Active" Type="Boolean" />
             <asp:Parameter Name="ID" Type="Int32" />
         </UpdateParameters>
     </asp:SqlDataSource>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -14,6 +15,19 @@ namespace AcccountInventory
 
         }
 
-      
+        protected void accountGrid_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+
+                string lblActiveValue = ((Label)e.Row.FindControl("lblActive")).Text;
+                if(lblActiveValue == "False")
+                {
+                    e.Row.BackColor = Color.FromName("#ffc266");
+                  //  e.Row.ForeColor = Color.White;
+                }
+            }
+
+        }
     }
 }
