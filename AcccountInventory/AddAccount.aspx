@@ -51,24 +51,20 @@
                             <InsertItemTemplate>
 
                                 <div class="col-md-6">
+                                    <div class="col-md-2" style="width: 25%;position: relative;bottom: 5px;">
                                     Code:
                                  <asp:TextBox ID="CodeTextBox" runat="server" Text='<%# Bind("Code") %>' />
                                     <asp:RequiredFieldValidator ID="reqCode" runat="server" ForeColor="Red" ValidationGroup="insert" Display="Dynamic" ControlToValidate="CodeTextBox" ErrorMessage="Required"></asp:RequiredFieldValidator>
-
-                                </div>
-                                <div class="col-md-6">
-                                    Name:
-                                 <asp:TextBox ID="NameTextBox" runat="server" Text='<%# Bind("Name") %>' />
-                                    <asp:RequiredFieldValidator ID="reqname" runat="server" ValidationGroup="insert" Display="Dynamic" ForeColor="Red" ControlToValidate="NameTextBox" ErrorMessage="Required"></asp:RequiredFieldValidator>
-
-                                </div>
+                                    </div>
+                                
+                               
 
 
-                                <div class="col-md-6">
+                                <div class="col-md-2" style="width: 25%; margin-left: 68%; position: relative;bottom: 68px;">
                                     Alt Code:
                                  <asp:TextBox ID="AlternateCodeTextBox" runat="server" Text='<%# Bind("AlternateCode") %>' />
                                 </div>
-                                <div class="col-md-6">
+                                 <div class="col-md-2" style="width: 25%;margin-left: 33%;position: relative;bottom: 133px;">
                                     Type:
                         
                                     <asp:DropDownList ID="ddType" runat="server" SelectedValue='<%# Bind("Type") %>' >
@@ -82,7 +78,13 @@
                                     <asp:RequiredFieldValidator ID="reqtype" runat="server" ValidationGroup="insert" Display="Dynamic" ForeColor="Red" ControlToValidate="ddType" ErrorMessage="Required"></asp:RequiredFieldValidator>
 
                                 </div>
+                                    </div>
+                                 <div class="col-md-6" style="    margin-top: -107px;">
+                                    Name:
+                                 <asp:TextBox ID="NameTextBox" runat="server" Text='<%# Bind("Name") %>' />
+                                    <asp:RequiredFieldValidator ID="reqname" runat="server" ValidationGroup="insert" Display="Dynamic" ForeColor="Red" ControlToValidate="NameTextBox" ErrorMessage="Required"></asp:RequiredFieldValidator>
 
+                                </div>
                                 <div class="col-md-6">
                                     Debit:
                                  <asp:TextBox ID="DebitTextBox" runat="server" Text='<%# Bind("Debit") %>' />
@@ -129,11 +131,11 @@
                        
             
                       <asp:TextBox ID="YearStartTextBox" runat="server"  Text='<%# Bind("YearStart") %>' />
-                                  <%--   <ajaxtool:CalendarExtender ID="Calendar" runat="server" TodaysDateFormat="dd-MM-yyyy"
-                                         TargetControlID="YearStartTextBox" Format="dd-MM-yyyy"></ajaxtool:CalendarExtender>
+                                     <ajaxtool:CalendarExtender ID="Calendar" runat="server" TodaysDateFormat="MM/dd/yyyy"
+                                         TargetControlID="YearStartTextBox" Format="MM/dd/yyyy"></ajaxtool:CalendarExtender>
                        <asp:RequiredFieldValidator ID="reqyearstart" ValidationGroup="insert" Display="Dynamic"
                             runat="server" ForeColor="Red" ControlToValidate="YearStartTextBox"
-                            ErrorMessage="Required"></asp:RequiredFieldValidator>,"{dd-MM-yyyy}" --%>
+                            ErrorMessage="Required"></asp:RequiredFieldValidator> 
                                 </div>
 
                                 <br />
