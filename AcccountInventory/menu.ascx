@@ -17,14 +17,20 @@
                 <h2>Menu</h2>
             </header>
             <ul>
-                <li><a href="index.html">Homepage</a></li>
-                <li><a href="generic.html">Generic</a></li>
-                <li><a href="elements.html">Elements</a></li>
+                <li><a href="Home.aspx">Home</a></li>
+            
                 <li>
+                    <span class="opener">Accounts</span>
+                    <ul>
+                        <li><a href="Accounts.aspx">Account List</a></li>
+                        <li><a href="AddAccount.aspx">Add Account</a></li> 
+                    </ul>
+                </li>
+                  <li>
                     <span class="opener">Reports</span>
                     <ul>
-                        <li><a href="Accounts.aspx">Accounts</a></li>
-                        <li><a href="AddAccount.aspx">Add Account</a></li> 
+                        <li><a href="#">Report1</a></li>
+                        <li><a href="#">Report1</a></li> 
                     </ul>
                 </li>
                 
