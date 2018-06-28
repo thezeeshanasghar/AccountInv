@@ -108,6 +108,7 @@
     <Content Include="assets\sass\libs\_vendor.scss" />
     <Content Include="assets\sass\main.scss" />
     <None Include="Properties\PublishProfiles\2Folder.pubxml" />
+    <None Include="Properties\PublishProfiles\toFolder.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -143,6 +144,7 @@
     <Content Include="LICENSE.txt" />
     <Content Include="README.txt" />
     <Content Include="ThemePage.aspx" />
+    <Content Include="UpdateAccount.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -183,6 +185,13 @@
     </Compile>
     <Compile Include="ThemePage.aspx.designer.cs">
       <DependentUpon>ThemePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateAccount.aspx.cs">
+      <DependentUpon>UpdateAccount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UpdateAccount.aspx.designer.cs">
+      <DependentUpon>UpdateAccount.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <PropertyGroup>

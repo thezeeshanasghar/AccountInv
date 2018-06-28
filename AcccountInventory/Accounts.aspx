@@ -43,6 +43,7 @@
                 </header>
 
                 <form id="form1" runat="server">
+
                     <section>
                         <header class="major">
                             <h2>Accounts</h2>
@@ -61,14 +62,14 @@
                 <asp:Label ID="lblActive" Visible="false" runat="server" Text='<%# Eval("Active") %>' />
             </ItemTemplate>
         </asp:TemplateField>
-            <asp:TemplateField HeaderText="Code Type" SortExpression="Name">
+            <asp:TemplateField HeaderText="Code-Alt Code" SortExpression="Name">
                 <ItemTemplate>
-                    <asp:TextBox style="padding: 1.75em 10px;" ID="CodeTextBox" runat="server" Text='<%# Bind("Code") %>' />
-                      <asp:TextBox style="padding: 1.75em 10px;" ID="AlternateCode" runat="server" Text='<%# Bind("AlternateCode") %>' />
-                      <asp:TextBox style="padding: 1.75em 10px;" ID="Type" runat="server" Text='<%# Bind("Type") %>' /> 
+                     <%# Eval("Code") %> -  <%# Eval("AlternateCode") %> 
+<%--                      <asp:TextBox style="padding: 1.75em 10px;" ID="AlternateCode" runat="server" Text='<%# Bind("AlternateCode") %>' />
+                      <asp:TextBox style="padding: 1.75em 10px;" ID="Type" runat="server" Text='<%# Bind("Type") %>' /> --%>
                 </ItemTemplate>
             </asp:TemplateField>
-          
+            <asp:BoundField DataField="Type" HeaderText="Type" SortExpression="Type" />
             <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
             <asp:BoundField DataField="Debit" HeaderText="Debit" SortExpression="Debit" />
 
@@ -82,13 +83,21 @@
             
 
              <asp:BoundField DataField="ID" Visible="false" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
-              <asp:CommandField ShowEditButton="True" />
-            <asp:TemplateField HeaderText="Delete">
+             <%-- <asp:CommandField ShowEditButton="True" />--%>
+             <asp:TemplateField HeaderText="Action">
                 <ItemTemplate>
-                    <asp:Button ID="deleteButton" runat="server" CommandName="Delete" Text="Delete"
-                        OnClientClick="return confirm('Are you sure you want to delete this record?');" />
+                    <asp:HyperLink id="hyperlink1" NavigateUrl='<%#Eval("ID","~/UpdateAccount.aspx?ID={0}")%>'   
+                        Target="_blank" runat="server">
+                        <i class='fa fa-edit' aria-hidden='true'></i>
+                    </asp:HyperLink>
+                      <asp:LinkButton ID="deleteButton" runat="server" CommandName="Delete"
+                        OnClientClick="return confirm('Are you sure you want to delete this record?')">
+                        <i class='fa fa-trash' aria-hidden='true'></i>
+                    </asp:LinkButton>
+                            
                 </ItemTemplate>
             </asp:TemplateField>
+          
         </Columns>
 
       
@@ -96,43 +105,11 @@
     </asp:GridView>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
         SelectCommand="SELECT [Code], [Name], [AlternateCode], [Type], [Debit], [Credit], [Address], [Phone], [Email], [YearStart], [ID], [Active] FROM [Account]"
-         DeleteCommand="UPDATE [Account] SET [Active]='False'  WHERE [ID] = @ID" 
-       
-         
-        UpdateCommand="UPDATE [Account] SET [Code] = @Code, [Name] = @Name, [AlternateCode] = @AlternateCode, [Type] = @Type, [Debit] = @Debit, [Credit] = @Credit, [Address] = @Address, [Phone] = @Phone, [Email] = @Email, [YearStart] = @YearStart WHERE [ID] = @ID" 
-        InsertCommand="INSERT INTO [Account] ([Code], [Name], [AlternateCode], [Type], [Debit], [Credit], [Address], [Phone], [Email], [YearStart], [Active]) VALUES (@Code, @Name, @AlternateCode, @Type, @Debit, @Credit, @Address, @Phone, @Email, @YearStart, @Active)">
+         DeleteCommand="UPDATE [Account] SET [Active]='False'  WHERE [ID] = @ID">
         <DeleteParameters>
             <asp:Parameter Name="ID" Type="Int32" />
         </DeleteParameters>
      
-        <InsertParameters>
-            <asp:Parameter Name="Code" Type="String" />
-            <asp:Parameter Name="Name" Type="String" />
-            <asp:Parameter Name="AlternateCode" Type="String" />
-            <asp:Parameter Name="Type" Type="String" />
-            <asp:Parameter Name="Debit" Type="Int64" />
-            <asp:Parameter Name="Credit" Type="Int64" />
-            <asp:Parameter Name="Address" Type="String" />
-            <asp:Parameter Name="Phone" Type="String" />
-            <asp:Parameter Name="Email" Type="String" />
-            <asp:Parameter DbType="Date" Name="YearStart" />
-            <asp:Parameter Name="Active" Type="Boolean" />
-        </InsertParameters>
-     
-        <UpdateParameters>
-            <asp:Parameter Name="Code" Type="String" />
-            <asp:Parameter Name="Name" Type="String" />
-            <asp:Parameter Name="AlternateCode" Type="String" />
-            <asp:Parameter Name="Type" Type="String" />
-            <asp:Parameter Name="Debit" Type="Int64" />
-            <asp:Parameter Name="Credit" Type="Int64" />
-            <asp:Parameter Name="Address" Type="String" />
-            <asp:Parameter Name="Phone" Type="String" />
-            <asp:Parameter Name="Email" Type="String" />
-            <asp:Parameter DbType="Date" Name="YearStart" />
-            <asp:Parameter Name="Active" Type="Boolean" />
-            <asp:Parameter Name="ID" Type="Int32" />
-        </UpdateParameters>
     </asp:SqlDataSource>
                              </div>
                     </section>
@@ -149,6 +126,5 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
-
 </body>
 </html>
