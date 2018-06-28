@@ -33,7 +33,10 @@
                         <li><a href="#">Report1</a></li> 
                     </ul>
                 </li>
-                
+                  <li>
+                    <a href="Login.aspx">Log out</a>
+                    
+                </li>
             </ul>
         </nav>
 
