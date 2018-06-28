@@ -68,10 +68,11 @@
                                  <div class="col-md-2" style="width: 25%;margin-left: 33%;position: relative;bottom: 133px;">
                                     Type:
                         
-                                    <asp:DropDownList ID="ddType" runat="server" SelectedValue='<%# Bind("Type") %>' >
+                                    <asp:DropDownList ID="ddType" runat="server" OnSelectedIndexChanged="ddType_SelectedIndexChanged" AutoPostBack="true" SelectedValue='<%# Bind("Type") %>' >
+                                        <asp:ListItem>T-0</asp:ListItem>
                                         <asp:ListItem>H-1</asp:ListItem>
                                         <asp:ListItem>H-2</asp:ListItem>
-                                        <asp:ListItem>T-0</asp:ListItem>
+                                        
                                     </asp:DropDownList>
 
 
@@ -88,13 +89,13 @@
                                 </div>
                                 <div class="col-md-6">
                                     Debit:
-                                 <asp:TextBox ID="DebitTextBox" runat="server" Text='<%# Bind("Debit") %>' />
+                                 <asp:TextBox ID="DebitTextBox" OnTextChanged="DebitTextBox_TextChanged" AutoPostBack="true" runat="server" Text='<%# Bind("Debit") %>' />
                                     <asp:RequiredFieldValidator ID="regdebit" runat="server" ValidationGroup="insert" Display="Dynamic" ForeColor="Red" ControlToValidate="DebitTextBox" ErrorMessage="Required"></asp:RequiredFieldValidator>
 
                                 </div>
                                 <div class="col-md-6">
                                     Credit:
-                                 <asp:TextBox ID="CreditTextBox" runat="server" Text='<%# Bind("Credit") %>' />
+                                 <asp:TextBox ID="CreditTextBox" OnTextChanged="CreditTextBox_TextChanged" AutoPostBack="true" runat="server" Text='<%# Bind("Credit") %>' />
                                     <asp:RequiredFieldValidator ID="regxcridet" ValidationGroup="insert" Display="Dynamic"
                                         runat="server" ForeColor="Red" ControlToValidate="CreditTextBox"
                                         ErrorMessage="Required"></asp:RequiredFieldValidator>
