@@ -64,6 +64,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AddProject.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="menu.ascx" />
@@ -143,9 +144,11 @@
     <Content Include="images\pic11.jpg" />
     <Content Include="index.html" />
     <Content Include="LICENSE.txt" />
+    <Content Include="Project.aspx" />
     <Content Include="README.txt" />
     <Content Include="ThemePage.aspx" />
     <Content Include="UpdateAccount.aspx" />
+    <Content Include="UpdateProject.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -164,6 +167,13 @@
     </Compile>
     <Compile Include="AddAccount.aspx.designer.cs">
       <DependentUpon>AddAccount.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddProject.aspx.cs">
+      <DependentUpon>AddProject.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddProject.aspx.designer.cs">
+      <DependentUpon>AddProject.aspx</DependentUpon>
     </Compile>
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
@@ -186,6 +196,13 @@
     <Compile Include="menu.ascx.designer.cs">
       <DependentUpon>menu.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Project.aspx.cs">
+      <DependentUpon>Project.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Project.aspx.designer.cs">
+      <DependentUpon>Project.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThemePage.aspx.cs">
       <DependentUpon>ThemePage.aspx</DependentUpon>
@@ -200,6 +217,13 @@
     </Compile>
     <Compile Include="UpdateAccount.aspx.designer.cs">
       <DependentUpon>UpdateAccount.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateProject.aspx.cs">
+      <DependentUpon>UpdateProject.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UpdateProject.aspx.designer.cs">
+      <DependentUpon>UpdateProject.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <PropertyGroup>

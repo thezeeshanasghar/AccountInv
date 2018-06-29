@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Accounts.aspx.cs" Inherits="AcccountInventory.Accounts" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Project.aspx.cs" Inherits="AcccountInventory.Project" %>
 
 
 <%@ Register Src="~/menu.ascx" TagPrefix="uc1" TagName="menu" %>
@@ -47,52 +47,47 @@
 
                     <section>
                         <header class="major">
-                            <h2>Accounts</h2>
+                            <h2>Project</h2>
                         </header>
-                         <asp:HyperLink ID="addNewAccount" href="AddAccount.aspx" runat="server" CssClass="button primary">Add New</asp:HyperLink>
+                         <asp:HyperLink ID="addNewAccount" href="AddProject.aspx" runat="server" CssClass="button primary">Add New</asp:HyperLink>
                         <br />
                          <br />
                         <div class="table-wrapper">
-                         <asp:GridView ID="accountGrid" AutoGenerateColumns="False" runat="server"
-                             OnRowDataBound="accountGrid_RowDataBound"
+                         <asp:GridView ID="projectGrid" AutoGenerateColumns="False" runat="server"
+                             OnRowDataBound="projectGrid_RowDataBound"
                               DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#CC9966"
                               BorderStyle="None" BorderWidth="1px" CellPadding="4" DataKeyNames="ID">
         <Columns>
             <asp:TemplateField>
             <ItemTemplate>
-                <asp:Label ID="lblActive" Visible="false" runat="server" Text='<%# Eval("Active") %>' />
+                <asp:Label ID="lblBlock" Visible="false" runat="server" Text='<%# Eval("Block") %>' />
             </ItemTemplate>
         </asp:TemplateField>
-            <asp:TemplateField HeaderText="Code-Alt Code" SortExpression="Name">
+            <asp:TemplateField HeaderText="Code" SortExpression="Name">
                 <ItemTemplate>
-                     <%# Eval("Code") %> -  <%# Eval("AlternateCode") %> 
+                     <%# Eval("Code") %> 
 <%--                      <asp:TextBox style="padding: 1.75em 10px;" ID="AlternateCode" runat="server" Text='<%# Bind("AlternateCode") %>' />
                       <asp:TextBox style="padding: 1.75em 10px;" ID="Type" runat="server" Text='<%# Bind("Type") %>' /> --%>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="Type" HeaderText="Type" SortExpression="Type" />
-            <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
-            <asp:BoundField DataField="Debit" HeaderText="Debit" SortExpression="Debit" />
+            <asp:BoundField DataField="Description" HeaderText="Description" SortExpression="Description" />
+            <asp:BoundField DataField="Location" HeaderText="Location" SortExpression="Location" />
+            <asp:BoundField DataField="Responsible" HeaderText="Responsible" SortExpression="Responsible" />
 
 
-            <asp:BoundField DataField="Credit" HeaderText="Credit" SortExpression="Credit" />
-            <asp:BoundField DataField="Address" HeaderText="Address" SortExpression="Address" />
-            <asp:BoundField DataField="Phone" HeaderText="Phone" SortExpression="Phone" />
-
-            <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
-            <asp:BoundField DataField="YearStart" HeaderText="YearStart" SortExpression="YearStart" ApplyFormatInEditMode="true"  DataFormatString="{0:d}"  />
             
 
-             <asp:BoundField DataField="ID" Visible="false" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
+             <asp:BoundField DataField="ID" Visible="false" HeaderText="ID"
+                  InsertVisible="False" ReadOnly="True" SortExpression="ID" />
              <%-- <asp:CommandField ShowEditButton="True" />--%>
              <asp:TemplateField HeaderText="Action">
                 <ItemTemplate>
-                    <asp:HyperLink id="hyperlink1" NavigateUrl='<%#Eval("ID","~/UpdateAccount.aspx?ID={0}")%>'   
+                    <asp:HyperLink id="hyperlink1" NavigateUrl='<%#Eval("ID","~/UpdateProject.aspx?ID={0}")%>'   
                         Target="_blank" runat="server">
                         <i class='fa fa-edit' aria-hidden='true'></i>
                     </asp:HyperLink>
                       <asp:LinkButton ID="deleteButton" runat="server" CommandName="Delete"
-                        OnClientClick="return confirm('Are you sure you want to delete this record?')">
+                        OnClientClick="return confirm('Are you sure you want to block this user?')">
                         <i class='fa fa-trash' aria-hidden='true'></i>
                     </asp:LinkButton>
                             
@@ -105,8 +100,8 @@
 
     </asp:GridView>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
-        SelectCommand="SELECT [Code], [Name], [AlternateCode], [Type], [Debit], [Credit], [Address], [Phone], [Email], [YearStart], [ID], [Active] FROM [Account]"
-         DeleteCommand="UPDATE [Account] SET [Active]='False'  WHERE [ID] = @ID">
+        SelectCommand="SELECT * FROM [Project]"
+         DeleteCommand="UPDATE [Project] SET [Block]='False'  WHERE [ID] = @ID">
         <DeleteParameters>
             <asp:Parameter Name="ID" Type="Int32" />
         </DeleteParameters>
@@ -129,3 +124,4 @@
     <script src="assets/js/main.js"></script>
 </body>
 </html>
+
