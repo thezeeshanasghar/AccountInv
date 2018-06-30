@@ -28,10 +28,6 @@
                         <header class="major">
                             <h2>Login</h2>
                         </header>
-                        
-                   
-
-                                
 
                                 <div class="col-md-6">
                                     Email:

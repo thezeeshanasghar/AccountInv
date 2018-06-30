@@ -27,15 +27,18 @@
                     </ul>
                 </li>
                   <li>
+                    <span class="opener">Projects</span>
+                    <ul>
+                        <li><a href="Project.aspx">Project List</a></li>
+                        <li><a href="AddProject.aspx">Add Project</a></li> 
+                    </ul>
+                </li>
+                  <li>
                     <span class="opener">Reports</span>
                     <ul>
                         <li><a href="#">Report1</a></li>
                         <li><a href="#">Report1</a></li> 
                     </ul>
-                </li>
-                <li>
-                    <a href="Project.aspx">Project</a>
-                    
                 </li>
                   <li>
                     <a href="Login.aspx">Log out</a>

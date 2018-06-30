@@ -19,38 +19,33 @@ namespace AcccountInventory
 
         protected void Confirmlogin(object sender, SqlDataSourceStatusEventArgs e)
         {
-           
+
         }
 
         protected void loginButton_Click(object sender, EventArgs e)
         {
 
-        string email = EmailTextBox.Text;
-        Session["email"] = email;
-            string password = Passwordtextbox.Text;  
-             string constr = ConfigurationManager.ConnectionStrings["AccountConnectionString"].ToString();
+            string email = EmailTextBox.Text;
+            Session["email"] = email;
+            string password = Passwordtextbox.Text;
+            string constr = ConfigurationManager.ConnectionStrings["AccountConnectionString"].ToString();
             SqlConnection con = new SqlConnection(constr);
             con.Open();
-        
-        string qry = "select * from Login where Email='" + email + "' and Password='" + password + "'";  
-        SqlCommand cmd = new SqlCommand(qry,con);  
-        SqlDataReader sdr = cmd.ExecuteReader();  
-        if(sdr.Read())  
-        {  
-              Response.Redirect("Home.aspx");
-        }  
-        else  
-        {  
-            lblError.Text = "Email or Password Incorrect";
-  
-        }  
-            con.Close();  
-        }  
-       
-            
 
-           
-           
+            string qry = "select * from Login where Email='" + email + "' and Password='" + password + "'";
+            SqlCommand cmd = new SqlCommand(qry, con);
+            SqlDataReader sdr = cmd.ExecuteReader();
+            if (sdr.Read())
+            {
+                Response.Redirect("Home.aspx");
+            }
+            else
+            {
+                lblError.Text = "Email or Password Incorrect";
 
+            }
+            con.Close();
         }
+
     }
+}
