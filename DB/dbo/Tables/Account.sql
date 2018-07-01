@@ -2,7 +2,7 @@
     [ID]            INT           IDENTITY (1, 1) NOT NULL,
     [Code]          NVARCHAR (50) NOT NULL,
     [Name]          NVARCHAR (50) NOT NULL,
-    [AlternateCode] NVARCHAR (50) NULL,
+    [ProjectCode] NVARCHAR (50) NULL,
     [Type]          NVARCHAR (3)  NOT NULL,
     [Debit]         BIGINT        CONSTRAINT [DF_Account_Debit] DEFAULT ((0)) NOT NULL,
     [Credit]        BIGINT        CONSTRAINT [DF_Account_Credit] DEFAULT ((0)) NOT NULL,

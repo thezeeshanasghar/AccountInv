@@ -44,7 +44,7 @@
                         <header class="major">
                             <h2>Add New Account</h2>
                         </header>
-                        
+
                         <asp:Label ID="lblSuccessMessage" runat="server" Text="Label" CssClass="alert alert-success"> </asp:Label>
                         <asp:FormView ID="FormView1" runat="server" DefaultMode="Insert"
                             DataKeyNames="ID" DataSourceID="SqlDataSource1">
@@ -52,36 +52,46 @@
                             <InsertItemTemplate>
 
                                 <div class="col-md-6">
-                                    <div class="col-md-2" style="width: 25%;position: relative;bottom: 5px;">
-                                    Code:
+                                    <div class="col-md-2" style="width: 25%; position: relative; bottom: 5px;">
+                                        Code:
                                  <asp:TextBox ID="CodeTextBox" runat="server" Text='<%# Bind("Code") %>' />
-                                    <asp:RequiredFieldValidator ID="reqCode" runat="server" ForeColor="Red" ValidationGroup="insert" Display="Dynamic" ControlToValidate="CodeTextBox" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator ID="reqCode" runat="server" ForeColor="Red" ValidationGroup="insert" Display="Dynamic" ControlToValidate="CodeTextBox" ErrorMessage="Required"></asp:RequiredFieldValidator>
                                     </div>
-                                
-                               
 
 
-                                <div class="col-md-2" style="width: 25%; margin-left: 68%; position: relative;bottom: 68px;">
-                                    Alt Code:
-                                 <asp:TextBox ID="AlternateCodeTextBox" runat="server" Text='<%# Bind("AlternateCode") %>' />
-                                </div>
-                                 <div class="col-md-2" style="width: 25%;margin-left: 33%;position: relative;bottom: 133px;">
-                                    Type:
+
+
+                                    <div class="col-md-2" style="width: 25%; margin-left: 68%; position: relative; bottom: 68px;">
+                                       
+                                         Type:
                         
-                                    <asp:DropDownList ID="ddType" runat="server" OnSelectedIndexChanged="ddType_SelectedIndexChanged" AutoPostBack="true" SelectedValue='<%# Bind("Type") %>' >
+                                    <asp:DropDownList ID="ddType" runat="server"
+                                        OnSelectedIndexChanged="ddType_SelectedIndexChanged"
+                                        AutoPostBack="true" SelectedValue='<%# Bind("Type") %>'>
                                         <asp:ListItem>T-0</asp:ListItem>
                                         <asp:ListItem>H-1</asp:ListItem>
                                         <asp:ListItem>H-2</asp:ListItem>
-                                        
+
                                     </asp:DropDownList>
 
 
 
-                                    <asp:RequiredFieldValidator ID="reqtype" runat="server" ValidationGroup="insert" Display="Dynamic" ForeColor="Red" ControlToValidate="ddType" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator ID="reqtype" runat="server" ValidationGroup="insert" Display="Dynamic" ForeColor="Red" ControlToValidate="ddType" ErrorMessage="Required"></asp:RequiredFieldValidator>
 
-                                </div>
+
+                                      
                                     </div>
-                                 <div class="col-md-6" style="    margin-top: -107px;">
+                                    <div class="col-md-2" style="width: 25%; margin-left: 33%; position: relative; bottom: 133px;">
+                                       
+                                         Project Code:
+                           
+                                    <asp:DropDownList DataValueField="ID" SelectedValue='<%# Bind("ProjectCode") %>'
+                                        ID="ddState" runat="server" DataSourceID="SqlDataSource1"
+                                        DataTextField="Code">
+                                    </asp:DropDownList>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="margin-top: -107px;">
                                     Name:
                                  <asp:TextBox ID="NameTextBox" runat="server" Text='<%# Bind("Name") %>' />
                                     <asp:RequiredFieldValidator ID="reqname" runat="server" ValidationGroup="insert" Display="Dynamic" ForeColor="Red" ControlToValidate="NameTextBox" ErrorMessage="Required"></asp:RequiredFieldValidator>
@@ -132,12 +142,12 @@
                                     YearStart:
                        
             
-                      <asp:TextBox ID="YearStartTextBox" runat="server"  Text='<%# Bind("YearStart") %>' />
-                                     <ajaxtool:CalendarExtender ID="Calendar" runat="server" TodaysDateFormat="MM/dd/yyyy"
-                                         TargetControlID="YearStartTextBox" Format="MM/dd/yyyy"></ajaxtool:CalendarExtender>
-                       <asp:RequiredFieldValidator ID="reqyearstart" ValidationGroup="insert" Display="Dynamic"
-                            runat="server" ForeColor="Red" ControlToValidate="YearStartTextBox"
-                            ErrorMessage="Required"></asp:RequiredFieldValidator> 
+                      <asp:TextBox ID="YearStartTextBox" runat="server" Text='<%# Bind("YearStart") %>' />
+                                    <ajaxtool:CalendarExtender ID="Calendar" runat="server" TodaysDateFormat="MM/dd/yyyy"
+                                        TargetControlID="YearStartTextBox" Format="MM/dd/yyyy"></ajaxtool:CalendarExtender>
+                                    <asp:RequiredFieldValidator ID="reqyearstart" ValidationGroup="insert" Display="Dynamic"
+                                        runat="server" ForeColor="Red" ControlToValidate="YearStartTextBox"
+                                        ErrorMessage="Required"></asp:RequiredFieldValidator>
                                 </div>
 
                                 <br />
@@ -148,15 +158,19 @@
                             </InsertItemTemplate>
                         </asp:FormView>
                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
-                            InsertCommand="INSERT INTO [Account] ([Name], [AlternateCode], [Phone], [Email], [YearStart], [Type], [Address],[Code],[Active],[Debit],[Credit]) 
-      VALUES (@Name, @AlternateCode, @Phone, @Email, @YearStart, @Type, @Address,@Code,'true',@Debit,@Credit)"
+                            SelectCommand="SELECT [ID], [Code] FROM [Project]"
+                            InsertCommand="INSERT INTO [Account] ([Name], [ProjectCode], [Phone], [Email], [YearStart], [Type], [Address],[Code],[Active],[Debit],[Credit]) 
+      VALUES (@Name, @ProjectCode, @Phone, @Email, @YearStart, @Type, @Address,@Code,'true',@Debit,@Credit)"
                             OnInserted="AccountInserted">
+                            <SelectParameters>
+                                <asp:QueryStringParameter DefaultValue="0" Name="ID" QueryStringField="ID" Type="Int32" />
+                            </SelectParameters>
 
                             <InsertParameters>
 
                                 <asp:Parameter Name="Code" Type="String" />
                                 <asp:Parameter Name="Name" Type="String" />
-                                <asp:Parameter Name="AlternateCode" Type="String" />
+                                <asp:Parameter Name="ProjectCode" Type="String" />
                                 <asp:Parameter Name="Phone" Type="String" />
                                 <asp:Parameter Name="Email" Type="String" />
                                 <asp:Parameter Name="Active" Type="String" />

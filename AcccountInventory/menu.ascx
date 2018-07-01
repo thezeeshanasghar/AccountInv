@@ -33,6 +33,13 @@
                         <li><a href="AddProject.aspx">Add Project</a></li> 
                     </ul>
                 </li>
+                <li>
+                    <span class="opener">Config</span>
+                    <ul>
+                        <li><a href="Config.aspx">Config List</a></li>
+                        <li><a href="AddConfig.aspx">Add Config</a></li> 
+                    </ul>
+                </li>
                   <li>
                     <span class="opener">Transactions</span>
                     <ul>
