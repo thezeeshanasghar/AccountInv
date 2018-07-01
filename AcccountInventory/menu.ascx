@@ -34,6 +34,12 @@
                     </ul>
                 </li>
                   <li>
+                    <span class="opener">Transactions</span>
+                    <ul>
+                        <li><a href="Transaction.aspx">Add Transaction</a></li>
+                    </ul>
+                </li>
+                  <li>
                     <span class="opener">Reports</span>
                     <ul>
                         <li><a href="#">Report1</a></li>

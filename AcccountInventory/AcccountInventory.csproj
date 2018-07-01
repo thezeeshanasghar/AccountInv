@@ -147,6 +147,7 @@
     <Content Include="Project.aspx" />
     <Content Include="README.txt" />
     <Content Include="ThemePage.aspx" />
+    <Content Include="Transaction.aspx" />
     <Content Include="UpdateAccount.aspx" />
     <Content Include="UpdateProject.aspx" />
     <Content Include="Web.config">
@@ -210,6 +211,13 @@
     </Compile>
     <Compile Include="ThemePage.aspx.designer.cs">
       <DependentUpon>ThemePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction.aspx.cs">
+      <DependentUpon>Transaction.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Transaction.aspx.designer.cs">
+      <DependentUpon>Transaction.aspx</DependentUpon>
     </Compile>
     <Compile Include="UpdateAccount.aspx.cs">
       <DependentUpon>UpdateAccount.aspx</DependentUpon>
