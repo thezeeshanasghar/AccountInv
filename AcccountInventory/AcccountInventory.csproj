@@ -68,6 +68,7 @@
     <Content Include="AddProject.aspx" />
     <Content Include="assets\css\custom.css" />
     <Content Include="Config.aspx" />
+    <Content Include="header.ascx" />
     <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="menu.ascx" />
@@ -193,6 +194,13 @@
     </Compile>
     <Compile Include="Config.aspx.designer.cs">
       <DependentUpon>Config.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="header.ascx.cs">
+      <DependentUpon>header.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="header.ascx.designer.cs">
+      <DependentUpon>header.ascx</DependentUpon>
     </Compile>
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>

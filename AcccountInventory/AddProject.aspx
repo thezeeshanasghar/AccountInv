@@ -4,6 +4,8 @@
 <%@ Register Src="~/menu.ascx" TagPrefix="uc1" TagName="menu" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxtool" %>
+<%@ Register Src="~/header.ascx" TagPrefix="uc1" TagName="header" %>
+
 <!DOCTYPE HTML>
 <!--
 	Editorial by HTML5 UP
@@ -13,7 +15,7 @@
 
 <html>
 <head runat="server">
-    <title>Add Account</title>
+    <title>Add Project</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
@@ -26,26 +28,15 @@
         <!-- Main -->
         <div id="main">
             <div class="inner">
-
-                <!-- Header -->
-                <header id="header">
-                    <a href="index.html" class="logo"><strong>Editorial</strong> by HTML5 UP</a>
-                    <ul class="icons">
-                        <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-                        <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-                        <li><a href="#" class="icon fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
-                        <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-                        <li><a href="#" class="icon fa-medium"><span class="label">Medium</span></a></li>
-                    </ul>
-                </header>
+                <uc1:header runat="server" id="header" />
 
                 <form id="form1" runat="server">
                     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                     <section>
                         <header class="major">
-                            <h2>Add New Account</h2>
+                            <h2>Add New Project</h2>
                         </header>
-                        
+
                         <asp:Label ID="lblSuccessMessage" runat="server" Text="Label" CssClass="alert alert-success"> </asp:Label>
                         <asp:FormView ID="FormView1" runat="server" DefaultMode="Insert"
                             DataKeyNames="ID" DataSourceID="SqlDataSource1">
@@ -54,21 +45,21 @@
 
                                 <div class="col-md-6">
                                     <div class="col-md-2">
-                                    Code:
+                                        Code:
                                  <asp:TextBox ID="CodeTextBox" runat="server" Text='<%# Bind("Code") %>' />
-                                    <asp:RequiredFieldValidator ID="reqCode" runat="server" ForeColor="Red" ValidationGroup="insert" Display="Dynamic" ControlToValidate="CodeTextBox" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator ID="reqCode" runat="server" ForeColor="Red" ValidationGroup="insert" Display="Dynamic" ControlToValidate="CodeTextBox" ErrorMessage="Required"></asp:RequiredFieldValidator>
                                     </div>
-                                
-                               
 
 
-                                <div class="col-md-2" >
-                                   Description:
+
+
+                                    <div class="col-md-2">
+                                        Description:
                                  <asp:TextBox ID="DescriptionTextBox" runat="server" Text='<%# Bind("Description") %>' />
-                                </div>
-                                 
                                     </div>
-                                 <div class="col-md-6">
+
+                                </div>
+                                <div class="col-md-6">
                                     Location:
                                  <asp:TextBox ID="NameTextBox" runat="server" Text='<%# Bind("Location") %>' />
                                     <asp:RequiredFieldValidator ID="reqname" runat="server" ValidationGroup="insert" Display="Dynamic" ForeColor="Red" ControlToValidate="NameTextBox" ErrorMessage="Required"></asp:RequiredFieldValidator>
@@ -80,7 +71,7 @@
                                     <asp:RequiredFieldValidator ID="regdebit" runat="server" ValidationGroup="insert" Display="Dynamic" ForeColor="Red" ControlToValidate="DebitTextBox" ErrorMessage="Required"></asp:RequiredFieldValidator>
 
                                 </div>
-                                
+
 
 
                                 <br />
@@ -97,7 +88,7 @@
 
                             <InsertParameters>
 
-                                 <asp:Parameter Name="Code" Type="String" />
+                                <asp:Parameter Name="Code" Type="String" />
                                 <asp:Parameter Name="Description" Type="String" />
                                 <asp:Parameter Name="Location" Type="String" />
                                 <asp:Parameter Name="Responsible" Type="String" />

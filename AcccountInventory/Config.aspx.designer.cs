@@ -13,6 +13,15 @@ namespace AcccountInventory {
     public partial class Config {
         
         /// <summary>
+        /// header control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AcccountInventory.header header;
+        
+        /// <summary>
         /// form1 control.
         /// </summary>
         /// <remarks>
