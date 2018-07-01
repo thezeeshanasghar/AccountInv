@@ -80,8 +80,8 @@
                                         <th>Branch</th>
                                         <th>Code Name</th>
                                         <th>Description</th>
-                                        <th>Amount1</th>
-                                        <th>Amount2</th>
+                                        <th>Debit</th>
+                                        <th>Credit</th>
                                     </tr>
                                 </thead>
                                 <tbody>
