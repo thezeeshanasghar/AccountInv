@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="menu.ascx.cs" Inherits="AcccountInventory.menu" %>
 
-        <!-- Sidebar -->
+<!-- Sidebar -->
 <div id="sidebar">
     <div class="inner">
 
@@ -18,49 +18,49 @@
             </header>
             <ul>
                 <li><a href="Home.aspx">Home</a></li>
-            
+
+                <li>
+                    <span class="opener">Projects</span>
+                    <ul>
+                        <li><a href="Project.aspx">Project List</a></li>
+                        <li><a href="AddProject.aspx">Add Project</a></li>
+                    </ul>
+                </li>
                 <li>
                     <span class="opener">Accounts</span>
                     <ul>
                         <li><a href="Accounts.aspx">Account List</a></li>
-                        <li><a href="AddAccount.aspx">Add Account</a></li> 
-                    </ul>
-                </li>
-                  <li>
-                    <span class="opener">Projects</span>
-                    <ul>
-                        <li><a href="Project.aspx">Project List</a></li>
-                        <li><a href="AddProject.aspx">Add Project</a></li> 
+                        <li><a href="AddAccount.aspx">Add Account</a></li>
                     </ul>
                 </li>
                 <li>
                     <span class="opener">Config</span>
                     <ul>
                         <li><a href="Config.aspx">Config List</a></li>
-                        <li><a href="AddConfig.aspx">Add Config</a></li> 
+                        <li><a href="AddConfig.aspx">Add Config</a></li>
                     </ul>
                 </li>
-                  <li>
+                <li>
                     <span class="opener">Transactions</span>
                     <ul>
                         <li><a href="Transaction.aspx">Add Transaction</a></li>
                     </ul>
                 </li>
-                  <li>
+                <li>
                     <span class="opener">Reports</span>
                     <ul>
                         <li><a href="#">Report1</a></li>
-                        <li><a href="#">Report1</a></li> 
+                        <li><a href="#">Report1</a></li>
                     </ul>
                 </li>
-                  <li>
+                <li>
                     <a href="Login.aspx">Log out</a>
-                    
+
                 </li>
             </ul>
         </nav>
 
-         
+
 
         <!-- Footer -->
         <footer id="footer">
