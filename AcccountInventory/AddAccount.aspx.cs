@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Web;
@@ -13,6 +16,7 @@ namespace AcccountInventory
         protected void Page_Load(object sender, EventArgs e)
         {
             lblSuccessMessage.Visible = false;
+
         }
 
         protected void AccountInserted(object sender, SqlDataSourceStatusEventArgs e)
@@ -73,5 +77,6 @@ namespace AcccountInventory
                 email.Enabled = true;
             }
         }
+      
     }
 }

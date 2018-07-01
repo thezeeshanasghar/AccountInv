@@ -12,7 +12,7 @@
 -->
 <html>
 <head runat="server">
-    <title>Add Account</title>
+    <title>Update Account</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
@@ -61,22 +61,28 @@
 
 
                                 <div class="col-md-2" style="width: 25%; margin-left: 68%; position: relative;bottom: 68px;">
-                                    Alt Code:
-                                 <asp:TextBox ID="AlternateCodeTextBox" runat="server" Text='<%# Bind("AlternateCode") %>' />
-                                </div>
-                                 <div class="col-md-2" style="width: 25%;margin-left: 33%;position: relative;bottom: 133px;">
+                                   
                                     Type:
                         
-                                    <asp:DropDownList ID="ddType" runat="server" SelectedValue='<%# Bind("Type") %>' >
+                                    <asp:DropDownList ID="ddType" runat="server"  OnSelectedIndexChanged="ddType_SelectedIndexChanged"
+                                        AutoPostBack="true" SelectedValue='<%# Bind("Type") %>' >
+                                        <asp:ListItem>T-0</asp:ListItem>
                                         <asp:ListItem>H-1</asp:ListItem>
                                         <asp:ListItem>H-2</asp:ListItem>
-                                        <asp:ListItem>T-0</asp:ListItem>
+                                        
                                     </asp:DropDownList>
 
 
 
                                     <asp:RequiredFieldValidator ID="reqtype" runat="server" ValidationGroup="insert" Display="Dynamic" ForeColor="Red" ControlToValidate="ddType" ErrorMessage="Required"></asp:RequiredFieldValidator>
 
+                                </div>
+                                 <div class="col-md-2" style="width: 25%;margin-left: 33%;position: relative;bottom: 133px;">
+                                     Project Code:
+                                  <asp:DropDownList DataValueField="ID" SelectedValue='<%# Bind("ProjectCode") %>'
+                                        ID="ddprojectCode" runat="server" DataSourceID="SqlDataSource2"
+                                        DataTextField="Code">
+                                    </asp:DropDownList>
                                 </div>
                                     </div>
                                  <div class="col-md-6" style="    margin-top: -107px;">
@@ -87,13 +93,13 @@
                                 </div>
                                 <div class="col-md-6">
                                     Debit:
-                                 <asp:TextBox ID="DebitTextBox" runat="server" Text='<%# Bind("Debit") %>' />
+                                 <asp:TextBox ID="DebitTextBox" OnTextChanged="DebitTextBox_TextChanged" AutoPostBack="true" runat="server" Text='<%# Bind("Debit") %>' />
                                     <asp:RequiredFieldValidator ID="regdebit" runat="server" ValidationGroup="insert" Display="Dynamic" ForeColor="Red" ControlToValidate="DebitTextBox" ErrorMessage="Required"></asp:RequiredFieldValidator>
 
                                 </div>
                                 <div class="col-md-6">
                                     Credit:
-                                 <asp:TextBox ID="CreditTextBox" runat="server" Text='<%# Bind("Credit") %>' />
+                                 <asp:TextBox ID="CreditTextBox" OnTextChanged="CreditTextBox_TextChanged" AutoPostBack="true" runat="server" Text='<%# Bind("Credit") %>' />
                                     <asp:RequiredFieldValidator ID="regxcridet" ValidationGroup="insert" Display="Dynamic"
                                         runat="server" ForeColor="Red" ControlToValidate="CreditTextBox"
                                         ErrorMessage="Required"></asp:RequiredFieldValidator>
@@ -150,18 +156,22 @@
                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
                            
                              SelectCommand="SELECT * FROM [Account] WHERE ([ID] = @ID)"
+                           
                              UpdateCommand="UPDATE [Account] SET [Code] = @Code, [Name] = @Name,
-                             [AlternateCode] = @AlternateCode, [Type] = @Type, [Debit] = @Debit, 
+                             [ProjectCode] = @ProjectCode, [Type] = @Type, [Debit] = @Debit, 
                             [Credit] = @Credit, [Address] = @Address, [Phone] = @Phone, [Email] = @Email, 
-                            [Active] = @Active, [YearStart] = @YearStart WHERE [ID] = @ID" DeleteCommand="DELETE FROM [Account] WHERE [ID] = @ID" InsertCommand="INSERT INTO [Account] ([Code], [Name], [AlternateCode], [Type], [Debit], [Credit], [Address], [Phone], [Email], [Active], [YearStart], [Created]) VALUES (@Code, @Name, @AlternateCode, @Type, @Debit, @Credit, @Address, @Phone, @Email, @Active, @YearStart, @Created)">
+                            [Active] = @Active, [YearStart] = @YearStart WHERE [ID] = @ID" DeleteCommand="DELETE FROM [Account] WHERE [ID] = @ID"
+                             InsertCommand="INSERT INTO [Account] ([Code], [Name], [ProjectCode], [Type], [Debit], [Credit], [Address], [Phone], [Email], [Active], [YearStart], [Created])
+                             VALUES (@Code, @Name, @ProjectCode, @Type, @Debit, @Credit, @Address, @Phone, @Email, @Active, @YearStart, @Created)">
                              
+                            
                             <DeleteParameters>
                                 <asp:Parameter Name="ID" Type="Int32" />
                             </DeleteParameters>
                             <InsertParameters>
                                 <asp:Parameter Name="Code" Type="String" />
                                 <asp:Parameter Name="Name" Type="String" />
-                                <asp:Parameter Name="AlternateCode" Type="String" />
+                                <asp:Parameter Name="ProjectCode" Type="String" />
                                 <asp:Parameter Name="Type" Type="String" />
                                 <asp:Parameter Name="Debit" Type="Int64" />
                                 <asp:Parameter Name="Credit" Type="Int64" />
@@ -192,6 +202,11 @@
                                 <asp:Parameter Name="ID" Type="Int32" />
                             </UpdateParameters>
                         </asp:SqlDataSource>
+                         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
+                           
+                             SelectCommand="SELECT [ID], [Code] FROM [Project]"
+                           
+                            ></asp:SqlDataSource>
 
                         <asp:HyperLink ID="lnkAccount" href="Accounts.aspx" runat="server">
                             Back To List
