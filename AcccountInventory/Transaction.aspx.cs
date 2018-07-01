@@ -19,6 +19,7 @@ namespace AcccountInventory
                 txtDate.Text = DateTime.Now.Date.ToString("MM/dd/yyyy");
                 lblStartDate.Visible = false;
                 lblEndDate.Visible = false;
+                lblDateError.Visible = false;
                 getConfigData();
             }
             
@@ -52,6 +53,11 @@ namespace AcccountInventory
                 lblDateError.Text = "Date should lie between fiscal year date";
                 lblDateError.ForeColor = Color.Red;
             }
+        }
+
+        protected void ddProjectCode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1,0 +1,5 @@
+﻿body {
+}
+.ddColumn tr td:first-child {
+    width:15%;
+}
