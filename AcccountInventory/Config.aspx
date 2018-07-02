@@ -39,7 +39,7 @@
                         <header class="major">
                             <h2>Config</h2>
                         </header>
-                         <asp:HyperLink ID="addNewConfig" href="AddConfig.aspx" runat="server" CssClass="button primary">Add New</asp:HyperLink>
+                        
                         <br />
                          <br />
                         <div class="table-wrapper">

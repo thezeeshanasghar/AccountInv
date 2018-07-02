@@ -44,7 +44,7 @@
                                    <div class="col-md-6">
                                     <div class="col-md-2" style="width: 25%;position: relative;bottom: 5px;">
                                     Code:
-                                 <asp:TextBox ID="CodeTextBox" runat="server" Text='<%# Bind("Code") %>' />
+                                 <asp:TextBox ID="CodeTextBox" runat="server" Text='<%# Bind("AccountCode") %>' />
                                     <asp:RequiredFieldValidator ID="reqCode" runat="server" ForeColor="Red" ValidationGroup="insert" Display="Dynamic" ControlToValidate="CodeTextBox" ErrorMessage="Required"></asp:RequiredFieldValidator>
                                     </div>
                                 
@@ -148,19 +148,19 @@
                            
                              SelectCommand="SELECT * FROM [Account] WHERE ([ID] = @ID)"
                            
-                             UpdateCommand="UPDATE [Account] SET [Code] = @Code, [Name] = @Name,
+                             UpdateCommand="UPDATE [Account] SET [AccountCode] = @AccountCode, [Name] = @Name,
                              [ProjectCode] = @ProjectCode, [Type] = @Type, [Debit] = @Debit, 
                             [Credit] = @Credit, [Address] = @Address, [Phone] = @Phone, [Email] = @Email, 
                             [Active] = @Active, [YearStart] = @YearStart WHERE [ID] = @ID" DeleteCommand="DELETE FROM [Account] WHERE [ID] = @ID"
-                             InsertCommand="INSERT INTO [Account] ([Code], [Name], [ProjectCode], [Type], [Debit], [Credit], [Address], [Phone], [Email], [Active], [YearStart], [Created])
-                             VALUES (@Code, @Name, @ProjectCode, @Type, @Debit, @Credit, @Address, @Phone, @Email, @Active, @YearStart, @Created)">
+                             InsertCommand="INSERT INTO [Account] ([AccountCode], [Name], [ProjectCode], [Type], [Debit], [Credit], [Address], [Phone], [Email], [Active], [YearStart], [Created])
+                             VALUES (@AccountCode, @Name, @ProjectCode, @Type, @Debit, @Credit, @Address, @Phone, @Email, @Active, @YearStart, @Created)">
                              
                             
                             <DeleteParameters>
                                 <asp:Parameter Name="ID" Type="Int32" />
                             </DeleteParameters>
                             <InsertParameters>
-                                <asp:Parameter Name="Code" Type="String" />
+                                <asp:Parameter Name="AccountCode" Type="String" />
                                 <asp:Parameter Name="Name" Type="String" />
                                 <asp:Parameter Name="ProjectCode" Type="String" />
                                 <asp:Parameter Name="Type" Type="String" />
@@ -178,7 +178,7 @@
                             </SelectParameters>
                              
                             <UpdateParameters>
-                                <asp:Parameter Name="Code" Type="String" />
+                                <asp:Parameter Name="AccountCode" Type="String" />
                                 <asp:Parameter Name="Name" Type="String" />
                                 <asp:Parameter Name="AlternateCode" Type="String" />
                                 <asp:Parameter Name="Type" Type="String" />

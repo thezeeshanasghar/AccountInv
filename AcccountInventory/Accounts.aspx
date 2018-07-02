@@ -56,7 +56,7 @@
         </asp:TemplateField>
             <asp:TemplateField HeaderText="Code-Proj Code" SortExpression="Name">
                 <ItemTemplate>
-                     <%# Eval("Code") %> -  <%# Eval("ProjectCode") %> 
+                     <%# Eval("AccountCode") %> -  <%# Eval("Code") %> 
 <%--                      <asp:TextBox style="padding: 1.75em 10px;" ID="AlternateCode" runat="server" Text='<%# Bind("AlternateCode") %>' />
                       <asp:TextBox style="padding: 1.75em 10px;" ID="Type" runat="server" Text='<%# Bind("Type") %>' /> --%>
                 </ItemTemplate>
@@ -96,13 +96,17 @@
 
     </asp:GridView>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
-        SelectCommand="SELECT [Code], [Name], [ProjectCode], [Type], [Debit], [Credit], [Address], [Phone], [Email], [YearStart], [ID], [Active] FROM [Account]"
+        SelectCommand="SELECT [AccountCode], [Name], [ProjectCode], [Type], [Debit], 
+        [Credit], [Address], [Phone], [Email], [YearStart], a.ID,p.Code, [Active] FROM Account AS a
+        INNER JOIN  Project AS p ON a.ProjectCode=p.Id"
          DeleteCommand="UPDATE [Account] SET [Active]='False'  WHERE [ID] = @ID">
         <DeleteParameters>
             <asp:Parameter Name="ID" Type="Int32" />
         </DeleteParameters>
      
     </asp:SqlDataSource>
+                            
+
                              </div>
                     </section>
                 </form>

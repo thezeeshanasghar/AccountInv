@@ -22,7 +22,7 @@ namespace AcccountInventory
             // the data row.
             TextBox debit = (TextBox)row.FindControl("DebitTextBox");
             TextBox creidt = (TextBox)row.FindControl("CreditTextBox");
-            if (debit.Text == "1")
+            if (debit.Text != "0")
             {
                 creidt.Text = "0";
             }
@@ -33,7 +33,7 @@ namespace AcccountInventory
             FormViewRow row = FormView1.Row;
             TextBox debit = (TextBox)row.FindControl("DebitTextBox");
             TextBox creidt = (TextBox)row.FindControl("CreditTextBox");
-            if (creidt.Text == "1")
+            if (creidt.Text != "0")
             {
                 debit.Text = "0";
             }

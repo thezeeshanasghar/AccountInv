@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Account] (
     [ID]            INT           IDENTITY (1, 1) NOT NULL,
-    [Code]          NVARCHAR (50) NOT NULL,
+    [AccountCode]          NVARCHAR (50) NOT NULL,
     [Name]          NVARCHAR (50) NOT NULL,
     [ProjectCode] INT NULL,
     [Type]          NVARCHAR (3)  NOT NULL,

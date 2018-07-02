@@ -45,7 +45,7 @@
                                 <div class="col-md-6">
                                     <div class="col-md-2" style="width: 25%; position: relative; bottom: 5px;">
                                         Code:
-                                 <asp:TextBox ID="CodeTextBox" runat="server" Text='<%# Bind("Code") %>' />
+                                 <asp:TextBox ID="CodeTextBox" runat="server" Text='<%# Bind("AccountCode") %>' />
                                         <asp:RequiredFieldValidator ID="reqCode" runat="server" ForeColor="Red" ValidationGroup="insert" Display="Dynamic" ControlToValidate="CodeTextBox" ErrorMessage="Required"></asp:RequiredFieldValidator>
                                     </div>
 
@@ -150,8 +150,8 @@
                         </asp:FormView>
                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
                             SelectCommand="SELECT [ID], [Code] FROM [Project]"
-                            InsertCommand="INSERT INTO [Account] ([Name], [ProjectCode], [Phone], [Email], [YearStart], [Type], [Address],[Code],[Active],[Debit],[Credit]) 
-      VALUES (@Name, @ProjectCode, @Phone, @Email, @YearStart, @Type, @Address,@Code,'true',@Debit,@Credit)"
+                            InsertCommand="INSERT INTO [Account] ([Name], [ProjectCode], [Phone], [Email], [YearStart], [Type], [Address],[AccountCode],[Active],[Debit],[Credit]) 
+      VALUES (@Name, @ProjectCode, @Phone, @Email, @YearStart, @Type, @Address,@AccountCode,'true',@Debit,@Credit)"
                             OnInserted="AccountInserted">
                             <SelectParameters>
                                 <asp:QueryStringParameter DefaultValue="0" Name="ID" QueryStringField="ID" Type="Int32" />
@@ -159,7 +159,7 @@
 
                             <InsertParameters>
 
-                                <asp:Parameter Name="Code" Type="String" />
+                                <asp:Parameter Name="AccountCode" Type="String" />
                                 <asp:Parameter Name="Name" Type="String" />
                                 <asp:Parameter Name="ProjectCode" Type="String" />
                                 <asp:Parameter Name="Phone" Type="String" />
