@@ -60,7 +60,7 @@
                         </asp:DropDownList>
                         <asp:SqlDataSource ID="ddProjectCodeDataSource" runat="server"
                             ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
-                            SelectCommand="SELECT CONCAT(p.Code, '-', a.Code) AS PACode, p.ID AS ProjectId, a.ID AS AccountId FROM Project AS p INNER JOIN Account AS a ON p.ID = a.ProjectCode"></asp:SqlDataSource>
+                            SelectCommand="SELECT CONCAT(p.Code, '-', a.AccountCode) AS PACode, p.ID AS ProjectId, a.ID AS AccountId FROM Project AS p INNER JOIN Account AS a ON p.ID = a.ProjectCode"></asp:SqlDataSource>
 
                         <asp:Label ID="lblCodeName" runat="server" Text="CodeName"></asp:Label>
                         <asp:TextBox ID="txtCodeName" runat="server"></asp:TextBox>
@@ -93,7 +93,7 @@
                                             </asp:DropDownList>
                                             <asp:SqlDataSource ID="SqlDataSource1" runat="server"
                                                 ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
-                                                SelectCommand="SELECT CONCAT(p.Code, '-', a.Code) AS PACode, p.ID AS ProjectId, a.ID AS AccountId FROM Project AS p INNER JOIN Account AS a ON p.ID = a.ProjectCode"></asp:SqlDataSource>
+                                                SelectCommand="SELECT CONCAT(p.Code, '-', a.AccountCode) AS PACode, p.ID AS ProjectId, a.ID AS AccountId FROM Project AS p INNER JOIN Account AS a ON p.ID = a.ProjectCode"></asp:SqlDataSource>
                                         </td>
                                         <td>
                                             <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox></td>
@@ -114,7 +114,7 @@
                                             </asp:DropDownList>
                                             <asp:SqlDataSource ID="SqlDataSource2" runat="server"
                                                 ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
-                                                SelectCommand="SELECT CONCAT(p.Code, '-', a.Code) AS PACode, p.ID AS ProjectId, a.ID AS AccountId FROM Project AS p INNER JOIN Account AS a ON p.ID = a.ProjectCode"></asp:SqlDataSource>
+                                                SelectCommand="SELECT CONCAT(p.Code, '-', a.AccountCode) AS PACode, p.ID AS ProjectId, a.ID AS AccountId FROM Project AS p INNER JOIN Account AS a ON p.ID = a.ProjectCode"></asp:SqlDataSource>
                                         </td>
                                         <td>
                                             <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox></td>
@@ -135,7 +135,7 @@
                                             </asp:DropDownList>
                                             <asp:SqlDataSource ID="SqlDataSource3" runat="server"
                                                 ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
-                                                SelectCommand="SELECT CONCAT(p.Code, '-', a.Code) AS PACode, p.ID AS ProjectId, a.ID AS AccountId FROM Project AS p INNER JOIN Account AS a ON p.ID = a.ProjectCode"></asp:SqlDataSource>
+                                                SelectCommand="SELECT CONCAT(p.Code, '-', a.AccountCode) AS PACode, p.ID AS ProjectId, a.ID AS AccountId FROM Project AS p INNER JOIN Account AS a ON p.ID = a.ProjectCode"></asp:SqlDataSource>
                                         </td>
                                         <td>
                                             <asp:TextBox ID="TextBox11" runat="server"></asp:TextBox></td>
@@ -156,7 +156,7 @@
                                             </asp:DropDownList>
                                             <asp:SqlDataSource ID="SqlDataSource4" runat="server"
                                                 ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
-                                                SelectCommand="SELECT CONCAT(p.Code, '-', a.Code) AS PACode, p.ID AS ProjectId, a.ID AS AccountId FROM Project AS p INNER JOIN Account AS a ON p.ID = a.ProjectCode"></asp:SqlDataSource>
+                                                SelectCommand="SELECT CONCAT(p.Code, '-', a.AccountCode) AS PACode, p.ID AS ProjectId, a.ID AS AccountId FROM Project AS p INNER JOIN Account AS a ON p.ID = a.ProjectCode"></asp:SqlDataSource>
                                         </td>
                                         <td>
                                             <asp:TextBox ID="TextBox16" runat="server"></asp:TextBox></td>
@@ -177,7 +177,7 @@
                                             </asp:DropDownList>
                                             <asp:SqlDataSource ID="SqlDataSource5" runat="server"
                                                 ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
-                                                SelectCommand="SELECT CONCAT(p.Code, '-', a.Code) AS PACode, p.ID AS ProjectId, a.ID AS AccountId FROM Project AS p INNER JOIN Account AS a ON p.ID = a.ProjectCode"></asp:SqlDataSource>
+                                                SelectCommand="SELECT CONCAT(p.Code, '-', a.AccountCode) AS PACode, p.ID AS ProjectId, a.ID AS AccountId FROM Project AS p INNER JOIN Account AS a ON p.ID = a.ProjectCode"></asp:SqlDataSource>
                                         </td>
                                         <td>
                                             <asp:TextBox ID="TextBox21" runat="server"></asp:TextBox></td>

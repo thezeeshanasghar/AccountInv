@@ -36,9 +36,13 @@
                         <header class="major">
                             <h2>Add New Project</h2>
                         </header>
-
-                        <asp:Label ID="lblSuccessMessage" runat="server" Text="Label" CssClass="alert alert-success"> </asp:Label>
-                        <asp:FormView ID="FormView1" runat="server" DefaultMode="Insert"
+                        
+                        <asp:Label ID="lblError" runat="server" Text="" ForeColor="Red"> </asp:Label>
+                      
+                        
+                        <asp:Label ID="lblSuccessMessage" runat="server" Text="" CssClass="alert alert-success"> </asp:Label>
+                      
+                          <asp:FormView ID="FormView1" runat="server" DefaultMode="Insert"
                             DataKeyNames="ID" DataSourceID="SqlDataSource1">
 
                             <InsertItemTemplate>
@@ -46,7 +50,8 @@
                                 <div class="col-md-6">
                                     <div class="col-md-2">
                                         Code:
-                                 <asp:TextBox ID="CodeTextBox" runat="server" Text='<%# Bind("Code") %>' />
+                                 <asp:TextBox ID="CodeTextBox" OnTextChanged="CodeTextBox_TextChanged" AutoPostBack="true" 
+                                     style="width: 10%;" MaxLength="2" runat="server" Text='<%# Bind("Code") %>' />
                                         <asp:RequiredFieldValidator ID="reqCode" runat="server" ForeColor="Red" ValidationGroup="insert" Display="Dynamic" ControlToValidate="CodeTextBox" ErrorMessage="Required"></asp:RequiredFieldValidator>
                                     </div>
 

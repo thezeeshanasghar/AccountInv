@@ -62,7 +62,7 @@
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:BoundField DataField="Type" HeaderText="Type" SortExpression="Type" />
-            <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
+            <asp:BoundField DataField="Name" HeaderText="Particular" SortExpression="Name" />
             <asp:BoundField DataField="Debit" HeaderText="Debit" SortExpression="Debit" />
 
 

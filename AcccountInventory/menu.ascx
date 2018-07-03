@@ -33,7 +33,7 @@
                         <li><a href="AddAccount.aspx">Add Account</a></li>
                     </ul>
                 </li>
-                <li>
+                <li runat="server" id="config">
                     <span class="opener">Config</span>
                     <ul>
                         <li><a href="Config.aspx">Config List</a></li>

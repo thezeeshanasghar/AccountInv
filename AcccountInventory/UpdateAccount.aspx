@@ -44,7 +44,7 @@
                                    <div class="col-md-6">
                                     <div class="col-md-2" style="width: 25%;position: relative;bottom: 5px;">
                                     Code:
-                                 <asp:TextBox ID="CodeTextBox" runat="server" Text='<%# Bind("AccountCode") %>' />
+                                 <asp:TextBox ID="CodeTextBox" ReadOnly="true" runat="server" Text='<%# Bind("AccountCode") %>' />
                                     <asp:RequiredFieldValidator ID="reqCode" runat="server" ForeColor="Red" ValidationGroup="insert" Display="Dynamic" ControlToValidate="CodeTextBox" ErrorMessage="Required"></asp:RequiredFieldValidator>
                                     </div>
                                 
