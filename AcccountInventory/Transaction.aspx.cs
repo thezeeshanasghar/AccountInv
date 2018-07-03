@@ -19,7 +19,7 @@ namespace AcccountInventory
                 txtDate.Text = DateTime.Now.Date.ToString("MM/dd/yyyy");
                 lblStartDate.Visible = false;
                 lblEndDate.Visible = false;
-                lblDateError.Visible = false;
+                lblDateError.Visible = false; 
                 getConfigData();
             }
             
@@ -57,7 +57,30 @@ namespace AcccountInventory
 
         protected void ddProjectCode_SelectedIndexChanged(object sender, EventArgs e)
         {
+            var ddSelectedValue = ddPA.SelectedValue;
+            var particular = txtParticular;
+            var description = txtDescription;
+            var arr = ddSelectedValue.Split('-');
+            string projectCode = arr[0];
+            string accountCode = arr[1];
 
+            string connectionString = ConfigurationManager.ConnectionStrings["AccountConnectionString"].ToString();
+            SqlConnection con = new SqlConnection(connectionString);
+            con.Open();
+            string query = "SELECT * FROM Project where Code="+projectCode+"";
+            //string g = "SELECT * FROM Project, Account WHERE Project.Code="+projectCode+ "AND Account.AccountCode="+accountCode+"";
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader sdr = cmd.ExecuteReader();
+            while (sdr.Read())
+            {
+
+                description.Text = sdr["Description"].ToString(); 
+                particular.Enabled = false;
+                description.Enabled = false;
+            }
+            lblStartDate.Visible = true;
+            lblEndDate.Visible = true;
+           
         }
     }
 }
