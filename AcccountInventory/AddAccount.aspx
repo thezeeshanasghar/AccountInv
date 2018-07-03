@@ -45,7 +45,7 @@
                                 <div class="col-md-6">
                                     <div class="col-md-2" style="width: 25%; position: relative; bottom: 5px;">
                                         Code:
-                                 <asp:TextBox ID="CodeTextBox" runat="server" Text='<%# Bind("AccountCode") %>' />
+                                 <asp:TextBox ID="CodeTextBox" MaxLength="12" runat="server" Text='<%# Bind("AccountCode") %>' />
                                         <asp:RequiredFieldValidator ID="reqCode" runat="server" ForeColor="Red" ValidationGroup="insert" Display="Dynamic" ControlToValidate="CodeTextBox" ErrorMessage="Required"></asp:RequiredFieldValidator>
                                     </div>
 
@@ -83,7 +83,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6" style="margin-top: -107px;">
-                                    Name:
+                                    Particular:
                                  <asp:TextBox ID="NameTextBox" runat="server" Text='<%# Bind("Name") %>' />
                                     <asp:RequiredFieldValidator ID="reqname" runat="server" ValidationGroup="insert" Display="Dynamic" ForeColor="Red" ControlToValidate="NameTextBox" ErrorMessage="Required"></asp:RequiredFieldValidator>
 
@@ -110,19 +110,13 @@
                                 <div class="col-md-6">
                                     Phone:
                                  <asp:TextBox ID="PhoneTextBox" runat="server" Text='<%# Bind("Phone") %>' />
-                                    <asp:RegularExpressionValidator ID="regxphone" ValidationGroup="insert" runat="server" Display="Dynamic" ControlToValidate="PhoneTextBox"
-                                        ValidationExpression="^((\+92)|(0092))-{0,1}\d{3}-{0,1}\d{7}$|^\d{11}$|^\d{4}-\d{7}$" ForeColor="Red"
-                                        ErrorMessage="Phone number not in valid format"></asp:RegularExpressionValidator>
-
+                                   
                                 </div>
 
                                 <div class="col-md-6">
                                     Email:
                                  <asp:TextBox ID="EmailTextBox" runat="server" Text='<%# Bind("Email") %>' />
-                                    <asp:RegularExpressionValidator ID="regemail" runat="server" ValidationGroup="insert" Display="Dynamic"
-                                        ControlToValidate="EmailTextBox" ValidationExpression="^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$"
-                                        ForeColor="Red" ErrorMessage="Email not in valid format"></asp:RegularExpressionValidator>
-
+                                   
                                 </div>
                                 <div class="col-md-6" style="display: none">
                                     Active:
@@ -133,10 +127,11 @@
                                     YearStart:
                        
             
-                      <asp:TextBox ID="YearStartTextBox" runat="server" Text='<%# Bind("YearStart") %>' />
-                                    <ajaxtool:CalendarExtender ID="Calendar" runat="server" TodaysDateFormat="MM/dd/yyyy"
+                      <asp:TextBox ID="YearStartTextBox" ReadOnly="true" runat="server" Text='<%# Bind("YearStart") %>' />
+                                   <%-- <ajaxtool:CalendarExtender ID="Calendar" runat="server" TodaysDateFormat="MM/dd/yyyy"
                                         TargetControlID="YearStartTextBox" Format="MM/dd/yyyy"></ajaxtool:CalendarExtender>
-                                    <asp:RequiredFieldValidator ID="reqyearstart" ValidationGroup="insert" Display="Dynamic"
+                                  --%>
+                                      <asp:RequiredFieldValidator ID="reqyearstart" ValidationGroup="insert" Display="Dynamic"
                                         runat="server" ForeColor="Red" ControlToValidate="YearStartTextBox"
                                         ErrorMessage="Required"></asp:RequiredFieldValidator>
                                 </div>

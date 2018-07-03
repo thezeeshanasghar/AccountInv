@@ -70,6 +70,12 @@
                             runat="server" ForeColor="Red" ControlToValidate="EndDateTextBox"
                             ErrorMessage="Required"></asp:RequiredFieldValidator> 
                                      </div>
+                                <div class="col-md-2" >
+                                     Company Name:
+                                
+                      <asp:TextBox ID="CompanyNameTextBox" runat="server"  Text='<%# Bind("CompanyName") %>' />
+                                  
+                                     </div>
                                 <br />
                                 <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" CommandName="Update" Text="Update" />
                                 &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" 
@@ -81,11 +87,11 @@
                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
                            
                              SelectCommand="SELECT * FROM [Config] WHERE ([ID] = @ID)"
-                             UpdateCommand="UPDATE [Config] SET [StartDate] = @StartDate, [EndDate] = @EndDate
+                             UpdateCommand="UPDATE [Config] SET [StartDate] = @StartDate, [EndDate] = @EndDate,[CompanyName]=@CompanyName
                              WHERE [ID] = @ID"
                              DeleteCommand="DELETE FROM [Config] WHERE [ID] = @ID"
-                             InsertCommand="INSERT INTO [Config] ([StartDate], [EndDate])
-                             VALUES (@StartDate, @EndDate)">
+                             InsertCommand="INSERT INTO [Config] ([StartDate], [EndDate],[CompanyName])
+                             VALUES (@StartDate, @EndDate,@CompanyName)">
                              
                             <DeleteParameters>
                                 <asp:Parameter Name="ID" Type="Int32" />

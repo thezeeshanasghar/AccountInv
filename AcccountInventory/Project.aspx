@@ -77,11 +77,13 @@
                         Target="_blank" runat="server">
                         <i class='fa fa-edit' aria-hidden='true'></i>
                     </asp:HyperLink>
-                      <asp:LinkButton ID="deleteButton" runat="server" CommandName="Delete"
-                        OnClientClick="return confirm('Are you sure you want to block this user?')">
-                        <i class='fa fa-trash' aria-hidden='true'></i>
-                    </asp:LinkButton>
-                            
+                      
+                    <asp:CheckBox ID="activeDeactive" runat="server"  CommandName="Delete" 
+                         OnClientClick="return confirm('Are you sure you want to block this user?')"/>
+                    Active
+
+                  
+                    <input type="checkbox"  />
                 </ItemTemplate>
             </asp:TemplateField>
           

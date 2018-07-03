@@ -37,6 +37,8 @@ namespace AcccountInventory
             SqlDataReader sdr = cmd.ExecuteReader();
             if (sdr.Read())
             {
+                Session["UserType"] = sdr["UserType"];
+               
                 Response.Redirect("Home.aspx");
             }
             else

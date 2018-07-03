@@ -16,7 +16,14 @@ namespace AcccountInventory
         protected void Page_Load(object sender, EventArgs e)
         {
             lblSuccessMessage.Visible = false;
+             FormViewRow row = FormView1.Row;
 
+            // Retrieve the ProductNameLabel control from
+            // the data row.
+             TextBox YearStart = (TextBox)row.FindControl("YearStartTextBox");
+            string date = ConfigurationManager.AppSettings["Date"];
+            YearStart.Text = date;
+            
         }
 
         protected void AccountInserted(object sender, SqlDataSourceStatusEventArgs e)
