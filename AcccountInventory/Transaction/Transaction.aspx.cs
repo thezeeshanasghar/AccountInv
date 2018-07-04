@@ -19,10 +19,11 @@ namespace AcccountInventory
                 txtDate.Text = DateTime.Now.Date.ToString("MM/dd/yyyy");
                 lblStartDate.Visible = false;
                 lblEndDate.Visible = false;
-                lblDateError.Visible = false; 
+                lblDateError.Visible = false;
+              
                 getConfigData();
             }
-            
+
         }
         protected void getConfigData()
         {
@@ -32,7 +33,7 @@ namespace AcccountInventory
             string query = "SELECT * FROM Config";
             SqlCommand cmd = new SqlCommand(query, con);
             SqlDataReader sdr = cmd.ExecuteReader();
-            while(sdr.Read())
+            while (sdr.Read())
             {
                 lblStartDate.Text = Convert.ToDateTime(sdr["StartDate"]).ToString("MM/dd/yy");
                 lblEndDate.Text = Convert.ToDateTime(sdr["EndDate"]).ToString("MM/dd/yy");
@@ -47,7 +48,7 @@ namespace AcccountInventory
             DateTime selectedDate = Convert.ToDateTime(txtDate.Text);
             DateTime startDate = Convert.ToDateTime(lblStartDate.Text);
             DateTime endDate = Convert.ToDateTime(lblEndDate.Text);
-            if(selectedDate.Date < startDate.Date || selectedDate.Date > endDate.Date)
+            if (selectedDate.Date < startDate.Date || selectedDate.Date > endDate.Date)
             {
                 lblDateError.Visible = true;
                 lblDateError.Text = "Date should lie between fiscal year date";
@@ -59,28 +60,29 @@ namespace AcccountInventory
         {
             var ddSelectedValue = ddPA.SelectedValue;
             var particular = txtParticular;
-            var description = txtDescription;
             var arr = ddSelectedValue.Split('-');
-            string projectCode = arr[0];
-            string accountCode = arr[1];
+            string accountCode = arr[0];
+            //string accountCode = arr[1];
 
             string connectionString = ConfigurationManager.ConnectionStrings["AccountConnectionString"].ToString();
             SqlConnection con = new SqlConnection(connectionString);
             con.Open();
-            string query = "SELECT * FROM Project where Code='"+projectCode+"'";
-            //string g = "SELECT * FROM Project, Account WHERE Project.Code="+projectCode+ "AND Account.AccountCode="+accountCode+"";
+            string query = "SELECT * FROM Account where AccountCode='" + accountCode + "'";
             SqlCommand cmd = new SqlCommand(query, con);
             SqlDataReader sdr = cmd.ExecuteReader();
-            while (sdr.Read())
-            {
+            if (sdr.HasRows)
+                while (sdr.Read())
+                {
 
-                description.Text = sdr["Description"].ToString(); 
-                particular.Enabled = false;
-                description.Enabled = false;
-            }
+                    particular.Text = sdr["Name"].ToString();
+                    particular.Enabled = false;
+                }
+            else
+                particular.Text = "";
+
             lblStartDate.Visible = true;
             lblEndDate.Visible = true;
-           
+
         }
     }
 }

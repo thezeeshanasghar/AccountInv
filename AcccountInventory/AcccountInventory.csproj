@@ -64,6 +64,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\js\custom.js" />
     <Content Include="Config\AddConfig.aspx" />
     <Content Include="Project\AddProject.aspx" />
     <Content Include="assets\css\custom.css" />
