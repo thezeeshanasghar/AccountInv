@@ -10,7 +10,7 @@
 namespace AcccountInventory {
     
     
-    public partial class UpdateProject {
+    public partial class UpdateAccount {
         
         /// <summary>
         /// header control.
@@ -67,6 +67,15 @@ namespace AcccountInventory {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
         
         /// <summary>
+        /// SqlDataSource2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource2;
+        
+        /// <summary>
         /// lnkAccount control.
         /// </summary>
         /// <remarks>
@@ -83,5 +92,14 @@ namespace AcccountInventory {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AcccountInventory.menu menu;
+        
+        /// <summary>
+        /// scipts control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AcccountInventory.scipts scipts;
     }
 }

@@ -10,7 +10,7 @@
 namespace AcccountInventory {
     
     
-    public partial class UpdateConfig {
+    public partial class UpdateProject {
         
         /// <summary>
         /// header control.
@@ -83,5 +83,14 @@ namespace AcccountInventory {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AcccountInventory.menu menu;
+        
+        /// <summary>
+        /// scipts control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AcccountInventory.scipts scipts;
     }
 }

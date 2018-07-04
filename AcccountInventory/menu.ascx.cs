@@ -11,17 +11,14 @@ namespace AcccountInventory
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string type = Session["UserType"].ToString();
-            if (type == "Admin")
-            {
-                config.Visible = true;
-            }
-            else
-            {
-                config.Visible = false;
-            }
+            object type = Session["UserType"];
+            if (type != null)
+                if (type.ToString().Equals("Admin"))
+                    config.Visible = true;
+                else
+                    config.Visible = false;
         }
 
-       
+
     }
 }

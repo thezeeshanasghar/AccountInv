@@ -10,7 +10,7 @@
 namespace AcccountInventory {
     
     
-    public partial class Config {
+    public partial class AddAccount {
         
         /// <summary>
         /// header control.
@@ -31,13 +31,31 @@ namespace AcccountInventory {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// configGrid control.
+        /// ScriptManager1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView configGrid;
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        
+        /// <summary>
+        /// lblSuccessMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSuccessMessage;
+        
+        /// <summary>
+        /// FormView1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FormView FormView1;
         
         /// <summary>
         /// SqlDataSource1 control.
@@ -49,6 +67,15 @@ namespace AcccountInventory {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
         
         /// <summary>
+        /// lnkAccount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkAccount;
+        
+        /// <summary>
         /// menu control.
         /// </summary>
         /// <remarks>
@@ -56,5 +83,14 @@ namespace AcccountInventory {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AcccountInventory.menu menu;
+        
+        /// <summary>
+        /// scipts control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AcccountInventory.scipts scipts;
     }
 }

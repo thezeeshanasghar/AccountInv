@@ -3,6 +3,8 @@
 
 <%@ Register Src="~/menu.ascx" TagPrefix="uc1" TagName="menu" %>
 <%@ Register Src="~/header.ascx" TagPrefix="uc1" TagName="header" %>
+<%@ Register Src="~/scipts.ascx" TagPrefix="uc1" TagName="scipts" %>
+
 
 
 
@@ -17,7 +19,7 @@
     <title>Editorial by HTML5 UP</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" runat="server" href="~/assets/css/main.css" />
     <style>
         	table td {
     padding: 1.75em 5px !important;
@@ -109,12 +111,8 @@
         <uc1:menu runat="server" id="menu" />
     </div>
 
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
+    <uc1:scipts runat="server" id="scipts" />
+
 </body>
 </html>
 

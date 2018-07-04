@@ -10,7 +10,7 @@
 namespace AcccountInventory {
     
     
-    public partial class UpdateAccount {
+    public partial class Project {
         
         /// <summary>
         /// header control.
@@ -31,31 +31,22 @@ namespace AcccountInventory {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// ScriptManager1 control.
+        /// addNewAccount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.WebControls.HyperLink addNewAccount;
         
         /// <summary>
-        /// lblSuccessMessage control.
+        /// projectGrid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSuccessMessage;
-        
-        /// <summary>
-        /// FormView1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView FormView1;
+        protected global::System.Web.UI.WebControls.GridView projectGrid;
         
         /// <summary>
         /// SqlDataSource1 control.
@@ -67,24 +58,6 @@ namespace AcccountInventory {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
         
         /// <summary>
-        /// SqlDataSource2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource2;
-        
-        /// <summary>
-        /// lnkAccount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkAccount;
-        
-        /// <summary>
         /// menu control.
         /// </summary>
         /// <remarks>
@@ -92,5 +65,14 @@ namespace AcccountInventory {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AcccountInventory.menu menu;
+        
+        /// <summary>
+        /// scipts control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AcccountInventory.scipts scipts;
     }
 }

@@ -5,6 +5,8 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxtool" %>
 <%@ Register Src="~/header.ascx" TagPrefix="uc1" TagName="header" %>
+<%@ Register Src="~/scipts.ascx" TagPrefix="uc1" TagName="scipts" %>
+
 
 <!DOCTYPE HTML>
 <!--
@@ -18,7 +20,7 @@
     <title>Add Project</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" runat="server" href="~/assets/css/main.css" />
 </head>
 <body class="is-preload">
 
@@ -112,14 +114,7 @@
         <uc1:menu runat="server" ID="menu" />
 
     </div>
-
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
-
+    <uc1:scipts runat="server" id="scipts" />
 </body>
 </html>
 
