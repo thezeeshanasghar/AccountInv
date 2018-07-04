@@ -38,7 +38,7 @@ namespace AcccountInventory
             SqlConnection con = new SqlConnection(constr);
             con.Open();
 
-            string qry = "select Code from Project p where p.Code =" + Code.Text;
+            string qry = "select Code from Project p where p.Code ='" + Code.Text + "'";
             SqlCommand cmd = new SqlCommand(qry, con);
             SqlDataReader sdr = cmd.ExecuteReader();
             if (sdr.Read())

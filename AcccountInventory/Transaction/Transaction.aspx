@@ -34,20 +34,19 @@
                 <uc1:header runat="server" ID="header" />
                 <form id="form1" runat="server">
                     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-                    <section>
-                        <header class="major">
-                            <h2>Transaction</h2>
-                        </header>
-                        Fiscal Year(
+                    <header class="major">
+                        <h2>Transaction</h2>
+                    </header>
+                    <h3 style="text-align: center">Fiscal Year (
                          <asp:Label ID="lblStartDate" runat="server" Text="Label"></asp:Label>
                         &nbsp;to&nbsp;
                          <asp:Label ID="lblEndDate" runat="server" Text="Label"></asp:Label>
                         )
-                    </section>
+                    </h3>
                     <section>
                         <div class="row">
                             <div class="col-12">
-                                <h3>Master Details</h3>
+                                <h3>Account Holder</h3>
                                 <asp:Label ID="lblDateError" runat="server" Text="Label"></asp:Label>
                             </div>
                             <div class="col-4-medium">
@@ -80,19 +79,24 @@
 
 
                             <div class="col-4-medium">
-                                <asp:Label ID="lblDescription" runat="server" Text="Description"></asp:Label>
-                                <asp:TextBox ID="txtDescription" runat="server"></asp:TextBox>
-                            </div>
-                            <div class="col-4-medium">
                                 <asp:Label ID="lblRefNumber1" runat="server" Text="Ref#1"></asp:Label>
                                 <asp:TextBox ID="txtRefNumber1" runat="server"></asp:TextBox>
+                            </div>
+
+                            <div class="col-8">
+                                <asp:Label ID="lblDescription" runat="server" Text="Description"></asp:Label>
+                                <asp:TextBox ID="txtDescription" runat="server"></asp:TextBox>
                             </div>
                             <div class="col-4-medium">
                                 <asp:Label ID="lblRefNumber2" runat="server" Text="Ref#2"></asp:Label>
                                 <asp:TextBox ID="txtRefNumber2" runat="server"></asp:TextBox>
                             </div>
+
+
                         </div>
-                        <h3>Child Table</h3>
+
+                        <br />
+                        <h3>Suppliers/Customer</h3>
                         <div class="table-wrapper">
                             <table class="alt ddColumn">
                                 <thead>
@@ -139,7 +143,7 @@
 
     </div>
 
-    <uc1:scipts runat="server" id="scipts" />
+    <uc1:scipts runat="server" ID="scipts" />
 
 
 </body>

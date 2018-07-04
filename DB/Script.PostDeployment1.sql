@@ -9,4 +9,6 @@ Post-Deployment Script Template
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
-insert into [login] VALUES ('admin@gmail.com','admin')
+insert into [login] VALUES ('admin@gmail.com','admin','Admin');
+insert into [login] VALUES ('manager@gmail.com','manager','Manager');
+INSERT INTO [Config] VALUES (CAST(N'2018-12-21' AS Date), CAST(N'2019-12-12' AS Date), N'AFX')

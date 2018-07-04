@@ -52,7 +52,7 @@
                                 <div class="col-md-6">
                                     <div class="col-md-2">
                                         Code:
-                                 <asp:TextBox ID="CodeTextBox" OnTextChanged="CodeTextBox_TextChanged" AutoPostBack="true" 
+                                 <asp:TextBox ID="CodeTextBox" OnTextChanged="CodeTextBox_TextChanged"  AutoPostBack="true" 
                                      style="width: 10%;" MaxLength="2" runat="server" Text='<%# Bind("Code") %>' />
                                         <asp:RequiredFieldValidator ID="reqCode" runat="server" ForeColor="Red" ValidationGroup="insert" Display="Dynamic" ControlToValidate="CodeTextBox" ErrorMessage="Required"></asp:RequiredFieldValidator>
                                     </div>

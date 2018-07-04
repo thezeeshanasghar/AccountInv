@@ -67,7 +67,7 @@ namespace AcccountInventory
             string connectionString = ConfigurationManager.ConnectionStrings["AccountConnectionString"].ToString();
             SqlConnection con = new SqlConnection(connectionString);
             con.Open();
-            string query = "SELECT * FROM Project where Code="+projectCode+"";
+            string query = "SELECT * FROM Project where Code='"+projectCode+"'";
             //string g = "SELECT * FROM Project, Account WHERE Project.Code="+projectCode+ "AND Account.AccountCode="+accountCode+"";
             SqlCommand cmd = new SqlCommand(query, con);
             SqlDataReader sdr = cmd.ExecuteReader();
