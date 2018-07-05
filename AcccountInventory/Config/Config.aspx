@@ -62,7 +62,7 @@
              <%-- <asp:CommandField ShowEditButton="True" />--%>
              <asp:TemplateField HeaderText="Action">
                 <ItemTemplate>
-                    <asp:HyperLink id="hyperlink1" NavigateUrl='<%#Eval("ID","~/UpdateConfig.aspx?ID={0}")%>'   
+                    <asp:HyperLink id="hyperlink1" NavigateUrl='<%#Eval("ID","~/Config/UpdateConfig.aspx?ID={0}")%>'   
                         Target="_blank" runat="server">
                         <i class='fa fa-edit' aria-hidden='true'></i>
                     </asp:HyperLink>

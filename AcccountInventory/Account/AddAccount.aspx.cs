@@ -16,16 +16,31 @@ namespace AcccountInventory
         protected void Page_Load(object sender, EventArgs e)
         {
             lblSuccessMessage.Visible = false;
-             FormViewRow row = FormView1.Row;
+            
 
             // Retrieve the ProductNameLabel control from
             // the data row.
-             TextBox YearStart = (TextBox)row.FindControl("YearStartTextBox");
-            string date = ConfigurationManager.AppSettings["Date"];
-            YearStart.Text = date;
+             
+            getConfigData();
             
         }
-
+        protected void getConfigData()
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["AccountConnectionString"].ToString();
+            SqlConnection con = new SqlConnection(connectionString);
+            con.Open();
+            string query = "SELECT * FROM Config";
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader sdr = cmd.ExecuteReader();
+            if (sdr.Read())
+            {
+                FormViewRow row = FormView1.Row;
+                TextBox YearStart = (TextBox)row.FindControl("YearStartTextBox");
+                YearStart.Text= Convert.ToDateTime(sdr["StartDate"]).ToString("MM/dd/yy");
+                
+            }
+          
+        }
         protected void AccountInserted(object sender, SqlDataSourceStatusEventArgs e)
         {
             lblSuccessMessage.Text = "Your account has been successfully created";

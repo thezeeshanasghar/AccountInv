@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Web;
@@ -12,7 +14,24 @@ namespace AcccountInventory
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+            getConfigData();
+        }
+        protected void getConfigData()
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["AccountConnectionString"].ToString();
+            SqlConnection con = new SqlConnection(connectionString);
+            con.Open();
+            string query = "SELECT * FROM Config";
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader sdr = cmd.ExecuteReader();
+            if (sdr.Read())
+            {
+                FormViewRow row = FormView1.Row;
+                TextBox YearStart = (TextBox)row.FindControl("YearStartTextBox");
+                YearStart.Text = Convert.ToDateTime(sdr["StartDate"]).ToString("MM/dd/yy");
+
+            }
+
         }
         protected void DebitTextBox_TextChanged(object sender, EventArgs e)
         {

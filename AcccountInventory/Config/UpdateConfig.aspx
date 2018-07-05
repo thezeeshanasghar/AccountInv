@@ -38,7 +38,9 @@
                             <h2>Update Config</h2>
                         </header>
                         
-                        <asp:Label ID="lblSuccessMessage" runat="server" Text="Label" CssClass="alert alert-success"> </asp:Label>
+                        <asp:Label ID="lblSuccessMessage" runat="server" Text="" CssClass="alert alert-success"> </asp:Label>
+                        <asp:Label ID="lblerror" runat="server" Text="" ForeColor="Red"> </asp:Label>
+                        
                         <asp:FormView ID="FormView1" runat="server" DefaultMode="Edit"
                             DataKeyNames="ID" DataSourceID="SqlDataSource1">
 
@@ -54,7 +56,7 @@
                                 <div class="col-md-6">
                                Start Date:
                                 
-                      <asp:TextBox ID="StartDateTextBox" runat="server"  Text='<%# Bind("StartDate") %>' />
+                      <asp:TextBox ID="StartDateTextBox"  runat="server"  Text='<%# Bind("StartDate","{0:MM/dd/yyy}") %>'/>
                                      <ajaxtool:CalendarExtender ID="Calendar" runat="server" TodaysDateFormat="MM/dd/yyyy"
                                          TargetControlID="StartDateTextBox" Format="MM/dd/yyyy"></ajaxtool:CalendarExtender>
                        <asp:RequiredFieldValidator ID="reqyearstart" ValidationGroup="insert" Display="Dynamic"
@@ -65,7 +67,7 @@
                                 <div class="col-md-2" >
                                      End Date:
                                 
-                      <asp:TextBox ID="EndDateTextBox" runat="server"  Text='<%# Bind("EndDate") %>' />
+                      <asp:TextBox ID="EndDateTextBox" runat="server" OnTextChanged="EndDateTextBox_TextChanged" AutoPostBack="true"  Text='<%# Bind("EndDate","{0:MM/dd/yyy}") %>' />
                                      <ajaxtool:CalendarExtender ID="CalendarExtender1" runat="server" TodaysDateFormat="MM/dd/yyyy"
                                          TargetControlID="EndDateTextBox" Format="MM/dd/yyyy"></ajaxtool:CalendarExtender>
                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ValidationGroup="insert" Display="Dynamic"
