@@ -36,7 +36,7 @@
                             <h2>Update Project</h2>
                         </header>
                         
-                        <asp:Label ID="lblSuccessMessage" runat="server" Text="Label" CssClass="alert alert-success"> </asp:Label>
+                        <asp:Label ID="lblSuccessMessage" runat="server" Text="" CssClass="alert alert-success"> </asp:Label>
                         <asp:FormView ID="FormView1" runat="server" DefaultMode="Edit"
                             DataKeyNames="ID" DataSourceID="SqlDataSource1">
 
