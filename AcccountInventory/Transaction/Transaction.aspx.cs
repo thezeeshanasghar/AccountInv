@@ -20,7 +20,12 @@ namespace AcccountInventory
                 lblStartDate.Visible = false;
                 lblEndDate.Visible = false;
                 lblDateError.Visible = false;
-              
+                tr_1.Visible = false;
+                tr_2.Visible = false;
+                tr_3.Visible = false;
+                tr_4.Visible = false;
+                tr_5.Visible = false;
+                incButton.Visible = false;
                 getConfigData();
             }
 
@@ -82,6 +87,48 @@ namespace AcccountInventory
 
             lblStartDate.Visible = true;
             lblEndDate.Visible = true;
+
+        }
+
+        protected void btnAdd_Click(object sender, EventArgs e)
+        {
+            var i = Convert.ToInt32(incButton.Text) + 1;
+            if (i <= 5)
+            {
+                TableRow[] tableRow = { tr_1, tr_2, tr_3, tr_4, tr_5 };
+                tableRow[i - 1].Visible = true;
+                incButton.Text = i.ToString();
+            }
+
+        }
+
+        protected void ddtr1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ddtr2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ddtr3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ddtr4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ddtr5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
 
         }
     }

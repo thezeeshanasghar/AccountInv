@@ -98,8 +98,174 @@
 
                         <br />
                         <h3>Suppliers/Customer</h3>
+                        <asp:TextBox ID="incButton" Text="0" runat="server"></asp:TextBox>
+                        <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add Supplier" />
                         <div class="table-wrapper">
-                            <table class="alt ddColumn">
+                            <asp:Table ID="Table1" runat="server" CssClass="alt ddColumn">
+                                <asp:TableHeaderRow>
+                                    <asp:TableHeaderCell>
+                                        Code
+                                    </asp:TableHeaderCell>
+                                    <asp:TableHeaderCell>
+                                        Particular
+                                    </asp:TableHeaderCell>
+                                    <asp:TableHeaderCell>
+                                        Description
+                                    </asp:TableHeaderCell>
+                                    <asp:TableHeaderCell>
+                                        Debit
+                                    </asp:TableHeaderCell>
+                                    <asp:TableHeaderCell>
+                                        Credit
+                                    </asp:TableHeaderCell>
+                                </asp:TableHeaderRow>
+                                <asp:TableRow runat="server" ID="tr_1" BorderStyle="Solid">
+                                    <asp:TableCell>
+                                        <asp:DropDownList AppendDataBoundItems="true" OnSelectedIndexChanged="ddtr1_SelectedIndexChanged"
+                                            ID="ddtr1" runat="server" DataSourceID="ddProjectCodeDataSource"
+                                            DataTextField="PACode" DataValueField="PACode" AutoPostBack="True">
+                                            <Items>
+                                                <asp:ListItem Text="--Select Code--" Selected="True" Value="" />
+                                            </Items>
+                                        </asp:DropDownList>
+                                        <asp:SqlDataSource ID="SqlDataSource1" runat="server"
+                                            ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
+                                            SelectCommand="SELECT CONCAT(a.AccountCode, '-',p.Code) AS PACode, p.ID AS ProjectId, a.ID AS AccountId FROM Project AS p INNER JOIN Account AS a ON p.ID = a.ProjectCode"></asp:SqlDataSource>
+
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                         <asp:TextBox ID="txtParticulartr_1" runat="server"></asp:TextBox>
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                         <asp:TextBox ID="txtDescriptiontr_1" runat="server"></asp:TextBox>
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                         <asp:TextBox ID="txtDebittr_1" type="number" min="0"  runat="server"></asp:TextBox>
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                         <asp:TextBox ID="txtCredittr_1" type="number" min="0" runat="server"></asp:TextBox>
+                                    </asp:TableCell>
+                               
+                                     </asp:TableRow>
+
+                                <asp:TableRow runat="server" ID="tr_2">
+                                     <asp:TableCell>
+                                        <asp:DropDownList AppendDataBoundItems="true" OnSelectedIndexChanged="ddtr2_SelectedIndexChanged"
+                                            ID="ddtr2" runat="server" DataSourceID="ddProjectCodeDataSource"
+                                            DataTextField="PACode" DataValueField="PACode" AutoPostBack="True">
+                                            <Items>
+                                                <asp:ListItem Text="--Select Code--" Selected="True" Value="" />
+                                            </Items>
+                                        </asp:DropDownList>
+                                        <asp:SqlDataSource ID="SqlDataSource2" runat="server"
+                                            ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
+                                            SelectCommand="SELECT CONCAT(a.AccountCode, '-',p.Code) AS PACode, p.ID AS ProjectId, a.ID AS AccountId FROM Project AS p INNER JOIN Account AS a ON p.ID = a.ProjectCode"></asp:SqlDataSource>
+
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                         <asp:TextBox ID="txtParticulartr_2" runat="server"></asp:TextBox>
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                         <asp:TextBox ID="txtDescriptiontr_2" runat="server"></asp:TextBox>
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                         <asp:TextBox ID="txtDebittr_2" type="number" min="0"  runat="server"></asp:TextBox>
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                         <asp:TextBox ID="txtCredittr_2" type="number" min="0" runat="server"></asp:TextBox>
+                                    </asp:TableCell>
+
+                                </asp:TableRow>
+                             
+                                <asp:TableRow runat="server" ID="tr_3">
+                                    <asp:TableCell>
+                                        <asp:DropDownList AppendDataBoundItems="true" OnSelectedIndexChanged="ddtr3_SelectedIndexChanged"
+                                            ID="ddtr3" runat="server" DataSourceID="ddProjectCodeDataSource"
+                                            DataTextField="PACode" DataValueField="PACode" AutoPostBack="True">
+                                            <Items>
+                                                <asp:ListItem Text="--Select Code--" Selected="True" Value="" />
+                                            </Items>
+                                        </asp:DropDownList>
+                                        <asp:SqlDataSource ID="SqlDataSource3" runat="server"
+                                            ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
+                                            SelectCommand="SELECT CONCAT(a.AccountCode, '-',p.Code) AS PACode, p.ID AS ProjectId, a.ID AS AccountId FROM Project AS p INNER JOIN Account AS a ON p.ID = a.ProjectCode"></asp:SqlDataSource>
+
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                         <asp:TextBox ID="txtParticulartr_3" runat="server"></asp:TextBox>
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                         <asp:TextBox ID="txtDescriptiontr_3" runat="server"></asp:TextBox>
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                         <asp:TextBox ID="txtDebittr_3" type="number" min="0"  runat="server"></asp:TextBox>
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                         <asp:TextBox ID="txtCredittr_3" type="number" min="0" runat="server"></asp:TextBox>
+                                    </asp:TableCell>
+
+                                </asp:TableRow>
+                               
+                                <asp:TableRow runat="server" ID="tr_4">
+                                       <asp:TableCell>
+                                        <asp:DropDownList AppendDataBoundItems="true" OnSelectedIndexChanged="ddtr4_SelectedIndexChanged"
+                                            ID="ddtr4" runat="server" DataSourceID="ddProjectCodeDataSource"
+                                            DataTextField="PACode" DataValueField="PACode" AutoPostBack="True">
+                                            <Items>
+                                                <asp:ListItem Text="--Select Code--" Selected="True" Value="" />
+                                            </Items>
+                                        </asp:DropDownList>
+                                        <asp:SqlDataSource ID="SqlDataSource4" runat="server"
+                                            ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
+                                            SelectCommand="SELECT CONCAT(a.AccountCode, '-',p.Code) AS PACode, p.ID AS ProjectId, a.ID AS AccountId FROM Project AS p INNER JOIN Account AS a ON p.ID = a.ProjectCode"></asp:SqlDataSource>
+
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                         <asp:TextBox ID="txtParticulartr_4" runat="server"></asp:TextBox>
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                         <asp:TextBox ID="txtDescriptiontr_4" runat="server"></asp:TextBox>
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                         <asp:TextBox ID="txtDebittr_4" type="number" min="0"  runat="server"></asp:TextBox>
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                         <asp:TextBox ID="txtCredittr_4" type="number" min="0" runat="server"></asp:TextBox>
+                                    </asp:TableCell>
+
+                                </asp:TableRow>
+                               
+                                <asp:TableRow runat="server" ID="tr_5">
+                                   <asp:TableCell>
+                                        <asp:DropDownList AppendDataBoundItems="true" OnSelectedIndexChanged="ddtr5_SelectedIndexChanged"
+                                            ID="ddtr5" runat="server" DataSourceID="ddProjectCodeDataSource"
+                                            DataTextField="PACode" DataValueField="PACode" AutoPostBack="True">
+                                            <Items>
+                                                <asp:ListItem Text="--Select Code--" Selected="True" Value="" />
+                                            </Items>
+                                        </asp:DropDownList>
+                                        <asp:SqlDataSource ID="SqlDataSource5" runat="server"
+                                            ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
+                                            SelectCommand="SELECT CONCAT(a.AccountCode, '-',p.Code) AS PACode, p.ID AS ProjectId, a.ID AS AccountId FROM Project AS p INNER JOIN Account AS a ON p.ID = a.ProjectCode"></asp:SqlDataSource>
+
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                         <asp:TextBox ID="txtParticulartr_5" runat="server"></asp:TextBox>
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                         <asp:TextBox ID="txtDescriptiontr_5" runat="server"></asp:TextBox>
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                         <asp:TextBox ID="txtDebittr_5" type="number" min="0"  runat="server"></asp:TextBox>
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                         <asp:TextBox ID="txtCredittr_5" type="number" min="0" runat="server"></asp:TextBox>
+                                    </asp:TableCell>
+
+                                </asp:TableRow>
+                            </asp:Table>
+                            <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" />
+                            <%--    <table>
                                 <thead>
                                     <tr>
                                         <th>Code</th>
@@ -110,7 +276,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr id="tr_1">
+                                    <tr runat="server" ID="tr_1">
                                         <td>
                                             <asp:DropDownList AppendDataBoundItems="true"
                                                 ID="DropDownList1" runat="server" DataSourceID="ddProjectCodeDataSource"
@@ -133,7 +299,7 @@
                                         <td>
                                             <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox></td>
                                     </tr>
-                                    <tr runat="server" id="tr_2">
+                                    <tr runat="server" ID="tr_2">
                                         <td>
                                             <asp:DropDownList AppendDataBoundItems="true"
                                                 ID="DropDownList2" runat="server" DataSourceID="ddProjectCodeDataSource"
@@ -156,7 +322,7 @@
                                         <td>
                                             <asp:TextBox ID="TextBox8" runat="server"></asp:TextBox></td>
                                     </tr>
-                                    <tr runat="server" id="tr_3">
+                                    <tr runat="server" ID="tr_3">
                                         <td>
                                             <asp:DropDownList AppendDataBoundItems="true"
                                                 ID="DropDownList3" runat="server" DataSourceID="ddProjectCodeDataSource"
@@ -179,7 +345,7 @@
                                         <td>
                                             <asp:TextBox ID="TextBox12" runat="server"></asp:TextBox></td>
                                     </tr>
-                                    <tr runat="server" id="tr_4">
+                                    <tr runat="server" ID="tr_4">
                                         <td>
                                             <asp:DropDownList AppendDataBoundItems="true"
                                                 ID="DropDownList4" runat="server" DataSourceID="ddProjectCodeDataSource"
@@ -202,7 +368,7 @@
                                         <td>
                                             <asp:TextBox ID="TextBox16" runat="server"></asp:TextBox></td>
                                     </tr>
-                                    <tr runat="server" id="tr_5">
+                                    <tr runat="server" ID="tr_5">
                                         <td>
                                             <asp:DropDownList AppendDataBoundItems="true"
                                                 ID="DropDownList5" runat="server" DataSourceID="ddProjectCodeDataSource"
@@ -227,10 +393,9 @@
                                     </tr>
 
                                 </tbody>
-                            </table>
+                            </table>--%>
                         </div>
 
-                        <button id="btnAdd" onclick="return addRow();">Add Row</button>
                     </section>
                 </form>
             </div>

@@ -3,3 +3,6 @@
 .ddColumn tr td:first-child {
     width:165px;
 }
+.ddColumn tr td:nth-child(4) {
+    width:100px;
+}
