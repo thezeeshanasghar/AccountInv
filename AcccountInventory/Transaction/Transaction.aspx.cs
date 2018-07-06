@@ -63,31 +63,9 @@ namespace AcccountInventory
 
         protected void ddProjectCode_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var ddSelectedValue = ddPA.SelectedValue;
-            var particular = txtParticular;
-            var arr = ddSelectedValue.Split('-');
-            string accountCode = arr[0];
-            //string accountCode = arr[1];
-
-            string connectionString = ConfigurationManager.ConnectionStrings["AccountConnectionString"].ToString();
-            SqlConnection con = new SqlConnection(connectionString);
-            con.Open();
-            string query = "SELECT * FROM Account where AccountCode='" + accountCode + "'";
-            SqlCommand cmd = new SqlCommand(query, con);
-            SqlDataReader sdr = cmd.ExecuteReader();
-            if (sdr.HasRows)
-                while (sdr.Read())
-                {
-
-                    particular.Text = sdr["Name"].ToString();
-                    particular.Enabled = false;
-                }
-            else
-                particular.Text = "";
-
-            lblStartDate.Visible = true;
-            lblEndDate.Visible = true;
-
+            TextBox particular = txtParticular;
+            int accountId = Convert.ToInt32(ddPA.SelectedValue);
+            setParticular(particular, accountId);
         }
 
         protected void btnAdd_Click(object sender, EventArgs e)
@@ -104,32 +82,103 @@ namespace AcccountInventory
 
         protected void ddtr1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            TextBox particular = txtParticulartr_1;
+            int accountId = Convert.ToInt32(ddtr1.SelectedValue);
+            setParticular(particular, accountId);
         }
 
         protected void ddtr2_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            TextBox particular = txtParticulartr_2;
+            int accountId = Convert.ToInt32(ddtr2.SelectedValue);
+            setParticular(particular, accountId);
         }
 
         protected void ddtr3_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            TextBox particular = txtParticulartr_3;
+            int accountId = Convert.ToInt32(ddtr3.SelectedValue);
+            setParticular(particular, accountId);
         }
 
         protected void ddtr4_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            TextBox particular = txtParticulartr_4;
+            int accountId = Convert.ToInt32(ddtr4.SelectedValue);
+            setParticular(particular, accountId);
         }
 
         protected void ddtr5_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            TextBox particular = txtParticulartr_5;
+            int accountId = Convert.ToInt32(ddtr5.SelectedValue);
+            setParticular(particular, accountId);
         }
+        protected void setParticular(TextBox selectedParticular, int selectedAccountId)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["AccountConnectionString"].ToString();
+            SqlConnection con = new SqlConnection(connectionString);
+            con.Open();
+            string query = "SELECT * FROM Account where ID=" + selectedAccountId + "";
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader sdr = cmd.ExecuteReader();
+            if (sdr.HasRows)
+                while (sdr.Read())
+                {
 
+                    selectedParticular.Text = sdr["Name"].ToString();
+                    selectedParticular.Enabled = false;
+                }
+            else
+                selectedParticular.Text = "";
+        }
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+            //insert in transparent
+            DateTime pDate = Convert.ToDateTime(txtDate.Text);
+            int pAccountId = Convert.ToInt32(ddPA.SelectedValue);
+            string description = txtDescription.Text;
+            string ref1 = txtRefNumber1.Text;
+            string ref2 = txtRefNumber2.Text;
+            string connectionString = ConfigurationManager.ConnectionStrings["AccountConnectionString"].ToString();
+            SqlConnection con = new SqlConnection(connectionString);
+            con.Open();
+            string query = "INSERT INTO TransParent(Date,AccountID,Description,Ref1,Ref2)"
+                + "VALUES('" + pDate + "'," + pAccountId + ",'" + description + "','" + ref1 + "','" + ref2 + "'); SELECT CAST(SCOPE_IDENTITY() AS int)";
+            SqlCommand cmd = new SqlCommand(query, con);
+            int transParentId = (int)cmd.ExecuteScalar();
 
+            if (transParentId > 0)
+            {
+
+
+                for (int i = 1; i <= 5; i++)
+                {
+                    DropDownList ddPA = (DropDownList)Page.Form.FindControl("ddtr" + i);
+                    if (ddPA.SelectedValue !="")
+                    {
+                       
+                        TextBox txtDescriptiontr = (TextBox)Page.Form.FindControl("txtDescriptiontr_" + i);
+                        TextBox txtDebitTr = (TextBox)Page.Form.FindControl("txtDebittr_" + i);
+                        TextBox txtCreditTr = (TextBox)Page.Form.FindControl("txtCredittr_" + i);
+
+                        int accountId = Convert.ToInt32(ddPA.SelectedValue);
+                        string desc = Convert.ToString(txtDescriptiontr.Text);
+                        int debit = Convert.ToInt32(txtDebitTr.Text);
+                        int credit = Convert.ToInt32(txtCreditTr.Text);
+
+
+                        //insert in transchild
+                        string q = "INSERT INTO TransChild(TransParentID,AccountID,Description,Debit,Credit)"
+                          + "VALUES(" + transParentId + "," + accountId + ",'" + desc + "'," + debit + "," + credit + ")";
+                        SqlCommand cmd1 = new SqlCommand(q, con);
+                        cmd1.ExecuteNonQuery();
+                    }
+
+                }
+                if (con.State == System.Data.ConnectionState.Open)
+                    con.Close();
+            }
         }
     }
 }
