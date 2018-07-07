@@ -134,51 +134,98 @@ namespace AcccountInventory
         }
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            //insert in transparent
-            DateTime pDate = Convert.ToDateTime(txtDate.Text);
-            int pAccountId = Convert.ToInt32(ddPA.SelectedValue);
-            string description = txtDescription.Text;
-            string ref1 = txtRefNumber1.Text;
-            string ref2 = txtRefNumber2.Text;
-            string connectionString = ConfigurationManager.ConnectionStrings["AccountConnectionString"].ToString();
-            SqlConnection con = new SqlConnection(connectionString);
-            con.Open();
-            string query = "INSERT INTO TransParent(Date,AccountID,Description,Ref1,Ref2)"
-                + "VALUES('" + pDate + "'," + pAccountId + ",'" + description + "','" + ref1 + "','" + ref2 + "'); SELECT CAST(SCOPE_IDENTITY() AS int)";
-            SqlCommand cmd = new SqlCommand(query, con);
-            int transParentId = (int)cmd.ExecuteScalar();
-
-            if (transParentId > 0)
+            if (ddPA.SelectedValue != "")
             {
+                lblDateError.Visible = false;
+                //insert in transparent
+                DateTime pDate = Convert.ToDateTime(txtDate.Text);
+                int pAccountId = Convert.ToInt32(ddPA.SelectedValue);
+                string description = txtDescription.Text;
+                string ref1 = txtRefNumber1.Text;
+                string ref2 = txtRefNumber2.Text;
+                string connectionString = ConfigurationManager.ConnectionStrings["AccountConnectionString"].ToString();
+                SqlConnection con = new SqlConnection(connectionString);
+                con.Open();
+                string query = "INSERT INTO TransParent(Date,AccountID,Description,Ref1,Ref2)"
+                    + "VALUES('" + pDate + "'," + pAccountId + ",'" + description + "','" + ref1 + "','" + ref2 + "'); SELECT CAST(SCOPE_IDENTITY() AS int)";
+                SqlCommand cmd = new SqlCommand(query, con);
+                int transParentId = (int)cmd.ExecuteScalar();
 
-
-                for (int i = 1; i <= 5; i++)
+                if (transParentId > 0)
                 {
-                    DropDownList ddPA = (DropDownList)Page.Form.FindControl("ddtr" + i);
-                    if (ddPA.SelectedValue !="")
+
+
+                    for (int i = 1; i <= 5; i++)
                     {
-                       
-                        TextBox txtDescriptiontr = (TextBox)Page.Form.FindControl("txtDescriptiontr_" + i);
-                        TextBox txtDebitTr = (TextBox)Page.Form.FindControl("txtDebittr_" + i);
-                        TextBox txtCreditTr = (TextBox)Page.Form.FindControl("txtCredittr_" + i);
+                        DropDownList ddPA = (DropDownList)Page.Form.FindControl("ddtr" + i);
+                        if (ddPA.SelectedValue != "")
+                        {
 
-                        int accountId = Convert.ToInt32(ddPA.SelectedValue);
-                        string desc = Convert.ToString(txtDescriptiontr.Text);
-                        int debit = Convert.ToInt32(txtDebitTr.Text);
-                        int credit = Convert.ToInt32(txtCreditTr.Text);
+                            TextBox txtDescriptiontr = (TextBox)Page.Form.FindControl("txtDescriptiontr_" + i);
+                            TextBox txtDebitTr = (TextBox)Page.Form.FindControl("txtDebittr_" + i);
+                            TextBox txtCreditTr = (TextBox)Page.Form.FindControl("txtCredittr_" + i);
 
+                            int accountId = Convert.ToInt32(ddPA.SelectedValue);
+                            string desc = Convert.ToString(txtDescriptiontr.Text);
+                            int debit = Convert.ToInt32(txtDebitTr.Text);
+                            int credit = Convert.ToInt32(txtCreditTr.Text);
 
-                        //insert in transchild
-                        string q = "INSERT INTO TransChild(TransParentID,AccountID,Description,Debit,Credit)"
-                          + "VALUES(" + transParentId + "," + accountId + ",'" + desc + "'," + debit + "," + credit + ")";
-                        SqlCommand cmd1 = new SqlCommand(q, con);
-                        cmd1.ExecuteNonQuery();
+                            //insert in transchild
+                            string q = "INSERT INTO TransChild(TransParentID,AccountID,Description,Debit,Credit)"
+                              + "VALUES(" + transParentId + "," + accountId + ",'" + desc + "'," + debit + "," + credit + ")";
+                            SqlCommand cmd1 = new SqlCommand(q, con);
+                            cmd1.ExecuteNonQuery();
+                        }
+                        if (i == 5)
+                            lblDateError.Text = "Your transaction is saved successfully";
+                        lblDateError.ForeColor = Color.Green;
+                        lblDateError.Visible = true;
                     }
-
+                    if (con.State == System.Data.ConnectionState.Open)
+                        con.Close();
                 }
-                if (con.State == System.Data.ConnectionState.Open)
-                    con.Close();
             }
+            else
+            {
+                lblDateError.Text = "Please select account holder first";
+                lblDateError.ForeColor = Color.Red;
+                lblDateError.Visible = true;
+            }
+
+        }
+
+        protected void txtDebittr_1_TextChanged(object sender, EventArgs e)
+        {
+            int totalDebit = 0;
+            int totalCredit = 0;
+            for (int i = 1; i <= 5; i++)
+            {
+                DropDownList ddPA = (DropDownList)Page.Form.FindControl("ddtr" + i);
+                if (ddPA.SelectedValue != "")
+                {
+
+                    TextBox txtDebitTr = (TextBox)Page.Form.FindControl("txtDebittr_" + i);
+                    TextBox txtCreditTr = (TextBox)Page.Form.FindControl("txtCredittr_" + i);
+                    int debit = txtDebitTr.Text != "" ? Convert.ToInt32(txtDebitTr.Text) : 0;
+                    int credit = txtCreditTr.Text != "" ? Convert.ToInt32(txtCreditTr.Text) : 0;
+
+                    if (debit > 0)
+                    {
+                        credit = 0;
+                        txtCreditTr.Text = "0";
+                    }
+                    else if (credit > 0)
+                    {
+                        debit = 0;
+                        txtDebitTr.Text = "0";
+                    }
+                    totalDebit += debit;
+                    totalCredit += credit;
+                }
+            }
+            txtTotalDebit.Text = totalDebit.ToString();
+            txtTotalCredit.Text = totalCredit.ToString();
+            txtDifference.Text = (totalDebit - totalCredit).ToString();
         }
     }
 }

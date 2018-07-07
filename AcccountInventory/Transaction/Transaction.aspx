@@ -95,12 +95,11 @@
 
 
                         </div>
-
-                        <br />
                         <h3>Suppliers/Customer</h3>
                         <asp:TextBox ID="incButton" Text="0" runat="server"></asp:TextBox>
                         <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add Supplier" />
-                        <div class="table-wrapper">
+                        <br />
+                        <div style="padding-top:2%;" class="table-wrapper">
                             <asp:Table ID="Table1" runat="server" CssClass="alt ddColumn">
                                 <asp:TableHeaderRow>
                                     <asp:TableHeaderCell>
@@ -134,22 +133,22 @@
 
                                     </asp:TableCell>
                                     <asp:TableCell>
-                                         <asp:TextBox ID="txtParticulartr_1" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtParticulartr_1" runat="server"></asp:TextBox>
                                     </asp:TableCell>
                                     <asp:TableCell>
-                                         <asp:TextBox ID="txtDescriptiontr_1" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtDescriptiontr_1" runat="server"></asp:TextBox>
                                     </asp:TableCell>
                                     <asp:TableCell>
-                                         <asp:TextBox ID="txtDebittr_1" type="number" min="0"  runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtDebittr_1" OnTextChanged="txtDebittr_1_TextChanged" AutoPostBack="true" type="number" min="0" runat="server"></asp:TextBox>
                                     </asp:TableCell>
                                     <asp:TableCell>
-                                         <asp:TextBox ID="txtCredittr_1" type="number" min="0" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtCredittr_1" OnTextChanged="txtDebittr_1_TextChanged" AutoPostBack="true" type="number" min="0" runat="server"></asp:TextBox>
                                     </asp:TableCell>
-                               
-                                     </asp:TableRow>
+
+                                </asp:TableRow>
 
                                 <asp:TableRow runat="server" ID="tr_2">
-                                     <asp:TableCell>
+                                    <asp:TableCell>
                                         <asp:DropDownList AppendDataBoundItems="true" OnSelectedIndexChanged="ddtr2_SelectedIndexChanged"
                                             ID="ddtr2" runat="server" DataSourceID="ddProjectCodeDataSource"
                                             DataTextField="PACode" DataValueField="AccountId" AutoPostBack="True">
@@ -163,20 +162,20 @@
 
                                     </asp:TableCell>
                                     <asp:TableCell>
-                                         <asp:TextBox ID="txtParticulartr_2" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtParticulartr_2" runat="server"></asp:TextBox>
                                     </asp:TableCell>
                                     <asp:TableCell>
-                                         <asp:TextBox ID="txtDescriptiontr_2" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtDescriptiontr_2" runat="server"></asp:TextBox>
                                     </asp:TableCell>
                                     <asp:TableCell>
-                                         <asp:TextBox ID="txtDebittr_2" type="number" min="0"  runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtDebittr_2" OnTextChanged="txtDebittr_1_TextChanged" AutoPostBack="true" type="number" min="0" runat="server"></asp:TextBox>
                                     </asp:TableCell>
                                     <asp:TableCell>
-                                         <asp:TextBox ID="txtCredittr_2" type="number" min="0" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtCredittr_2" OnTextChanged="txtDebittr_1_TextChanged" AutoPostBack="true" type="number" min="0" runat="server"></asp:TextBox>
                                     </asp:TableCell>
 
                                 </asp:TableRow>
-                             
+
                                 <asp:TableRow runat="server" ID="tr_3">
                                     <asp:TableCell>
                                         <asp:DropDownList AppendDataBoundItems="true" OnSelectedIndexChanged="ddtr3_SelectedIndexChanged"
@@ -192,22 +191,22 @@
 
                                     </asp:TableCell>
                                     <asp:TableCell>
-                                         <asp:TextBox ID="txtParticulartr_3" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtParticulartr_3" runat="server"></asp:TextBox>
                                     </asp:TableCell>
                                     <asp:TableCell>
-                                         <asp:TextBox ID="txtDescriptiontr_3" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtDescriptiontr_3" runat="server"></asp:TextBox>
                                     </asp:TableCell>
                                     <asp:TableCell>
-                                         <asp:TextBox ID="txtDebittr_3" type="number" min="0"  runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtDebittr_3" OnTextChanged="txtDebittr_1_TextChanged" AutoPostBack="true" type="number" min="0" runat="server"></asp:TextBox>
                                     </asp:TableCell>
                                     <asp:TableCell>
-                                         <asp:TextBox ID="txtCredittr_3" type="number" min="0" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtCredittr_3" OnTextChanged="txtDebittr_1_TextChanged" AutoPostBack="true" type="number" min="0" runat="server"></asp:TextBox>
                                     </asp:TableCell>
 
                                 </asp:TableRow>
-                               
+
                                 <asp:TableRow runat="server" ID="tr_4">
-                                       <asp:TableCell>
+                                    <asp:TableCell>
                                         <asp:DropDownList AppendDataBoundItems="true" OnSelectedIndexChanged="ddtr4_SelectedIndexChanged"
                                             ID="ddtr4" runat="server" DataSourceID="ddProjectCodeDataSource"
                                             DataTextField="PACode" DataValueField="AccountId" AutoPostBack="True">
@@ -221,22 +220,22 @@
 
                                     </asp:TableCell>
                                     <asp:TableCell>
-                                         <asp:TextBox ID="txtParticulartr_4" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtParticulartr_4" runat="server"></asp:TextBox>
                                     </asp:TableCell>
                                     <asp:TableCell>
-                                         <asp:TextBox ID="txtDescriptiontr_4" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtDescriptiontr_4" runat="server"></asp:TextBox>
                                     </asp:TableCell>
                                     <asp:TableCell>
-                                         <asp:TextBox ID="txtDebittr_4" type="number" min="0"  runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtDebittr_4" OnTextChanged="txtDebittr_1_TextChanged" AutoPostBack="true" type="number" min="0" runat="server"></asp:TextBox>
                                     </asp:TableCell>
                                     <asp:TableCell>
-                                         <asp:TextBox ID="txtCredittr_4" type="number" min="0" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtCredittr_4" OnTextChanged="txtDebittr_1_TextChanged" AutoPostBack="true" type="number" min="0" runat="server"></asp:TextBox>
                                     </asp:TableCell>
 
                                 </asp:TableRow>
-                               
+
                                 <asp:TableRow runat="server" ID="tr_5">
-                                   <asp:TableCell>
+                                    <asp:TableCell>
                                         <asp:DropDownList AppendDataBoundItems="true" OnSelectedIndexChanged="ddtr5_SelectedIndexChanged"
                                             ID="ddtr5" runat="server" DataSourceID="ddProjectCodeDataSource"
                                             DataTextField="PACode" DataValueField="AccountId" AutoPostBack="True">
@@ -250,30 +249,47 @@
 
                                     </asp:TableCell>
                                     <asp:TableCell>
-                                         <asp:TextBox ID="txtParticulartr_5" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtParticulartr_5" runat="server"></asp:TextBox>
                                     </asp:TableCell>
                                     <asp:TableCell>
-                                         <asp:TextBox ID="txtDescriptiontr_5" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtDescriptiontr_5" runat="server"></asp:TextBox>
                                     </asp:TableCell>
                                     <asp:TableCell>
-                                         <asp:TextBox ID="txtDebittr_5" type="number" min="0"  runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtDebittr_5" OnTextChanged="txtDebittr_1_TextChanged" AutoPostBack="true" type="number" min="0" runat="server"></asp:TextBox>
                                     </asp:TableCell>
                                     <asp:TableCell>
-                                         <asp:TextBox ID="txtCredittr_5" type="number" min="0" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtCredittr_5" OnTextChanged="txtDebittr_1_TextChanged" AutoPostBack="true" type="number" min="0" runat="server"></asp:TextBox>
                                     </asp:TableCell>
 
                                 </asp:TableRow>
                             </asp:Table>
-                            <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" />
-                         
+                            </div>
+                            <div class="row">
+                                <div class="col-12-medium">
+                                    <div class="col-4-medium">
+                                        <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" />
+                                    </div>
+                                </div>
+                               
+                                <div class="col-12-medium" style="margin-left: 37%;">
+                                    <div class="col-4-medium"></div>
+                                    <div class="col-4-medium">
+                                        <asp:Label ID="lblTotalDebit" runat="server" Text="Tota Debit"></asp:Label>
+                                        <asp:TextBox ID="txtTotalDebit" runat="server"></asp:TextBox>
+                                        <asp:Label ID="lblTotalCredit" runat="server" Text="Tota Credit"></asp:Label>
+                                        <asp:TextBox ID="txtTotalCredit" runat="server"></asp:TextBox>
+                                    </div>
+                                    <div class="col-4-medium"></div>
+                                    <asp:Label ID="lblDifference" runat="server" Text="Difference(debit-credit)"></asp:Label>
+                                    <asp:TextBox ID="txtDifference" runat="server" Enabled="false"></asp:TextBox>
+                                </div>
                         </div>
-
-                    </section>
+            </section>
                 </form>
-            </div>
         </div>
+    </div>
 
-        <uc1:menu runat="server" ID="menu" />
+    <uc1:menu runat="server" ID="menu" />
 
     </div>
 
