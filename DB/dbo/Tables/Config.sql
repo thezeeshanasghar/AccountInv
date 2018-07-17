@@ -4,5 +4,9 @@
     [StartDate] DATE NOT NULL, 
     [EndDate] DATE NOT NULL,
 	[CompanyName] NVARCHAR(200) NULL, 
+	[Address] NVARCHAR(MAX) NULL ,
+	Email NVARCHAR(100) NULL,
+	Phone NVARCHAR(50) NULL,
+	Fax NVARCHAR(100) NULL 
     CONSTRAINT [PK_Config] PRIMARY KEY CLUSTERED([ID] ASC)
 );
