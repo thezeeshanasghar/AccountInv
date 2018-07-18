@@ -48,8 +48,8 @@
                                     Start Date:
                                 
                       <asp:TextBox ID="StartDateTextBox" runat="server"  Text='<%# Bind("StartDate") %>' />
-                                     <ajaxtool:CalendarExtender ID="Calendar" runat="server" TodaysDateFormat="MM/dd/yyyy"
-                                         TargetControlID="StartDateTextBox" Format="MM/dd/yyyy"></ajaxtool:CalendarExtender>
+                                     <ajaxtool:CalendarExtender ID="Calendar" runat="server" TodaysDateFormat="DD/MM/YYYY"
+                                         TargetControlID="StartDateTextBox" Format="DD/MM/YYYY"></ajaxtool:CalendarExtender>
                        <asp:RequiredFieldValidator ID="reqyearstart" ValidationGroup="insert" Display="Dynamic"
                             runat="server" ForeColor="Red" ControlToValidate="StartDateTextBox"
                             ErrorMessage="Required"></asp:RequiredFieldValidator>  
@@ -62,8 +62,8 @@
                                      End Date:
                                 
                       <asp:TextBox ID="EndDateTextBox" runat="server"  Text='<%# Bind("EndDate") %>' />
-                                     <ajaxtool:CalendarExtender ID="CalendarExtender1" runat="server" TodaysDateFormat="MM/dd/yyyy"
-                                         TargetControlID="EndDateTextBox" Format="MM/dd/yyyy"></ajaxtool:CalendarExtender>
+                                     <ajaxtool:CalendarExtender ID="CalendarExtender1" runat="server" TodaysDateFormat="DD/MM/YYYY"
+                                         TargetControlID="EndDateTextBox" Format="DD/MM/YYYY"></ajaxtool:CalendarExtender>
                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ValidationGroup="insert" Display="Dynamic"
                             runat="server" ForeColor="Red" ControlToValidate="EndDateTextBox"
                             ErrorMessage="Required"></asp:RequiredFieldValidator> 

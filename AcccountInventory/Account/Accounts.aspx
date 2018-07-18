@@ -73,7 +73,7 @@
                                     <asp:BoundField DataField="Phone" HeaderText="Phone" SortExpression="Phone" />
 
                                     <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
-                                    <asp:BoundField DataField="YearStart" HeaderText="YearStart" SortExpression="YearStart" ApplyFormatInEditMode="true" DataFormatString="{0:d}" />
+                                    <asp:BoundField DataField="YearStart" HeaderText="YearStart" SortExpression="YearStart" ApplyFormatInEditMode="true"  DataFormatString="{0:dd/MM/yyy}" />
 
 
                                     <asp:BoundField DataField="ID" Visible="false" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />

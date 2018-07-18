@@ -157,15 +157,15 @@ namespace AcccountInventory
 
                     for (int i = 1; i <= 5; i++)
                     {
-                        DropDownList ddPA = (DropDownList)Page.Form.FindControl("ddtr" + i);
-                        if (ddPA.SelectedValue != "")
+                        DropDownList ddl = (DropDownList)Page.Form.FindControl("ddtr" + i);
+                        if (ddl.SelectedValue != "")
                         {
 
                             TextBox txtDescriptiontr = (TextBox)Page.Form.FindControl("txtDescriptiontr_" + i);
                             TextBox txtDebitTr = (TextBox)Page.Form.FindControl("txtDebittr_" + i);
                             TextBox txtCreditTr = (TextBox)Page.Form.FindControl("txtCredittr_" + i);
 
-                            int accountId = Convert.ToInt32(ddPA.SelectedValue);
+                            int accountId = Convert.ToInt32(ddl.SelectedValue);
                             string desc = Convert.ToString(txtDescriptiontr.Text);
                             int debit = Convert.ToInt32(txtDebitTr.Text);
                             int credit = Convert.ToInt32(txtCreditTr.Text);

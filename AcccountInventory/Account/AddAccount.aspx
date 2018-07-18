@@ -129,7 +129,7 @@
                                     YearStart:
                        
             
-                      <asp:TextBox ID="YearStartTextBox" ReadOnly="true" runat="server" Text='<%# Bind("YearStart") %>' />
+                      <asp:TextBox ID="YearStartTextBox" ReadOnly="true" runat="server" Text='<%# Bind("YearStart","{0:dd/MM/yyy}") %>' />
                                    <%-- <ajaxtool:CalendarExtender ID="Calendar" runat="server" TodaysDateFormat="MM/dd/yyyy"
                                         TargetControlID="YearStartTextBox" Format="MM/dd/yyyy"></ajaxtool:CalendarExtender>
                                   --%>

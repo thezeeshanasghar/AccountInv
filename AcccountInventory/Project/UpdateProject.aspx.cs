@@ -13,5 +13,10 @@ namespace AcccountInventory
         {
 
         }
+
+        protected void Project_Updated(object sender, SqlDataSourceStatusEventArgs e)
+        {
+            lblSuccessMessage.Text = "Data Updated Successfully";
+        }
     }
 }

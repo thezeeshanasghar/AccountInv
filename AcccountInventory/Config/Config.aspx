@@ -53,9 +53,9 @@
           
             
            
-            <asp:BoundField DataField="StartDate" HeaderText="Start Date" SortExpression="StartDate" ApplyFormatInEditMode="true"  DataFormatString="{0:d}"  />
+            <asp:BoundField DataField="StartDate" HeaderText="Start Date" SortExpression="StartDate" ApplyFormatInEditMode="true"  DataFormatString="{0:dd/MM/yyy}"  />
             
-             <asp:BoundField DataField="EndDate" HeaderText="End Date" SortExpression="EndDate" ApplyFormatInEditMode="true"  DataFormatString="{0:d}"  />
+             <asp:BoundField DataField="EndDate" HeaderText="End Date" SortExpression="EndDate" ApplyFormatInEditMode="true"  DataFormatString="{0:dd/MM/yyy}"  />
              <asp:BoundField DataField="CompanyName" HeaderText="Company Name" SortExpression="CompanyName"  />
             
              <asp:BoundField DataField="ID" Visible="false" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />

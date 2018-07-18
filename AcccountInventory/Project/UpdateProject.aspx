@@ -94,7 +94,8 @@
                              UpdateCommand="UPDATE [Project] SET [Code] = @Code, [Description] = @Description,
                              [Location] = @Location, [Responsible] = @Responsible WHERE [ID] = @ID"
                              DeleteCommand="DELETE FROM [Project] WHERE [ID] = @ID"
-                             InsertCommand="INSERT INTO [Project] ([Code], [Description], [Location], [Responsible]) VALUES (@Code, @Description, @Location, @Responsible)">
+                             InsertCommand="INSERT INTO [Project] ([Code], [Description], [Location], [Responsible]) VALUES (@Code, @Description, @Location, @Responsible)"
+                            OnUpdated="Project_Updated">
                              
                             <DeleteParameters>
                                 <asp:Parameter Name="ID" Type="Int32" />

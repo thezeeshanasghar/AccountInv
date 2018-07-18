@@ -148,7 +148,8 @@
                             [Credit] = @Credit, [Address] = @Address, [Phone] = @Phone, [Email] = @Email, 
                             [Active] = @Active, [YearStart] = @YearStart WHERE [ID] = @ID" DeleteCommand="DELETE FROM [Account] WHERE [ID] = @ID"
                              InsertCommand="INSERT INTO [Account] ([AccountCode], [Name], [ProjectCode], [Type], [Debit], [Credit], [Address], [Phone], [Email], [Active], [YearStart], [Created])
-                             VALUES (@AccountCode, @Name, @ProjectCode, @Type, @Debit, @Credit, @Address, @Phone, @Email, @Active, @YearStart, @Created)">
+                             VALUES (@AccountCode, @Name, @ProjectCode, @Type, @Debit, @Credit, @Address, @Phone, @Email, @Active, @YearStart, @Created)"
+                            OnUpdated="Account_Updated">
                              
                             
                             <DeleteParameters>

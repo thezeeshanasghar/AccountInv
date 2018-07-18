@@ -15,6 +15,22 @@ namespace AcccountInventory
         protected void Page_Load(object sender, EventArgs e)
         {
             getConfigData();
+            FormViewRow row = FormView1.Row;
+            DropDownList selected = (DropDownList)row.FindControl("ddType");
+            TextBox address = (TextBox)row.FindControl("AddressTextBox");
+            TextBox phone = (TextBox)row.FindControl("PhoneTextBox");
+            TextBox email = (TextBox)row.FindControl("EmailTextBox");
+            string type = selected.SelectedItem.Value;
+            if (type == "H-1" || type == "H-2")
+            {
+                address.Enabled = false;
+                phone.Enabled = false;
+                email.Enabled = false;
+                address.BackColor = Color.FromName("#d6d1cb");
+                phone.BackColor = Color.FromName("#d6d1cb");
+                email.BackColor = Color.FromName("#d6d1cb");
+
+            }
         }
         protected void getConfigData()
         {
@@ -41,9 +57,24 @@ namespace AcccountInventory
             // the data row.
             TextBox debit = (TextBox)row.FindControl("DebitTextBox");
             TextBox creidt = (TextBox)row.FindControl("CreditTextBox");
+            DropDownList selected = (DropDownList)row.FindControl("ddType");
+            TextBox address = (TextBox)row.FindControl("AddressTextBox");
+            TextBox phone = (TextBox)row.FindControl("PhoneTextBox");
+            TextBox email = (TextBox)row.FindControl("EmailTextBox");
             if (debit.Text != "0")
             {
                 creidt.Text = "0";
+                string type = selected.SelectedItem.Value;
+                if (type == "H-1" || type == "H-2")
+                {
+                    address.Enabled = false;
+                    phone.Enabled = false;
+                    email.Enabled = false;
+                    address.BackColor = Color.FromName("#d6d1cb");
+                    phone.BackColor = Color.FromName("#d6d1cb");
+                    email.BackColor = Color.FromName("#d6d1cb");
+
+                }
             }
         }
 
@@ -52,9 +83,24 @@ namespace AcccountInventory
             FormViewRow row = FormView1.Row;
             TextBox debit = (TextBox)row.FindControl("DebitTextBox");
             TextBox creidt = (TextBox)row.FindControl("CreditTextBox");
+            DropDownList selected = (DropDownList)row.FindControl("ddType");
+            TextBox address = (TextBox)row.FindControl("AddressTextBox");
+            TextBox phone = (TextBox)row.FindControl("PhoneTextBox");
+            TextBox email = (TextBox)row.FindControl("EmailTextBox");
             if (creidt.Text != "0")
             {
                 debit.Text = "0";
+                string type = selected.SelectedItem.Value;
+                if (type == "H-1" || type == "H-2")
+                {
+                    address.Enabled = false;
+                    phone.Enabled = false;
+                    email.Enabled = false;
+                    address.BackColor = Color.FromName("#d6d1cb");
+                    phone.BackColor = Color.FromName("#d6d1cb");
+                    email.BackColor = Color.FromName("#d6d1cb");
+
+                }
             }
         }
         protected void ddType_SelectedIndexChanged(object sender, EventArgs e)
@@ -81,6 +127,11 @@ namespace AcccountInventory
                 phone.Enabled = true;
                 email.Enabled = true;
             }
+        }
+
+        protected void Account_Updated(object sender, SqlDataSourceStatusEventArgs e)
+        {
+            lblSuccessMessage.Text = "Data Updated Successfully";
         }
     }
 }
