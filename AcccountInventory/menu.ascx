@@ -44,6 +44,7 @@
                     <span class="opener">Transactions</span>
                     <ul>
                         <li><a runat="server"  href="~/Transaction/Transaction.aspx">Add Transaction</a></li>
+                        <li><a runat="server"  href="~/Transaction/Transactions.aspx">Transactions</a></li>
                     </ul>
                 </li>
                 <li>

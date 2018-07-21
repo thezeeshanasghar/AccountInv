@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace AcccountInventory
+namespace AcccountInventory.Transaction
 {
     public partial class Transaction : System.Web.UI.Page
     {
@@ -167,8 +168,8 @@ namespace AcccountInventory
 
                             int accountId = Convert.ToInt32(ddl.SelectedValue);
                             string desc = Convert.ToString(txtDescriptiontr.Text);
-                            int debit = Convert.ToInt32(txtDebitTr.Text);
-                            int credit = Convert.ToInt32(txtCreditTr.Text);
+                            float debit = float.Parse(txtDebitTr.Text, CultureInfo.InvariantCulture);
+                            float credit = float.Parse(txtCreditTr.Text, CultureInfo.InvariantCulture);
 
                             //insert in transchild
                             string q = "INSERT INTO TransChild(TransParentID,AccountID,Description,Debit,Credit)"
@@ -196,8 +197,8 @@ namespace AcccountInventory
 
         protected void txtDebittr_1_TextChanged(object sender, EventArgs e)
         {
-            int totalDebit = 0;
-            int totalCredit = 0;
+            float totalDebit = 0;
+            float totalCredit = 0;
             for (int i = 1; i <= 5; i++)
             {
                 DropDownList ddPA = (DropDownList)Page.Form.FindControl("ddtr" + i);
@@ -206,8 +207,8 @@ namespace AcccountInventory
 
                     TextBox txtDebitTr = (TextBox)Page.Form.FindControl("txtDebittr_" + i);
                     TextBox txtCreditTr = (TextBox)Page.Form.FindControl("txtCredittr_" + i);
-                    int debit = txtDebitTr.Text != "" ? Convert.ToInt32(txtDebitTr.Text) : 0;
-                    int credit = txtCreditTr.Text != "" ? Convert.ToInt32(txtCreditTr.Text) : 0;
+                    float debit = txtDebitTr.Text != "" ? float.Parse(txtDebitTr.Text, CultureInfo.InstalledUICulture) : 0;
+                    float credit = txtCreditTr.Text != "" ? float.Parse(txtCreditTr.Text, CultureInfo.InstalledUICulture) : 0;
 
                     if (debit > 0)
                     {

@@ -158,6 +158,7 @@
     <Content Include="Account\UpdateAccount.aspx" />
     <Content Include="Config\UpdateConfig.aspx" />
     <Content Include="Project\UpdateProject.aspx" />
+    <Content Include="Transaction\Transactions.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -278,6 +279,13 @@
     </Compile>
     <Compile Include="Project\UpdateProject.aspx.designer.cs">
       <DependentUpon>UpdateProject.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\Transactions.aspx.cs">
+      <DependentUpon>Transactions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Transaction\Transactions.aspx.designer.cs">
+      <DependentUpon>Transactions.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />

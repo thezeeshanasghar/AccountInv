@@ -4,8 +4,8 @@
     [TransParentID]          INT NOT NULL,
     [AccountID]          INT NOT NULL,
     [Description] NVARCHAR(MAX) NULL,
-    [Debit]         BIGINT CONSTRAINT [DF_TransChild_Debit] DEFAULT ((0)) NOT NULL,
-    [Credit]        BIGINT CONSTRAINT [DF_TransChild_Credit] DEFAULT ((0)) NOT NULL,
+    [Debit]         FLOAT CONSTRAINT [DF_TransChild_Debit] DEFAULT ((0)) NOT NULL,
+    [Credit]        FLOAT CONSTRAINT [DF_TransChild_Credit] DEFAULT ((0)) NOT NULL,
     
     CONSTRAINT [PK_TransChild] PRIMARY KEY CLUSTERED ([ID] ASC),
 	CONSTRAINT [FK_TransChild_TransParent] FOREIGN KEY([TransParentID]) REFERENCES [dbo].[TransParent] ([ID]), 
