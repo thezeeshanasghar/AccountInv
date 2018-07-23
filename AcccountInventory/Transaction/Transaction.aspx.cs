@@ -60,6 +60,10 @@ namespace AcccountInventory.Transaction
                 lblDateError.Text = "Date should lie between fiscal year date";
                 lblDateError.ForeColor = Color.Red;
             }
+            else
+            {
+                lblDateError.Visible = false;
+            }
         }
 
         protected void ddProjectCode_SelectedIndexChanged(object sender, EventArgs e)

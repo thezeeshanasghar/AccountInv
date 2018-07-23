@@ -1,8 +1,23 @@
 ﻿body {
 }
 .ddColumn tr td:first-child {
+    width:200px;
+}
+
+.ddColumn tr td:nth-child(2) {
     width:165px;
 }
-.ddColumn tr td:nth-child(4) {
-    width:100px;
+
+.ddColumn tr td:nth-child(3) {
+    width:180px;
+}
+
+.ddColumn tr td:nth-child(4){
+    width:127px;
+}
+.ddColumn tr td:nth-child(5){
+    width:127px;
+}
+.ddColumn tr td input[type=number] {
+    width:127px;
 }

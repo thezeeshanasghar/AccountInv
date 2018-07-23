@@ -8,11 +8,6 @@
 
 
 <!DOCTYPE HTML>
-<!--
-	Editorial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 
 <html>
 <head runat="server">
@@ -271,16 +266,15 @@
                                     </div>
                                     <div style="margin-left: 20%;" class="col-4-medium">
                                         <asp:Label ID="lblTotalDebit" runat="server" Text="Tota Debit"></asp:Label>
-                                        <asp:TextBox ID="txtTotalDebit" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtTotalDebit" Enabled="false" runat="server"></asp:TextBox>
                                     </div>
                                     <div class="col-4-medium">
                                         <asp:Label ID="lblTotalCredit" runat="server" Text="Tota Credit"></asp:Label>
-                                        <asp:TextBox ID="txtTotalCredit" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtTotalCredit" Enabled="false" runat="server"></asp:TextBox>
                                     </div> 
 
-                                    <div class="col-4-medium">
-                                       
-                                           <asp:Label ID="lblDifference" runat="server" Text="Difference(debit-credit)"></asp:Label>
+                                    <div style="margin-left: 415px;" class="col-4-medium">
+                                         <asp:Label ID="lblDifference" runat="server" Text="Difference(debit-credit)"></asp:Label>
                                         <asp:TextBox ID="txtDifference" runat="server" Enabled="false"></asp:TextBox>
                                     </div>
 
