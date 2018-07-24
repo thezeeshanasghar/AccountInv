@@ -17,7 +17,8 @@ namespace AcccountInventory.Transaction
         {
             if (!IsPostBack)
             {
-                txtDate.Text = DateTime.Now.Date.ToString("MM/dd/yyyy");
+                txtDate.Text = DateTime.Now.Date.ToString("dd/MM/yyyy");
+                txtDate.Attributes.Add("readonly", "true");
                 lblStartDate.Visible = false;
                 lblEndDate.Visible = false;
                 lblDateError.Visible = false;
@@ -41,8 +42,8 @@ namespace AcccountInventory.Transaction
             SqlDataReader sdr = cmd.ExecuteReader();
             while (sdr.Read())
             {
-                lblStartDate.Text = Convert.ToDateTime(sdr["StartDate"]).ToString("MM/dd/yy");
-                lblEndDate.Text = Convert.ToDateTime(sdr["EndDate"]).ToString("MM/dd/yy");
+                lblStartDate.Text = Convert.ToDateTime(sdr["StartDate"]).ToString("dd/MM/yy");
+                lblEndDate.Text = Convert.ToDateTime(sdr["EndDate"]).ToString("dd/MM/yy");
             }
             lblStartDate.Visible = true;
             lblEndDate.Visible = true;
@@ -51,9 +52,12 @@ namespace AcccountInventory.Transaction
 
         protected void txtDate_TextChanged(object sender, EventArgs e)
         {
-            DateTime selectedDate = Convert.ToDateTime(txtDate.Text);
-            DateTime startDate = Convert.ToDateTime(lblStartDate.Text);
-            DateTime endDate = Convert.ToDateTime(lblEndDate.Text);
+           // DateTime selectedDate = Convert.ToDateTime(txtDate.Text);
+            DateTime selectedDate = DateTime.ParseExact(txtDate.Text, "dd/MM/yyyy", null);
+
+            DateTime startDate = DateTime.ParseExact(lblStartDate.Text, "dd/MM/yy", null);
+            DateTime endDate = DateTime.ParseExact(lblEndDate.Text, "dd/MM/yy", null);
+            
             if (selectedDate.Date < startDate.Date || selectedDate.Date > endDate.Date)
             {
                 lblDateError.Visible = true;
@@ -143,7 +147,9 @@ namespace AcccountInventory.Transaction
             {
                 lblDateError.Visible = false;
                 //insert in transparent
-                DateTime pDate = Convert.ToDateTime(txtDate.Text);
+               // DateTime pDate = Convert.ToDateTime(txtDate.Text);
+                DateTime pDate = DateTime.ParseExact(txtDate.Text, "dd/MM/yyyy", null);
+
                 int pAccountId = Convert.ToInt32(ddPA.SelectedValue);
                 string description = txtDescription.Text;
                 string ref1 = txtRefNumber1.Text;

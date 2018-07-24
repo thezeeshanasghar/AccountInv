@@ -51,8 +51,8 @@
                                         <asp:Label ID="Label1" runat="server" Text="Date"></asp:Label>
 
                                         <asp:TextBox ID="txtDate" runat="server" OnTextChanged="txtDate_TextChanged" AutoPostBack="true" />
-                                        <ajaxtool:CalendarExtender ID="Calendar" runat="server" TodaysDateFormat="MM/dd/yyyy"
-                                            TargetControlID="txtDate" Format="MM/dd/yyyy"></ajaxtool:CalendarExtender>
+                                        <ajaxtool:CalendarExtender ID="Calendar" runat="server" TodaysDateFormat="dd/MM/yyyy"
+                                            TargetControlID="txtDate" Format="dd/MM/yyyy"></ajaxtool:CalendarExtender>
                                         <asp:RequiredFieldValidator ID="reqyDate" ValidationGroup="insert" Display="Dynamic"
                                             runat="server" ForeColor="Red" ControlToValidate="txtDate"
                                             ErrorMessage="Required"></asp:RequiredFieldValidator>
