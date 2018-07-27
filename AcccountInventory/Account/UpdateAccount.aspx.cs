@@ -44,7 +44,7 @@ namespace AcccountInventory
             {
                 FormViewRow row = FormView1.Row;
                 TextBox YearStart = (TextBox)row.FindControl("YearStartTextBox");
-                YearStart.Text = Convert.ToDateTime(sdr["StartDate"]).ToString("MM/dd/yy");
+                YearStart.Text = Convert.ToDateTime(sdr["StartDate"]).ToString("dd/MM/yyyy");
 
             }
 

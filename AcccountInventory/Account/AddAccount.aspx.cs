@@ -36,7 +36,7 @@ namespace AcccountInventory
             {
                 FormViewRow row = FormView1.Row;
                 TextBox YearStart = (TextBox)row.FindControl("YearStartTextBox");
-                YearStart.Text= Convert.ToDateTime(sdr["StartDate"]).ToString("MM/dd/yy");
+                YearStart.Text= Convert.ToDateTime(sdr["StartDate"]).ToString("dd/MM/yy");
                 
             }
           
@@ -115,6 +115,9 @@ namespace AcccountInventory
             string type = selected.SelectedItem.Value;
             if (type == "H-1" || type == "H-2")
             {
+                address.Text = null;
+                phone.Text = null;
+                email.Text = null;
                 address.Enabled = false;
                 phone.Enabled = false;
                 email.Enabled = false;

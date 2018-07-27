@@ -44,7 +44,7 @@
                                         <Columns>
                                             <asp:CommandField ShowSelectButton="True" />
                                             <asp:BoundField DataField="ID" Visible="false" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
-                                            <asp:BoundField DataField="Date" HeaderText="Date" SortExpression="Date" />
+                                            <asp:BoundField DataField="Date" HeaderText="Date" DataFormatString="{0:dd/MM/yyyy}" SortExpression="Date" />
                                             <asp:BoundField DataField="AccountID" Visible="false" HeaderText="AccountID" SortExpression="AccountID" />
                                             <asp:BoundField DataField="Description" HeaderText="Description" SortExpression="Description" />
                                             <asp:BoundField DataField="Ref1" HeaderText="Ref1" SortExpression="Ref1" />

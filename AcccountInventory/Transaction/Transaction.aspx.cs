@@ -149,7 +149,7 @@ namespace AcccountInventory.Transaction
                 //insert in transparent
                // DateTime pDate = Convert.ToDateTime(txtDate.Text);
                 DateTime pDate = DateTime.ParseExact(txtDate.Text, "dd/MM/yyyy", null);
-
+                
                 int pAccountId = Convert.ToInt32(ddPA.SelectedValue);
                 string description = txtDescription.Text;
                 string ref1 = txtRefNumber1.Text;
@@ -158,7 +158,7 @@ namespace AcccountInventory.Transaction
                 SqlConnection con = new SqlConnection(connectionString);
                 con.Open();
                 string query = "INSERT INTO TransParent(Date,AccountID,Description,Ref1,Ref2)"
-                    + "VALUES('" + pDate + "'," + pAccountId + ",'" + description + "','" + ref1 + "','" + ref2 + "'); SELECT CAST(SCOPE_IDENTITY() AS int)";
+                    + "VALUES('" + pDate.ToString("yyyy-MM-dd hh:mm:ss") + "'," + pAccountId + ",'" + description + "','" + ref1 + "','" + ref2 + "'); SELECT CAST(SCOPE_IDENTITY() AS int)";
                 SqlCommand cmd = new SqlCommand(query, con);
                 int transParentId = (int)cmd.ExecuteScalar();
 

@@ -5,18 +5,10 @@
 <%@ Register Src="~/header.ascx" TagPrefix="uc1" TagName="header" %>
 <%@ Register Src="~/scipts.ascx" TagPrefix="uc1" TagName="scipts" %>
 
-
-
-
 <!DOCTYPE HTML>
-<!--
-	Editorial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 <head runat="server">
-    <title>Editorial by HTML5 UP</title>
+    <title>Accounts</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" runat="server" href="~/assets/css/main.css" />
