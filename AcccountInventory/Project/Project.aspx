@@ -56,7 +56,7 @@
                 <asp:Label ID="lblBlock" Visible="false" runat="server" Text='<%# Eval("Block") %>' />
             </ItemTemplate>
         </asp:TemplateField>
-            <asp:TemplateField HeaderText="Code" SortExpression="Name">
+            <asp:TemplateField HeaderText="Code" SortExpression="Code">
                 <ItemTemplate>
                      <%# Eval("Code") %> 
 <%--                      <asp:TextBox style="padding: 1.75em 10px;" ID="AlternateCode" runat="server" Text='<%# Bind("AlternateCode") %>' />
@@ -95,8 +95,8 @@
 
     </asp:GridView>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
-        SelectCommand="SELECT * FROM [Project]"
-         DeleteCommand="UPDATE [Project] SET [Block]='False'  WHERE [ID] = @ID">
+        SelectCommand="SELECT * FROM [Project] ORDER BY [Code]"
+         DeleteCommand="UPDATE [Project] SET [Block]='False'  WHERE [ID] = @ID ">
         <DeleteParameters>
             <asp:Parameter Name="ID" Type="Int32" />
         </DeleteParameters>

@@ -48,7 +48,7 @@
                                             <asp:Label ID="lblActive" Visible="false" runat="server" Text='<%# Eval("Active") %>' />
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Code-Proj Code" SortExpression="Name">
+                                    <asp:TemplateField HeaderText="Code-Proj Code" HeaderStyle-Width="170" SortExpression="Name">
                                         <ItemTemplate>
                                             <%# Eval("AccountCode") %> -  <%# Eval("Code") %>
                                             <%--                      <asp:TextBox style="padding: 1.75em 10px;" ID="AlternateCode" runat="server" Text='<%# Bind("AlternateCode") %>' />
@@ -92,7 +92,7 @@
                             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
                                 SelectCommand="SELECT [AccountCode], [Name], [ProjectCode], [Type], [Debit], 
         [Credit], [Address], [Phone], [Email], [YearStart], a.ID,p.Code, [Active] FROM Account AS a
-        INNER JOIN  Project AS p ON a.ProjectCode=p.Id"
+        INNER JOIN  Project AS p ON a.ProjectCode=p.Id ORDER BY [Code]"
                                 DeleteCommand="UPDATE [Account] SET [Active]='False'  WHERE [ID] = @ID">
                                 <DeleteParameters>
                                     <asp:Parameter Name="ID" Type="Int32" />
