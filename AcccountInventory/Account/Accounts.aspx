@@ -92,7 +92,7 @@
                             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
                                 SelectCommand="SELECT [AccountCode], [Name], [ProjectCode], [Type], [Debit], 
         [Credit], [Address], [Phone], [Email], [YearStart], a.ID,p.Code, [Active] FROM Account AS a
-        INNER JOIN  Project AS p ON a.ProjectCode=p.Id ORDER BY [Code]"
+        INNER JOIN  Project AS p ON a.ProjectCode=p.Id ORDER BY [AccountCode]"
                                 DeleteCommand="UPDATE [Account] SET [Active]='False'  WHERE [ID] = @ID">
                                 <DeleteParameters>
                                     <asp:Parameter Name="ID" Type="Int32" />
