@@ -15,6 +15,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" runat="server" href="~/assets/css/main.css" />
 </head>
+    <script>
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+            return true;
+        }
+   </script>
 <body class="is-preload">
 
     <!-- Wrapper -->
@@ -77,13 +85,13 @@
                                         </div>
                                         <div class="col-md-6">
                                             Debit:
-                                 <asp:TextBox ID="DebitTextBox" OnTextChanged="DebitTextBox_TextChanged" AutoPostBack="true" runat="server" Text='<%# Bind("Debit") %>' />
+                                 <asp:TextBox ID="DebitTextBox" onkeypress="return isNumberKey(event)" OnTextChanged="DebitTextBox_TextChanged" AutoPostBack="true" runat="server" Text='<%# Bind("Debit") %>' />
                                             <asp:RequiredFieldValidator ID="regdebit" runat="server" ValidationGroup="insert" Display="Dynamic" ForeColor="Red" ControlToValidate="DebitTextBox" ErrorMessage="Required"></asp:RequiredFieldValidator>
 
                                         </div>
                                         <div class="col-md-6">
                                             Credit:
-                                 <asp:TextBox ID="CreditTextBox" OnTextChanged="CreditTextBox_TextChanged" AutoPostBack="true" runat="server" Text='<%# Bind("Credit") %>' />
+                                 <asp:TextBox ID="CreditTextBox" onkeypress="return isNumberKey(event)" OnTextChanged="CreditTextBox_TextChanged" AutoPostBack="true" runat="server" Text='<%# Bind("Credit") %>' />
                                             <asp:RequiredFieldValidator ID="regxcridet" ValidationGroup="insert" Display="Dynamic"
                                                 runat="server" ForeColor="Red" ControlToValidate="CreditTextBox"
                                                 ErrorMessage="Required"></asp:RequiredFieldValidator>

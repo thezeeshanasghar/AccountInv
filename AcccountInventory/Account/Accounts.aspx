@@ -61,11 +61,11 @@
 
 
                                     <asp:BoundField DataField="Credit" HeaderText="Credit" SortExpression="Credit" />
-                                    <asp:BoundField DataField="Address" HeaderText="Address" SortExpression="Address" />
+                                    <%--<asp:BoundField DataField="Address" HeaderText="Address" SortExpression="Address" />
                                     <asp:BoundField DataField="Phone" HeaderText="Phone" SortExpression="Phone" />
 
-                                    <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
-                                    <asp:BoundField DataField="YearStart" HeaderText="YearStart" SortExpression="YearStart" ApplyFormatInEditMode="true"  DataFormatString="{0:dd/MM/yyy}" />
+                                    <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />--%>
+                                    <asp:BoundField DataField="YearStart" HeaderText="Date" SortExpression="YearStart" ApplyFormatInEditMode="true"  DataFormatString="{0:dd/MM/yyy}" />
 
 
                                     <asp:BoundField DataField="ID" Visible="false" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
