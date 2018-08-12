@@ -52,12 +52,12 @@ namespace AcccountInventory.Transaction
 
         protected void txtDate_TextChanged(object sender, EventArgs e)
         {
-           // DateTime selectedDate = Convert.ToDateTime(txtDate.Text);
+            // DateTime selectedDate = Convert.ToDateTime(txtDate.Text);
             DateTime selectedDate = DateTime.ParseExact(txtDate.Text, "dd/MM/yyyy", null);
 
             DateTime startDate = DateTime.ParseExact(lblStartDate.Text, "dd/MM/yy", null);
             DateTime endDate = DateTime.ParseExact(lblEndDate.Text, "dd/MM/yy", null);
-            
+
             if (selectedDate.Date < startDate.Date || selectedDate.Date > endDate.Date)
             {
                 lblDateError.Visible = true;
@@ -147,18 +147,21 @@ namespace AcccountInventory.Transaction
             {
                 lblDateError.Visible = false;
                 //insert in transparent
-               // DateTime pDate = Convert.ToDateTime(txtDate.Text);
+                // DateTime pDate = Convert.ToDateTime(txtDate.Text);
                 DateTime pDate = DateTime.ParseExact(txtDate.Text, "dd/MM/yyyy", null);
-                
+
                 int pAccountId = Convert.ToInt32(ddPA.SelectedValue);
                 string description = txtDescription.Text;
                 string ref1 = txtRefNumber1.Text;
                 string ref2 = txtRefNumber2.Text;
+                float totalDebit = float.Parse(txtTotalDebit.Text, CultureInfo.InvariantCulture);
+                float totalCredit = float.Parse(txtTotalCredit.Text, CultureInfo.InvariantCulture);
+                float difference = float.Parse(txtDifference.Text, CultureInfo.InvariantCulture);
                 string connectionString = ConfigurationManager.ConnectionStrings["AccountConnectionString"].ToString();
                 SqlConnection con = new SqlConnection(connectionString);
                 con.Open();
-                string query = "INSERT INTO TransParent(Date,AccountID,Description,Ref1,Ref2)"
-                    + "VALUES('" + pDate.ToString("yyyy-MM-dd hh:mm:ss") + "'," + pAccountId + ",'" + description + "','" + ref1 + "','" + ref2 + "'); SELECT CAST(SCOPE_IDENTITY() AS int)";
+                string query = "INSERT INTO TransParent(Date,AccountID,Description,Ref1,Ref2,TotalDebit,TotalCredit,Difference)"
+                    + "VALUES('" + pDate.ToString("yyyy-MM-dd hh:mm:ss") + "'," + pAccountId + ",'" + description + "','" + ref1 + "','" + ref2 + "'," + totalDebit + "," + totalCredit + "," + difference + "); SELECT CAST(SCOPE_IDENTITY() AS int)";
                 SqlCommand cmd = new SqlCommand(query, con);
                 int transParentId = (int)cmd.ExecuteScalar();
 
@@ -182,15 +185,20 @@ namespace AcccountInventory.Transaction
                             float credit = float.Parse(txtCreditTr.Text, CultureInfo.InvariantCulture);
 
                             //insert in transchild
-                            string q = "INSERT INTO TransChild(TransParentID,AccountID,Description,Debit,Credit)"
-                              + "VALUES(" + transParentId + "," + accountId + ",'" + desc + "'," + debit + "," + credit + ")";
+                            string q = "INSERT INTO TransChild(TransParentID,AccountID,Description,Debit,Credit,Date)"
+                              + "VALUES(" + transParentId + "," + accountId + ",'" + desc + "'," + debit + "," + credit + ",'" + pDate.ToString("yyyy-MM-dd hh:mm:ss") + "')";
                             SqlCommand cmd1 = new SqlCommand(q, con);
                             cmd1.ExecuteNonQuery();
                         }
                         if (i == 5)
-                            lblDateError.Text = "Your transaction is saved successfully";
-                        lblDateError.ForeColor = Color.Green;
-                        lblDateError.Visible = true;
+                        {
+                            lblDateError.Text = "Your transaction is saved successfully, see result in <a href='/Transaction/Transactions.aspx'>Transactions</a>";
+                            lblDateError.ForeColor = Color.Green;
+                            lblDateError.Visible = true;
+                            form.Visible = false;
+
+                        }
+
                     }
                     if (con.State == System.Data.ConnectionState.Open)
                         con.Close();
@@ -238,5 +246,7 @@ namespace AcccountInventory.Transaction
             txtTotalCredit.Text = totalCredit.ToString();
             txtDifference.Text = (totalDebit - totalCredit).ToString();
         }
+
+
     }
 }

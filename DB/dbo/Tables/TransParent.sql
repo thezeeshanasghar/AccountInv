@@ -7,5 +7,8 @@
     [Ref1]          NVARCHAR (50)  NULL,
     [Ref2]         NVARCHAR(50)         NULL
     CONSTRAINT [PK_TransParent] PRIMARY KEY CLUSTERED ([ID] ASC), 
+    [TotalDebit] FLOAT NULL, 
+    [TotalCredit] FLOAT NULL, 
+    [Difference] FLOAT NULL, 
     CONSTRAINT [FK_TransParent_Account] FOREIGN KEY ([AccountID]) REFERENCES [Account]([ID])
 )

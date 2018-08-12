@@ -43,12 +43,13 @@
                                     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource1">
                                         <Columns>
                                             <asp:CommandField ShowSelectButton="True" />
-                                            <asp:BoundField DataField="ID" Visible="false" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
+                                            <asp:BoundField DataField="ID" HeaderText="Serial Number" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
                                             <asp:BoundField DataField="Date" HeaderText="Date" DataFormatString="{0:dd/MM/yyyy}" SortExpression="Date" />
                                             <asp:BoundField DataField="AccountID" Visible="false" HeaderText="AccountID" SortExpression="AccountID" />
                                             <asp:BoundField DataField="Description" HeaderText="Description" SortExpression="Description" />
-                                            <asp:BoundField DataField="Ref1" HeaderText="Ref1" SortExpression="Ref1" />
-                                            <asp:BoundField DataField="Ref2" HeaderText="Ref2" SortExpression="Ref2" />
+                                            <asp:BoundField DataField="TotalDebit" HeaderText="Total Debit" SortExpression="TotalDebit" />
+                                            <asp:BoundField DataField="TotalCredit" HeaderText="Total Credit" SortExpression="TotalCredit" />
+                                            <asp:BoundField DataField="Difference" HeaderText="Difference" SortExpression="Difference" />
                                         </Columns>
                                     </asp:GridView>
                                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>" SelectCommand="SELECT * FROM [TransParent]"></asp:SqlDataSource>
@@ -56,9 +57,10 @@
 
                                     <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource2">
                                         <Columns>
-                                            <asp:BoundField DataField="ID" Visible="false" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
+                                            <asp:BoundField DataField="ID"  HeaderText="Serial Number" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
                                             <asp:BoundField DataField="TransParentID" Visible="false" HeaderText="TransParentID" SortExpression="TransParentID" />
                                             <asp:BoundField DataField="AccountID" Visible="false" HeaderText="AccountID" SortExpression="AccountID" />
+                                            <asp:BoundField DataField="Date" HeaderText="Date" DataFormatString="{0:dd/MM/yyyy}" SortExpression="Date" />
                                             <asp:BoundField DataField="Description" HeaderText="Description" SortExpression="Description" />
                                             <asp:BoundField DataField="Debit" HeaderText="Debit" SortExpression="Debit" />
                                             <asp:BoundField DataField="Credit" HeaderText="Credit" SortExpression="Credit" />
