@@ -35,11 +35,8 @@
                                 <header class="major">
                                     <h2>Transactions</h2>
                                 </header>
-
-                                <br />
-                                <br />
                                 <div class="table-wrapper">
-
+                                    <div style="height:400px;overflow-y:scroll;">
                                     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource1">
                                         <Columns>
                                             <asp:CommandField ShowSelectButton="True" />
@@ -53,7 +50,8 @@
                                         </Columns>
                                     </asp:GridView>
                                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>" SelectCommand="SELECT * FROM [TransParent]"></asp:SqlDataSource>
-                                    <h2>Child Transactions</h2>
+                                    </div>
+                                     <h2>Child Transactions</h2>
 
                                     <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource2">
                                         <Columns>
