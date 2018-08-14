@@ -26,9 +26,9 @@
         <div id="main">
             <div class="inner">
                 <uc1:header runat="server" ID="header" />
-              
+
                 <form id="form1" runat="server">
-                     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
                             <section>
@@ -36,35 +36,56 @@
                                     <h2>Transactions</h2>
                                 </header>
                                 <div class="table-wrapper">
-                                    <div style="height:400px;overflow-y:scroll;">
-                                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource1">
-                                        <Columns>
-                                            <asp:CommandField ShowSelectButton="True" />
-                                            <asp:BoundField DataField="ID" HeaderText="Serial Number" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
-                                            <asp:BoundField DataField="Date" HeaderText="Date" DataFormatString="{0:dd/MM/yyyy}" SortExpression="Date" />
-                                            <asp:BoundField DataField="AccountID" Visible="false" HeaderText="AccountID" SortExpression="AccountID" />
-                                            <asp:BoundField DataField="Description" HeaderText="Description" SortExpression="Description" />
-                                            <asp:BoundField DataField="TotalDebit" HeaderText="Total Debit" SortExpression="TotalDebit" />
-                                            <asp:BoundField DataField="TotalCredit" HeaderText="Total Credit" SortExpression="TotalCredit" />
-                                            <asp:BoundField DataField="Difference" HeaderText="Difference" SortExpression="Difference" />
-                                        </Columns>
-                                    </asp:GridView>
-                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>" SelectCommand="SELECT * FROM [TransParent]"></asp:SqlDataSource>
+                                    <div style="height: 400px; overflow-y: scroll;">
+                                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource1">
+                                            <Columns>
+                                                <asp:CommandField ShowSelectButton="True" />
+                                                <asp:BoundField DataField="ID" HeaderText="Sr. No" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
+                                                <asp:BoundField DataField="Date" HeaderText="Date" DataFormatString="{0:dd/MM/yyyy}" SortExpression="Date" />
+                                                <asp:BoundField DataField="PACode" HeaderText="Code" SortExpression="PACode" />
+                                                <asp:BoundField DataField="AccountID" Visible="false" HeaderText="AccountID" SortExpression="AccountID" />
+                                                <asp:BoundField DataField="Description" HeaderText="Description" SortExpression="Description" />
+                                                <asp:BoundField DataField="TotalDebit" HeaderText="Total Debit" SortExpression="TotalDebit" />
+                                                <asp:BoundField DataField="TotalCredit" HeaderText="Total Credit" SortExpression="TotalCredit" />
+                                                <asp:BoundField DataField="Difference" HeaderText="Difference" SortExpression="Difference" />
+                                            </Columns>
+                                        </asp:GridView>
+                                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
+                                            SelectCommand="SELECT tp.*,CONCAT(a.AccountCode, '-',p.Code) AS PACode
+                                             FROM
+                                                 TransParent tp
+                                                  INNER JOIN
+                                                 Account a
+                                                  ON tp.AccountID = a.ID
+                                                  INNER JOIN
+                                                 Project p
+                                                  ON a.ProjectCode = p.ID"></asp:SqlDataSource>
                                     </div>
-                                     <h2>Child Transactions</h2>
+                                    <h2>Child Transactions</h2>
 
                                     <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource2">
                                         <Columns>
-                                            <asp:BoundField DataField="ID"  HeaderText="Serial Number" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
+                                            <asp:BoundField DataField="ID" HeaderText="Serial Number" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
                                             <asp:BoundField DataField="TransParentID" Visible="false" HeaderText="TransParentID" SortExpression="TransParentID" />
                                             <asp:BoundField DataField="AccountID" Visible="false" HeaderText="AccountID" SortExpression="AccountID" />
                                             <asp:BoundField DataField="Date" HeaderText="Date" DataFormatString="{0:dd/MM/yyyy}" SortExpression="Date" />
+                                            <asp:BoundField DataField="PACode" HeaderText="Code" SortExpression="PACode" />
                                             <asp:BoundField DataField="Description" HeaderText="Description" SortExpression="Description" />
                                             <asp:BoundField DataField="Debit" HeaderText="Debit" SortExpression="Debit" />
                                             <asp:BoundField DataField="Credit" HeaderText="Credit" SortExpression="Credit" />
                                         </Columns>
                                     </asp:GridView>
-                                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>" SelectCommand="SELECT * FROM [TransChild] WHERE ([TransParentID] = @TransParentID)">
+                                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>" 
+                                        SelectCommand="SELECT tc.*,CONCAT(a.AccountCode, '-',p.Code) AS PACode
+                                             FROM
+                                                 TransChild tc
+                                                  INNER JOIN
+                                                 Account a
+                                                  ON tc.AccountID = a.ID
+                                                  INNER JOIN
+                                                 Project p
+                                                  ON a.ProjectCode = p.ID
+                                             WHERE ([TransParentID] = @TransParentID)">
                                         <SelectParameters>
                                             <asp:ControlParameter ControlID="GridView1" DefaultValue="0" Name="TransParentID" PropertyName="SelectedValue" Type="Int32" />
                                         </SelectParameters>
