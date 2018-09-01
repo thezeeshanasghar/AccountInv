@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Transactions.aspx.cs" Inherits="AcccountInventory.Transaction.Transactions" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="List.aspx.cs" Inherits="AcccountInventory.Transaction.JV.List" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxtool" %>
 <%@ Register Src="~/menu.ascx" TagPrefix="uc1" TagName="menu" %>
@@ -114,3 +114,4 @@
 
 </body>
 </html>
+

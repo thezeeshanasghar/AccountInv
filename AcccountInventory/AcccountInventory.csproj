@@ -154,16 +154,16 @@
     <Content Include="README.txt" />
     <Content Include="scipts.ascx" />
     <Content Include="ThemePage.aspx" />
-    <Content Include="Transaction\CP\Transaction.aspx" />
-    <Content Include="Transaction\CP\Transactions.aspx" />
-    <Content Include="Transaction\CR\Transaction.aspx" />
-    <Content Include="Transaction\CR\Transactions.aspx" />
+    <Content Include="Transaction\CP\Add.aspx" />
+    <Content Include="Transaction\CP\List.aspx" />
+    <Content Include="Transaction\CR\Add.aspx" />
+    <Content Include="Transaction\CR\List.aspx" />
     <Content Include="Transaction\BP\Transaction.aspx" />
     <Content Include="Transaction\BP\Transactions.aspx" />
     <Content Include="Transaction\BR\Transaction.aspx" />
     <Content Include="Transaction\BR\Transactions.aspx" />
-    <Content Include="Transaction\JV\Transaction.aspx" />
-    <Content Include="Transaction\JV\Transactions.aspx" />
+    <Content Include="Transaction\JV\Add.aspx" />
+    <Content Include="Transaction\JV\List.aspx" />
     <Content Include="Transaction\Transaction.aspx" />
     <Content Include="Account\UpdateAccount.aspx" />
     <Content Include="Config\UpdateConfig.aspx" />
@@ -262,21 +262,33 @@
     <Compile Include="ThemePage.aspx.designer.cs">
       <DependentUpon>ThemePage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Transaction\CP\Transaction.aspx.cs">
-      <DependentUpon>Transaction.aspx</DependentUpon>
+    <Compile Include="Transaction\CP\Add.aspx.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Transaction\CP\Transactions.aspx.cs">
-      <DependentUpon>Transactions.aspx</DependentUpon>
+    <Compile Include="Transaction\CP\Add.aspx.designer.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\CP\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Transaction\CR\Transaction.aspx.cs">
-      <DependentUpon>Transaction.aspx</DependentUpon>
+    <Compile Include="Transaction\CP\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\CR\Add.aspx.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Transaction\CR\Transactions.aspx.cs">
-      <DependentUpon>Transactions.aspx</DependentUpon>
+    <Compile Include="Transaction\CR\Add.aspx.designer.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\CR\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Transaction\CR\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
     </Compile>
     <Compile Include="Transaction\BP\Transaction.aspx.cs">
       <DependentUpon>Transaction.aspx</DependentUpon>
@@ -294,13 +306,19 @@
       <DependentUpon>Transactions.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Transaction\JV\Transaction.aspx.cs">
-      <DependentUpon>Transaction.aspx</DependentUpon>
+    <Compile Include="Transaction\JV\Add.aspx.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Transaction\JV\Transactions.aspx.cs">
-      <DependentUpon>Transactions.aspx</DependentUpon>
+    <Compile Include="Transaction\JV\Add.aspx.designer.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\JV\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Transaction\JV\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
     </Compile>
     <Compile Include="Transaction\Transaction.aspx.cs">
       <DependentUpon>Transaction.aspx</DependentUpon>

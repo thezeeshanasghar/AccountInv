@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace AcccountInventory.Transaction
+namespace AcccountInventory.Transaction.CR
 {
-    public partial class Transaction : System.Web.UI.Page
+    public partial class Add : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -192,7 +188,7 @@ namespace AcccountInventory.Transaction
                         }
                         if (i == 5)
                         {
-                            lblDateError.Text = "Your transaction is saved successfully with voucher # "+ transParentId + ", see result in <a href='/Transaction/Transactions.aspx'>Transactions</a>";
+                            lblDateError.Text = "Your transaction is saved successfully with voucher # " + transParentId + ", see result in <a href='/Transaction/Transactions.aspx'>Transactions</a>";
                             lblDateError.ForeColor = Color.Green;
                             lblDateError.Visible = true;
                             form.Visible = false;

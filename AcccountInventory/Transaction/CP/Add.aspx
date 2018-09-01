@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Transaction.aspx.cs" Inherits="AcccountInventory.Transaction.Transaction" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Add.aspx.cs" Inherits="AcccountInventory.Transaction.CP.Add" %>
 
 <%@ Register Src="~/menu.ascx" TagPrefix="uc1" TagName="menu" %>
 

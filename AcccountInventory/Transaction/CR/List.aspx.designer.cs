@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AcccountInventory.Transaction {
+namespace AcccountInventory.Transaction.CR {
     
     
-    public partial class Transactions {
+    public partial class List {
         
         /// <summary>
         /// header control.
