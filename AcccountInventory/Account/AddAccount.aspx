@@ -15,14 +15,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" runat="server" href="~/assets/css/main.css" />
 </head>
-    <script>
-        function isNumberKey(evt) {
-            var charCode = (evt.which) ? evt.which : evt.keyCode;
-            if (charCode > 31 && (charCode < 48 || charCode > 57))
-                return false;
-            return true;
-        }
-   </script>
+<script>
+    function isNumberKey(evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    }
+</script>
 <body class="is-preload">
 
     <!-- Wrapper -->
@@ -35,13 +35,13 @@
 
                 <form id="form1" runat="server">
                     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                        <ContentTemplate>
-                            <section>
-                                <header class="major">
-                                    <h2>Add New Account</h2>
-                                </header>
 
+                    <section>
+                        <header class="major">
+                            <h2>Add New Account</h2>
+                        </header>
+                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                            <ContentTemplate>
                                 <asp:Label ID="lblSuccessMessage" runat="server" Text="Label" CssClass="alert alert-success"> </asp:Label>
                                 <asp:FormView ID="FormView1" runat="server" DefaultMode="Insert"
                                     DataKeyNames="ID" DataSourceID="SqlDataSource1">
@@ -126,7 +126,7 @@
                                             <%-- <ajaxtool:CalendarExtender ID="Calendar" runat="server" TodaysDateFormat="MM/dd/yyyy"
                                         TargetControlID="YearStartTextBox" Format="MM/dd/yyyy"></ajaxtool:CalendarExtender>
                                             --%>
-                                           <%-- <asp:RequiredFieldValidator ID="reqyearstart" ValidationGroup="insert" Display="Dynamic"
+                                            <%-- <asp:RequiredFieldValidator ID="reqyearstart" ValidationGroup="insert" Display="Dynamic"
                                                 runat="server" ForeColor="Red" ControlToValidate="YearStartTextBox"
                                                 ErrorMessage="Required"></asp:RequiredFieldValidator>--%>
                                         </div>
@@ -138,36 +138,37 @@
 
                                     </InsertItemTemplate>
                                 </asp:FormView>
-                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
-                                    SelectCommand="SELECT [ID], [Code] FROM [Project]"
-                                    InsertCommand="INSERT INTO [Account] ([Name], [ProjectCode], [Phone], [Email], [YearStart], [Type], [Address],[AccountCode],[Active],[Debit],[Credit]) 
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
+                            SelectCommand="SELECT [ID], [Code] FROM [Project]"
+                            InsertCommand="INSERT INTO [Account] ([Name], [ProjectCode], [Phone], [Email], [YearStart], [Type], [Address],[AccountCode],[Active],[Debit],[Credit]) 
       VALUES (@Name, @ProjectCode, @Phone, @Email, @YearStart, @Type, @Address,@AccountCode,'true',@Debit,@Credit)"
-                                    OnInserted="AccountInserted">
-                                    <SelectParameters>
-                                        <asp:QueryStringParameter DefaultValue="0" Name="ID" QueryStringField="ID" Type="Int32" />
-                                    </SelectParameters>
+                            OnInserted="AccountInserted">
+                            <SelectParameters>
+                                <asp:QueryStringParameter DefaultValue="0" Name="ID" QueryStringField="ID" Type="Int32" />
+                            </SelectParameters>
 
-                                    <InsertParameters>
+                            <InsertParameters>
 
-                                        <asp:Parameter Name="AccountCode" Type="String" />
-                                        <asp:Parameter Name="Name" Type="String" />
-                                        <asp:Parameter Name="ProjectCode" Type="String" />
-                                        <asp:Parameter Name="Phone" Type="String" />
-                                        <asp:Parameter Name="Email" Type="String" />
-                                        <asp:Parameter Name="Active" Type="String" />
-                                        <asp:Parameter DbType="Date" Name="YearStart" />
-                                        <asp:Parameter Name="Type" Type="String" />
-                                        <asp:Parameter Name="Address" Type="String" />
-                                    </InsertParameters>
-                                </asp:SqlDataSource>
+                                <asp:Parameter Name="AccountCode" Type="String" />
+                                <asp:Parameter Name="Name" Type="String" />
+                                <asp:Parameter Name="ProjectCode" Type="String" />
+                                <asp:Parameter Name="Phone" Type="String" />
+                                <asp:Parameter Name="Email" Type="String" />
+                                <asp:Parameter Name="Active" Type="String" />
+                                <asp:Parameter DbType="Date" Name="YearStart" />
+                                <asp:Parameter Name="Type" Type="String" />
+                                <asp:Parameter Name="Address" Type="String" />
+                            </InsertParameters>
+                        </asp:SqlDataSource>
 
-                                <asp:HyperLink ID="lnkAccount" href="Accounts.aspx" runat="server">
+                        <asp:HyperLink ID="lnkAccount" href="Accounts.aspx" runat="server">
                             Back To List
-                                </asp:HyperLink>
+                        </asp:HyperLink>
 
-                            </section>
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
+                    </section>
+
                 </form>
             </div>
         </div>
