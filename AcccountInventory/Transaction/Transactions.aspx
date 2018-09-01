@@ -35,12 +35,21 @@
                                 <header class="major">
                                     <h2>Transactions</h2>
                                 </header>
+                                <div class="row">
+                                    <div class="col-6-small">
+                                        <asp:TextBox ID="txtSearch" placeholder="Enter voucher number" runat="server"></asp:TextBox>
+                                    </div>
+                                    <div class="col-4-small">
+                                        <asp:Button ID="btnSearchTransaction" runat="server" OnClick="btnSearchTransaction_Click" Text="Search" />
+                                    </div>
+                                </div>
+                                <br />
                                 <div class="table-wrapper">
-                                    <div style="height: 400px; overflow-y: scroll;">
+                                    <div style="height: 300px; overflow-y: scroll;">
                                         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource1">
                                             <Columns>
                                                 <asp:CommandField ShowSelectButton="True" />
-                                                <asp:BoundField DataField="ID" HeaderText="Sr. No" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
+                                                <asp:BoundField DataField="ID" HeaderText="Voucher #" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
                                                 <asp:BoundField DataField="Date" HeaderText="Date" DataFormatString="{0:dd/MM/yyyy}" SortExpression="Date" />
                                                 <asp:BoundField DataField="PACode" HeaderText="Code" SortExpression="PACode" />
                                                 <asp:BoundField DataField="AccountID" Visible="false" HeaderText="AccountID" SortExpression="AccountID" />
@@ -75,7 +84,7 @@
                                             <asp:BoundField DataField="Credit" HeaderText="Credit" SortExpression="Credit" />
                                         </Columns>
                                     </asp:GridView>
-                                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>" 
+                                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
                                         SelectCommand="SELECT tc.*,CONCAT(a.AccountCode, '-',p.Code) AS PACode
                                              FROM
                                                  TransChild tc

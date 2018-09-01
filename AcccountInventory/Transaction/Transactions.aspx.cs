@@ -13,5 +13,10 @@ namespace AcccountInventory.Transaction
         {
 
         }
+
+        protected void btnSearchTransaction_Click(object sender, EventArgs e)
+        {
+            //TODO: Generate datatable and set data source property of gridview and call databind func
+        }
     }
 }

@@ -192,7 +192,7 @@ namespace AcccountInventory.Transaction
                         }
                         if (i == 5)
                         {
-                            lblDateError.Text = "Your transaction is saved successfully, see result in <a href='/Transaction/Transactions.aspx'>Transactions</a>";
+                            lblDateError.Text = "Your transaction is saved successfully with voucher # "+ transParentId + ", see result in <a href='/Transaction/Transactions.aspx'>Transactions</a>";
                             lblDateError.ForeColor = Color.Green;
                             lblDateError.Visible = true;
                             form.Visible = false;
