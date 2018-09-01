@@ -9,9 +9,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace AcccountInventory.Transaction
+namespace AcccountInventory.Transaction.BR
 {
-    public partial class Transaction : System.Web.UI.Page
+    public partial class Add : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -192,7 +192,7 @@ namespace AcccountInventory.Transaction
                         }
                         if (i == 5)
                         {
-                            lblDateError.Text = "Your transaction is saved successfully with voucher # "+ transParentId + ", see result in <a href='/Transaction/Transactions.aspx'>Transactions</a>";
+                            lblDateError.Text = "Your transaction is saved successfully with voucher # " + transParentId + ", see result in <a href='/Transaction/Transactions.aspx'>Transactions</a>";
                             lblDateError.ForeColor = Color.Green;
                             lblDateError.Visible = true;
                             form.Visible = false;
@@ -212,41 +212,5 @@ namespace AcccountInventory.Transaction
             }
 
         }
-
-        protected void txtDebittr_1_TextChanged(object sender, EventArgs e)
-        {
-            float totalDebit = 0;
-            float totalCredit = 0;
-            for (int i = 1; i <= 5; i++)
-            {
-                DropDownList ddPA = (DropDownList)Page.Form.FindControl("ddtr" + i);
-                if (ddPA.SelectedValue != "")
-                {
-
-                    TextBox txtDebitTr = (TextBox)Page.Form.FindControl("txtDebittr_" + i);
-                    TextBox txtCreditTr = (TextBox)Page.Form.FindControl("txtCredittr_" + i);
-                    float debit = txtDebitTr.Text != "" ? float.Parse(txtDebitTr.Text, CultureInfo.InstalledUICulture) : 0;
-                    float credit = txtCreditTr.Text != "" ? float.Parse(txtCreditTr.Text, CultureInfo.InstalledUICulture) : 0;
-
-                    if (debit > 0)
-                    {
-                        credit = 0;
-                        txtCreditTr.Text = "0";
-                    }
-                    else if (credit > 0)
-                    {
-                        debit = 0;
-                        txtDebitTr.Text = "0";
-                    }
-                    totalDebit += debit;
-                    totalCredit += credit;
-                }
-            }
-            txtTotalDebit.Text = totalDebit.ToString();
-            txtTotalCredit.Text = totalCredit.ToString();
-            txtDifference.Text = (totalDebit - totalCredit).ToString();
-        }
-
-
     }
 }

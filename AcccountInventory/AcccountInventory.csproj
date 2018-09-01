@@ -158,12 +158,12 @@
     <Content Include="Transaction\CP\List.aspx" />
     <Content Include="Transaction\CR\Add.aspx" />
     <Content Include="Transaction\CR\List.aspx" />
-    <Content Include="Transaction\BP\Transaction.aspx" />
-    <Content Include="Transaction\BP\Transactions.aspx" />
-    <Content Include="Transaction\BR\Transaction.aspx" />
-    <Content Include="Transaction\BR\Transactions.aspx" />
     <Content Include="Transaction\JV\Add.aspx" />
     <Content Include="Transaction\JV\List.aspx" />
+    <Content Include="Transaction\BP\Add.aspx" />
+    <Content Include="Transaction\BP\List.aspx" />
+    <Content Include="Transaction\BR\Add.aspx" />
+    <Content Include="Transaction\BR\List.aspx" />
     <Content Include="Transaction\Transaction.aspx" />
     <Content Include="Account\UpdateAccount.aspx" />
     <Content Include="Config\UpdateConfig.aspx" />
@@ -264,12 +264,21 @@
     </Compile>
     <Compile Include="Transaction\CP\Add.aspx.cs">
       <DependentUpon>Add.aspx</DependentUpon>
+	</Compile>
+    <Compile Include="Transaction\BP\Add.aspx.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Transaction\CP\Add.aspx.designer.cs">
       <DependentUpon>Add.aspx</DependentUpon>
     </Compile>
     <Compile Include="Transaction\CP\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+	  </Compile>
+    <Compile Include="Transaction\BP\Add.aspx.designer.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\BP\List.aspx.cs">
       <DependentUpon>List.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -278,6 +287,12 @@
     </Compile>
     <Compile Include="Transaction\CR\Add.aspx.cs">
       <DependentUpon>Add.aspx</DependentUpon>
+	  </Compile>
+    <Compile Include="Transaction\BP\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\BR\Add.aspx.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Transaction\CR\Add.aspx.designer.cs">
@@ -285,26 +300,19 @@
     </Compile>
     <Compile Include="Transaction\CR\List.aspx.cs">
       <DependentUpon>List.aspx</DependentUpon>
+	  </Compile>
+    <Compile Include="Transaction\BR\Add.aspx.designer.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\BR\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Transaction\CR\List.aspx.designer.cs">
       <DependentUpon>List.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Transaction\BP\Transaction.aspx.cs">
-      <DependentUpon>Transaction.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Transaction\BP\Transactions.aspx.cs">
-      <DependentUpon>Transactions.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Transaction\BR\Transaction.aspx.cs">
-      <DependentUpon>Transaction.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Transaction\BR\Transactions.aspx.cs">
-      <DependentUpon>Transactions.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
+    <Compile Include="Transaction\BR\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
     </Compile>
     <Compile Include="Transaction\JV\Add.aspx.cs">
       <DependentUpon>Add.aspx</DependentUpon>
