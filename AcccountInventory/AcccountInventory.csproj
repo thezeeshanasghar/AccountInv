@@ -154,14 +154,14 @@
     <Content Include="README.txt" />
     <Content Include="scipts.ascx" />
     <Content Include="ThemePage.aspx" />
+    <Content Include="Transaction\BP\Add.aspx" />
+    <Content Include="Transaction\BP\List.aspx" />
+    <Content Include="Transaction\BR\Add.aspx" />
+    <Content Include="Transaction\BR\List.aspx" />
     <Content Include="Transaction\CP\Transaction.aspx" />
     <Content Include="Transaction\CP\Transactions.aspx" />
     <Content Include="Transaction\CR\Transaction.aspx" />
     <Content Include="Transaction\CR\Transactions.aspx" />
-    <Content Include="Transaction\BP\Transaction.aspx" />
-    <Content Include="Transaction\BP\Transactions.aspx" />
-    <Content Include="Transaction\BR\Transaction.aspx" />
-    <Content Include="Transaction\BR\Transactions.aspx" />
     <Content Include="Transaction\JV\Transaction.aspx" />
     <Content Include="Transaction\JV\Transactions.aspx" />
     <Content Include="Transaction\Transaction.aspx" />
@@ -262,6 +262,34 @@
     <Compile Include="ThemePage.aspx.designer.cs">
       <DependentUpon>ThemePage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Transaction\BP\Add.aspx.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Transaction\BP\Add.aspx.designer.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\BP\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Transaction\BP\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\BR\Add.aspx.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Transaction\BR\Add.aspx.designer.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\BR\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Transaction\BR\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Transaction\CP\Transaction.aspx.cs">
       <DependentUpon>Transaction.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -275,22 +303,6 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Transaction\CR\Transactions.aspx.cs">
-      <DependentUpon>Transactions.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Transaction\BP\Transaction.aspx.cs">
-      <DependentUpon>Transaction.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Transaction\BP\Transactions.aspx.cs">
-      <DependentUpon>Transactions.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Transaction\BR\Transaction.aspx.cs">
-      <DependentUpon>Transaction.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Transaction\BR\Transactions.aspx.cs">
       <DependentUpon>Transactions.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
