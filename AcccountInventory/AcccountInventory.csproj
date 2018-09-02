@@ -65,7 +65,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\js\custom.js" />
-    <Content Include="Config\AddConfig.aspx" />
     <Content Include="Project\AddProject.aspx" />
     <Content Include="assets\css\custom.css" />
     <Content Include="Config\Config.aspx" />
@@ -188,13 +187,6 @@
     <Compile Include="Account\AddAccount.aspx.designer.cs">
       <DependentUpon>AddAccount.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Config\AddConfig.aspx.cs">
-      <DependentUpon>AddConfig.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Config\AddConfig.aspx.designer.cs">
-      <DependentUpon>AddConfig.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Project\AddProject.aspx.cs">
       <DependentUpon>AddProject.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -264,7 +256,8 @@
     </Compile>
     <Compile Include="Transaction\CP\Add.aspx.cs">
       <DependentUpon>Add.aspx</DependentUpon>
-	</Compile>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Transaction\BP\Add.aspx.cs">
       <DependentUpon>Add.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -274,7 +267,8 @@
     </Compile>
     <Compile Include="Transaction\CP\List.aspx.cs">
       <DependentUpon>List.aspx</DependentUpon>
-	  </Compile>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Transaction\BP\Add.aspx.designer.cs">
       <DependentUpon>Add.aspx</DependentUpon>
     </Compile>
@@ -287,7 +281,8 @@
     </Compile>
     <Compile Include="Transaction\CR\Add.aspx.cs">
       <DependentUpon>Add.aspx</DependentUpon>
-	  </Compile>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Transaction\BP\List.aspx.designer.cs">
       <DependentUpon>List.aspx</DependentUpon>
     </Compile>
@@ -300,7 +295,8 @@
     </Compile>
     <Compile Include="Transaction\CR\List.aspx.cs">
       <DependentUpon>List.aspx</DependentUpon>
-	  </Compile>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Transaction\BR\Add.aspx.designer.cs">
       <DependentUpon>Add.aspx</DependentUpon>
     </Compile>
