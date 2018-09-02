@@ -41,8 +41,23 @@
                     </ul>
                 </li>
                 <li>
-                    <span class="opener">Transactions</span>
-                    <ul>
+                    <span class="opener">Vouchers</span>
+                     <ul>
+                        <li><a runat="server"  href="~/Transaction/CP/Add.aspx">Add Cash Payment</a></li>
+                        <li><a runat="server"  href="~/Transaction/CP/List.aspx">Cash Payments</a></li>
+                    
+                        <li><a runat="server"  href="~/Transaction/CR/Add.aspx">Add Cash Receipt</a></li>
+                        <li><a runat="server"  href="~/Transaction/CR/List.aspx">Cash Receipts</a></li>
+                    
+                        <li><a runat="server"  href="~/Transaction/BP/Add.aspx">Add Bank Payment</a></li>
+                        <li><a runat="server"  href="~/Transaction/BP/List.aspx">Bank Payments</a></li>
+                    
+                        <li><a runat="server"  href="~/Transaction/BR/Add.aspx">Add Bank Receipt</a></li>
+                        <li><a runat="server"  href="~/Transaction/BR/List.aspx">Bank Receipts</a></li>
+                   
+                        <li><a runat="server"  href="~/Transaction/JV/Add.aspx">Add Journal Voucher</a></li>
+                        <li><a runat="server"  href="~/Transaction/JV/List.aspx">Journal Vouchers</a></li>
+                    
                         <li><a runat="server"  href="~/Transaction/Transaction.aspx">Add Transaction</a></li>
                         <li><a runat="server"  href="~/Transaction/Transactions.aspx">Transactions</a></li>
                     </ul>

@@ -8,7 +8,7 @@
 <!DOCTYPE HTML>
 <html>
 <head runat="server">
-    <title>Transactions</title>
+    <title>Bank Receipts</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" runat="server" href="~/assets/css/main.css" />
@@ -60,12 +60,12 @@
                                             </Columns>
                                         </asp:GridView>
                                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
-                                            SelectCommand="SELECT tp.*,CONCAT(a.AccountCode, '-',p.Code) AS PACode
+                                            SelectCommand="SELECT brp.*,CONCAT(a.AccountCode, '-',p.Code) AS PACode
                                              FROM
-                                                 TransParent tp
+                                                 BRParent brp
                                                   INNER JOIN
                                                  Account a
-                                                  ON tp.AccountID = a.ID
+                                                  ON brp.AccountID = a.ID
                                                   INNER JOIN
                                                  Project p
                                                   ON a.ProjectCode = p.ID"></asp:SqlDataSource>
@@ -75,7 +75,7 @@
                                     <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource2">
                                         <Columns>
                                             <asp:BoundField DataField="ID" HeaderText="Serial Number" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
-                                            <asp:BoundField DataField="TransParentID" Visible="false" HeaderText="TransParentID" SortExpression="TransParentID" />
+                                            <asp:BoundField DataField="BRParentID" Visible="false" HeaderText="BRParentID" SortExpression="BRParentID" />
                                             <asp:BoundField DataField="AccountID" Visible="false" HeaderText="AccountID" SortExpression="AccountID" />
                                             <asp:BoundField DataField="Date" HeaderText="Date" DataFormatString="{0:dd/MM/yyyy}" SortExpression="Date" />
                                             <asp:BoundField DataField="PACode" HeaderText="Code" SortExpression="PACode" />
@@ -85,18 +85,18 @@
                                         </Columns>
                                     </asp:GridView>
                                     <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
-                                        SelectCommand="SELECT tc.*,CONCAT(a.AccountCode, '-',p.Code) AS PACode
+                                        SelectCommand="SELECT brc.*,CONCAT(a.AccountCode, '-',p.Code) AS PACode
                                              FROM
-                                                 TransChild tc
+                                                 BRChild brc
                                                   INNER JOIN
                                                  Account a
-                                                  ON tc.AccountID = a.ID
+                                                  ON brc.AccountID = a.ID
                                                   INNER JOIN
                                                  Project p
                                                   ON a.ProjectCode = p.ID
-                                             WHERE ([TransParentID] = @TransParentID)">
+                                             WHERE ([BRParentID] = @BRParentID)">
                                         <SelectParameters>
-                                            <asp:ControlParameter ControlID="GridView1" DefaultValue="0" Name="TransParentID" PropertyName="SelectedValue" Type="Int32" />
+                                            <asp:ControlParameter ControlID="GridView1" DefaultValue="0" Name="BRParentID" PropertyName="SelectedValue" Type="Int32" />
                                         </SelectParameters>
                                     </asp:SqlDataSource>
 

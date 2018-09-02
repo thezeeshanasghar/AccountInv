@@ -160,12 +160,12 @@ namespace AcccountInventory.Transaction.BP
                 string connectionString = ConfigurationManager.ConnectionStrings["AccountConnectionString"].ToString();
                 SqlConnection con = new SqlConnection(connectionString);
                 con.Open();
-                string query = "INSERT INTO TransParent(Date,AccountID,Description,Ref1,Ref2,TotalDebit,TotalCredit,Difference)"
+                string query = "INSERT INTO BPParent(Date,AccountID,Description,Ref1,Ref2,TotalDebit,TotalCredit,Difference)"
                     + "VALUES('" + pDate.ToString("yyyy-MM-dd hh:mm:ss") + "'," + pAccountId + ",'" + description + "','" + ref1 + "','" + ref2 + "'," + totalDebit + "," + totalCredit + "," + difference + "); SELECT CAST(SCOPE_IDENTITY() AS int)";
                 SqlCommand cmd = new SqlCommand(query, con);
-                int transParentId = (int)cmd.ExecuteScalar();
+                int bpParentId = (int)cmd.ExecuteScalar();
 
-                if (transParentId > 0)
+                if (bpParentId > 0)
                 {
 
 
@@ -185,14 +185,14 @@ namespace AcccountInventory.Transaction.BP
                             float credit = float.Parse(txtCreditTr.Text, CultureInfo.InvariantCulture);
 
                             //insert in transchild
-                            string q = "INSERT INTO TransChild(TransParentID,AccountID,Description,Debit,Credit,Date)"
-                              + "VALUES(" + transParentId + "," + accountId + ",'" + desc + "'," + debit + "," + credit + ",'" + pDate.ToString("yyyy-MM-dd hh:mm:ss") + "')";
+                            string q = "INSERT INTO BPChild(BPParentID,AccountID,Description,Debit,Credit,Date)"
+                              + "VALUES(" + bpParentId + "," + accountId + ",'" + desc + "'," + debit + "," + credit + ",'" + pDate.ToString("yyyy-MM-dd hh:mm:ss") + "')";
                             SqlCommand cmd1 = new SqlCommand(q, con);
                             cmd1.ExecuteNonQuery();
                         }
                         if (i == 5)
                         {
-                            lblDateError.Text = "Your transaction is saved successfully with voucher # " + transParentId + ", see result in <a href='/Transaction/Transactions.aspx'>Transactions</a>";
+                            lblDateError.Text = "Your transaction is saved successfully with voucher # " + bpParentId + ", see result in <a href='/Transaction/BP/List.aspx'>Transactions</a>";
                             lblDateError.ForeColor = Color.Green;
                             lblDateError.Visible = true;
                             form.Visible = false;
@@ -211,6 +211,39 @@ namespace AcccountInventory.Transaction.BP
                 lblDateError.Visible = true;
             }
 
+        }
+        protected void txtDebittr_1_TextChanged(object sender, EventArgs e)
+        {
+            float totalDebit = 0;
+            float totalCredit = 0;
+            for (int i = 1; i <= 5; i++)
+            {
+                DropDownList ddPA = (DropDownList)Page.Form.FindControl("ddtr" + i);
+                if (ddPA.SelectedValue != "")
+                {
+
+                    TextBox txtDebitTr = (TextBox)Page.Form.FindControl("txtDebittr_" + i);
+                    TextBox txtCreditTr = (TextBox)Page.Form.FindControl("txtCredittr_" + i);
+                    float debit = txtDebitTr.Text != "" ? float.Parse(txtDebitTr.Text, CultureInfo.InstalledUICulture) : 0;
+                    float credit = txtCreditTr.Text != "" ? float.Parse(txtCreditTr.Text, CultureInfo.InstalledUICulture) : 0;
+
+                    if (debit > 0)
+                    {
+                        credit = 0;
+                        txtCreditTr.Text = "0";
+                    }
+                    else if (credit > 0)
+                    {
+                        debit = 0;
+                        txtDebitTr.Text = "0";
+                    }
+                    totalDebit += debit;
+                    totalCredit += credit;
+                }
+            }
+            txtTotalDebit.Text = totalDebit.ToString();
+            txtTotalCredit.Text = totalCredit.ToString();
+            txtDifference.Text = (totalDebit - totalCredit).ToString();
         }
     }
 }

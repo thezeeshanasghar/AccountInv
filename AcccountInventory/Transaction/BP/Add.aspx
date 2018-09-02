@@ -11,7 +11,7 @@
 
 <html>
 <head runat="server">
-    <title>Add Transaction</title>
+    <title>Add Bank Payment</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" runat="server" href="~/assets/css/main.css" />

@@ -160,12 +160,12 @@ namespace AcccountInventory.Transaction.JV
                 string connectionString = ConfigurationManager.ConnectionStrings["AccountConnectionString"].ToString();
                 SqlConnection con = new SqlConnection(connectionString);
                 con.Open();
-                string query = "INSERT INTO TransParent(Date,AccountID,Description,Ref1,Ref2,TotalDebit,TotalCredit,Difference)"
+                string query = "INSERT INTO JVParent(Date,AccountID,Description,Ref1,Ref2,TotalDebit,TotalCredit,Difference)"
                     + "VALUES('" + pDate.ToString("yyyy-MM-dd hh:mm:ss") + "'," + pAccountId + ",'" + description + "','" + ref1 + "','" + ref2 + "'," + totalDebit + "," + totalCredit + "," + difference + "); SELECT CAST(SCOPE_IDENTITY() AS int)";
                 SqlCommand cmd = new SqlCommand(query, con);
-                int transParentId = (int)cmd.ExecuteScalar();
+                int jvParentId = (int)cmd.ExecuteScalar();
 
-                if (transParentId > 0)
+                if (jvParentId > 0)
                 {
 
 
@@ -185,14 +185,14 @@ namespace AcccountInventory.Transaction.JV
                             float credit = float.Parse(txtCreditTr.Text, CultureInfo.InvariantCulture);
 
                             //insert in transchild
-                            string q = "INSERT INTO TransChild(TransParentID,AccountID,Description,Debit,Credit,Date)"
-                              + "VALUES(" + transParentId + "," + accountId + ",'" + desc + "'," + debit + "," + credit + ",'" + pDate.ToString("yyyy-MM-dd hh:mm:ss") + "')";
+                            string q = "INSERT INTO JVChild(JVParentID,AccountID,Description,Debit,Credit,Date)"
+                              + "VALUES(" + jvParentId + "," + accountId + ",'" + desc + "'," + debit + "," + credit + ",'" + pDate.ToString("yyyy-MM-dd hh:mm:ss") + "')";
                             SqlCommand cmd1 = new SqlCommand(q, con);
                             cmd1.ExecuteNonQuery();
                         }
                         if (i == 5)
                         {
-                            lblDateError.Text = "Your transaction is saved successfully with voucher # " + transParentId + ", see result in <a href='/Transaction/Transactions.aspx'>Transactions</a>";
+                            lblDateError.Text = "Your transaction is saved successfully with voucher # " + jvParentId + ", see result in <a href='/Transaction/JV/List.aspx'>Transactions</a>";
                             lblDateError.ForeColor = Color.Green;
                             lblDateError.Visible = true;
                             form.Visible = false;
