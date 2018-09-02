@@ -143,70 +143,80 @@ namespace AcccountInventory.Transaction.JV
         }
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (ddPA.SelectedValue != "")
+            float totalDebit = float.Parse(txtTotalDebit.Text, CultureInfo.InvariantCulture);
+            float totalCredit = float.Parse(txtTotalCredit.Text, CultureInfo.InvariantCulture);
+            float difference = float.Parse(txtDifference.Text, CultureInfo.InvariantCulture);
+            if (difference == 0)
             {
-                lblDateError.Visible = false;
-                //insert in transparent
-                // DateTime pDate = Convert.ToDateTime(txtDate.Text);
-                DateTime pDate = DateTime.ParseExact(txtDate.Text, "dd/MM/yyyy", null);
-
-                int pAccountId = Convert.ToInt32(ddPA.SelectedValue);
-                string description = txtDescription.Text;
-                string ref1 = txtRefNumber1.Text;
-                string ref2 = txtRefNumber2.Text;
-                float totalDebit = float.Parse(txtTotalDebit.Text, CultureInfo.InvariantCulture);
-                float totalCredit = float.Parse(txtTotalCredit.Text, CultureInfo.InvariantCulture);
-                float difference = float.Parse(txtDifference.Text, CultureInfo.InvariantCulture);
-                string connectionString = ConfigurationManager.ConnectionStrings["AccountConnectionString"].ToString();
-                SqlConnection con = new SqlConnection(connectionString);
-                con.Open();
-                string query = "INSERT INTO JVParent(Date,AccountID,Description,Ref1,Ref2,TotalDebit,TotalCredit,Difference)"
-                    + "VALUES('" + pDate.ToString("yyyy-MM-dd hh:mm:ss") + "'," + pAccountId + ",'" + description + "','" + ref1 + "','" + ref2 + "'," + totalDebit + "," + totalCredit + "," + difference + "); SELECT CAST(SCOPE_IDENTITY() AS int)";
-                SqlCommand cmd = new SqlCommand(query, con);
-                int jvParentId = (int)cmd.ExecuteScalar();
-
-                if (jvParentId > 0)
+                if (ddPA.SelectedValue != "")
                 {
+                    lblDateError.Visible = false;
+                    //insert in transparent
+                    // DateTime pDate = Convert.ToDateTime(txtDate.Text);
+                    DateTime pDate = DateTime.ParseExact(txtDate.Text, "dd/MM/yyyy", null);
 
+                    int pAccountId = Convert.ToInt32(ddPA.SelectedValue);
+                    string description = txtDescription.Text;
+                    string ref1 = txtRefNumber1.Text;
+                    string ref2 = txtRefNumber2.Text;
 
-                    for (int i = 1; i <= 5; i++)
+                    string connectionString = ConfigurationManager.ConnectionStrings["AccountConnectionString"].ToString();
+                    SqlConnection con = new SqlConnection(connectionString);
+                    con.Open();
+                    string query = "INSERT INTO JVParent(Date,AccountID,Description,Ref1,Ref2,TotalDebit,TotalCredit,Difference)"
+                        + "VALUES('" + pDate.ToString("yyyy-MM-dd hh:mm:ss") + "'," + pAccountId + ",'" + description + "','" + ref1 + "','" + ref2 + "'," + totalDebit + "," + totalCredit + "," + difference + "); SELECT CAST(SCOPE_IDENTITY() AS int)";
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    int jvParentId = (int)cmd.ExecuteScalar();
+
+                    if (jvParentId > 0)
                     {
-                        DropDownList ddl = (DropDownList)Page.Form.FindControl("ddtr" + i);
-                        if (ddl.SelectedValue != "")
+
+
+                        for (int i = 1; i <= 5; i++)
                         {
+                            DropDownList ddl = (DropDownList)Page.Form.FindControl("ddtr" + i);
+                            if (ddl.SelectedValue != "")
+                            {
 
-                            TextBox txtDescriptiontr = (TextBox)Page.Form.FindControl("txtDescriptiontr_" + i);
-                            TextBox txtDebitTr = (TextBox)Page.Form.FindControl("txtDebittr_" + i);
-                            TextBox txtCreditTr = (TextBox)Page.Form.FindControl("txtCredittr_" + i);
+                                TextBox txtDescriptiontr = (TextBox)Page.Form.FindControl("txtDescriptiontr_" + i);
+                                TextBox txtDebitTr = (TextBox)Page.Form.FindControl("txtDebittr_" + i);
+                                TextBox txtCreditTr = (TextBox)Page.Form.FindControl("txtCredittr_" + i);
 
-                            int accountId = Convert.ToInt32(ddl.SelectedValue);
-                            string desc = Convert.ToString(txtDescriptiontr.Text);
-                            float debit = float.Parse(txtDebitTr.Text, CultureInfo.InvariantCulture);
-                            float credit = float.Parse(txtCreditTr.Text, CultureInfo.InvariantCulture);
+                                int accountId = Convert.ToInt32(ddl.SelectedValue);
+                                string desc = Convert.ToString(txtDescriptiontr.Text);
+                                float debit = float.Parse(txtDebitTr.Text, CultureInfo.InvariantCulture);
+                                float credit = float.Parse(txtCreditTr.Text, CultureInfo.InvariantCulture);
 
-                            //insert in transchild
-                            string q = "INSERT INTO JVChild(JVParentID,AccountID,Description,Debit,Credit,Date)"
-                              + "VALUES(" + jvParentId + "," + accountId + ",'" + desc + "'," + debit + "," + credit + ",'" + pDate.ToString("yyyy-MM-dd hh:mm:ss") + "')";
-                            SqlCommand cmd1 = new SqlCommand(q, con);
-                            cmd1.ExecuteNonQuery();
+                                //insert in transchild
+                                string q = "INSERT INTO JVChild(JVParentID,AccountID,Description,Debit,Credit,Date)"
+                                  + "VALUES(" + jvParentId + "," + accountId + ",'" + desc + "'," + debit + "," + credit + ",'" + pDate.ToString("yyyy-MM-dd hh:mm:ss") + "')";
+                                SqlCommand cmd1 = new SqlCommand(q, con);
+                                cmd1.ExecuteNonQuery();
+                            }
+                            if (i == 5)
+                            {
+                                lblDateError.Text = "Your transaction is saved successfully with voucher # " + jvParentId + ", see result in <a href='/Transaction/JV/List.aspx'>Transactions</a>";
+                                lblDateError.ForeColor = Color.Green;
+                                lblDateError.Visible = true;
+                                form.Visible = false;
+
+                            }
+
                         }
-                        if (i == 5)
-                        {
-                            lblDateError.Text = "Your transaction is saved successfully with voucher # " + jvParentId + ", see result in <a href='/Transaction/JV/List.aspx'>Transactions</a>";
-                            lblDateError.ForeColor = Color.Green;
-                            lblDateError.Visible = true;
-                            form.Visible = false;
-
-                        }
-
+                        if (con.State == System.Data.ConnectionState.Open)
+                            con.Close();
                     }
-                    if (con.State == System.Data.ConnectionState.Open)
-                        con.Close();
+                }
+                else
+                {
+                    lblDateError.Text = "Please select account holder first";
+                    lblDateError.ForeColor = Color.Red;
+                    lblDateError.Visible = true;
                 }
             }
             else
             {
-                lblDateError.Text = "Please select account holder first";
+                lblDateError.Text = "Total Debit Should be equal to Total Credit";
                 lblDateError.ForeColor = Color.Red;
                 lblDateError.Visible = true;
             }

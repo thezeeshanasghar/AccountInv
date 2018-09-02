@@ -31,7 +31,7 @@
                 <form id="form1" runat="server">
                     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                     <header class="major">
-                        <h2>Transaction</h2>
+                        <h2>Add Journal Voucher</h2>
                     </header>
                     <h3 style="text-align: center">Fiscal Year (
                          <asp:Label ID="lblStartDate" runat="server" Text="Label"></asp:Label>

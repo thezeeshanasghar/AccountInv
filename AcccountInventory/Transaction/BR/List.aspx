@@ -33,7 +33,7 @@
                         <ContentTemplate>
                             <section>
                                 <header class="major">
-                                    <h2>Transactions</h2>
+                                    <h2>Bank Receipts</h2>
                                 </header>
                                 <div class="row">
                                     <div class="col-6-small">
