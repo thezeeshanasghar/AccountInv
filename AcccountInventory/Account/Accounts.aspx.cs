@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Web;
@@ -15,19 +17,36 @@ namespace AcccountInventory
 
         }
 
-        protected void accountGrid_RowDataBound(object sender, GridViewRowEventArgs e)
+        //protected void accountGrid_RowDataBound(object sender, GridViewRowEventArgs e)
+        //{
+        //    if (e.Row.RowType == DataControlRowType.DataRow)
+        //    {
+
+        //        string lblActiveValue = ((Label)e.Row.FindControl("lblActive")).Text;
+        //        if(lblActiveValue == "False")
+        //        {
+        //            e.Row.BackColor = Color.FromName("#ffc266");
+        //        }
+        //    }
+
+        //}
+
+        protected void chkActive_CheckedChanged(object sender, EventArgs e)
         {
-            if (e.Row.RowType == DataControlRowType.DataRow)
+            CheckBox status = (CheckBox)sender;
+            GridViewRow row = (GridViewRow)status.NamingContainer;
+            int id = Convert.ToInt32(((Label)(row.FindControl("ID"))).Text);
+            bool active = status.Checked;
+            string connectionString = ConfigurationManager.ConnectionStrings["AccountConnectionString"].ToString();
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-
-                string lblActiveValue = ((Label)e.Row.FindControl("lblActive")).Text;
-                if(lblActiveValue == "False")
-                {
-                    e.Row.BackColor = Color.FromName("#ffc266");
-                  //  e.Row.ForeColor = Color.White;
-                }
+                string query = "UPDATE ACCOUNT SET Active = @active Where ID =" + id;
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.AddWithValue("@active", active);
+                con.Open();
+                command.ExecuteNonQuery();
+                con.Close();
             }
-
         }
     }
 }

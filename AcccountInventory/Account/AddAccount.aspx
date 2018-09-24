@@ -141,7 +141,7 @@
                             </ContentTemplate>
                         </asp:UpdatePanel>
                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
-                            SelectCommand="SELECT [ID], [Code] FROM [Project]"
+                            SelectCommand="SELECT [ID], [Code] FROM [Project] Where Active=1"
                             InsertCommand="INSERT INTO [Account] ([Name], [ProjectCode], [Phone], [Email], [YearStart], [Type], [Address],[AccountCode],[Active],[Debit],[Credit]) 
       VALUES (@Name, @ProjectCode, @Phone, @Email, @YearStart, @Type, @Address,@AccountCode,'true',@Debit,@Credit)"
                             OnInserted="AccountInserted">
