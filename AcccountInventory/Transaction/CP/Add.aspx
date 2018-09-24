@@ -71,7 +71,7 @@
                                             </asp:DropDownList>
                                             <asp:SqlDataSource ID="ddProjectCodeDataSource" runat="server"
                                                 ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
-                                                SelectCommand="SELECT CONCAT(a.AccountCode, '-',p.Code) AS PACode, p.ID AS ProjectId, a.ID AS AccountId FROM Project AS p INNER JOIN Account AS a ON p.ID = a.ProjectCode"></asp:SqlDataSource>
+                                                SelectCommand="SELECT CONCAT(a.AccountCode, '-',p.Code) AS PACode, p.ID AS ProjectId, a.ID AS AccountId FROM Project AS p INNER JOIN Account AS a ON p.ID = a.ProjectCode Where p.Active=1 and a.Active=1"></asp:SqlDataSource>
                                         </div>
                                         <div class="col-4-medium">
                                             <asp:Label ID="lblParticular" runat="server" Text="Particular"></asp:Label>
