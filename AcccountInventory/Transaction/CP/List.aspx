@@ -57,6 +57,14 @@
                                                 <asp:BoundField DataField="TotalDebit" HeaderText="Total Debit" SortExpression="TotalDebit" />
                                                 <asp:BoundField DataField="TotalCredit" HeaderText="Total Credit" SortExpression="TotalCredit" />
                                                 <asp:BoundField DataField="Difference" HeaderText="Difference" SortExpression="Difference" />
+                                                <asp:TemplateField HeaderText="Action">
+                                                    <ItemTemplate>
+                                                        <asp:HyperLink ID="hyperlink1" NavigateUrl='<%#Eval("ID","~/Transaction/CP/Update.aspx?ID={0}")%>'
+                                                            Target="_blank" runat="server">
+                                                         <i class='fa fa-edit' aria-hidden='true'></i>
+                                                        </asp:HyperLink>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField> 
                                             </Columns>
                                         </asp:GridView>
                                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
