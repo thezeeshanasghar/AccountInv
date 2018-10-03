@@ -116,7 +116,9 @@
                                                 </asp:TableHeaderCell>
                                             </asp:TableHeaderRow>
                                             <asp:TableRow runat="server" ID="tr_1" BorderStyle="Solid">
+                                                
                                                 <asp:TableCell>
+                                                    <asp:Literal runat="server" ID="tr_1_Id" Visible="false"></asp:Literal>
                                                     <asp:DropDownList AppendDataBoundItems="true" OnSelectedIndexChanged="ddtr1_SelectedIndexChanged"
                                                         ID="ddtr1" runat="server" DataSourceID="ddProjectCodeDataSource"
                                                         DataTextField="PACode"  DataValueField="AccountId" AutoPostBack="True">
@@ -143,9 +145,9 @@
                                                 </asp:TableCell>
 
                                             </asp:TableRow>
-
                                             <asp:TableRow runat="server" ID="tr_2">
                                                 <asp:TableCell>
+                                                     <asp:Literal runat="server" ID="tr_2_Id" Visible="false"></asp:Literal>
                                                     <asp:DropDownList AppendDataBoundItems="true" OnSelectedIndexChanged="ddtr2_SelectedIndexChanged"
                                                         ID="ddtr2" runat="server" DataSourceID="ddProjectCodeDataSource"
                                                         DataTextField="PACode" DataValueField="AccountId" AutoPostBack="True">
@@ -175,6 +177,7 @@
 
                                             <asp:TableRow runat="server" ID="tr_3">
                                                 <asp:TableCell>
+                                                    <asp:Literal runat="server" ID="tr_3_Id" Visible="false"></asp:Literal>
                                                     <asp:DropDownList AppendDataBoundItems="true" OnSelectedIndexChanged="ddtr3_SelectedIndexChanged"
                                                         ID="ddtr3" runat="server" DataSourceID="ddProjectCodeDataSource"
                                                         DataTextField="PACode" DataValueField="AccountId" AutoPostBack="True">
@@ -204,6 +207,7 @@
 
                                             <asp:TableRow runat="server" ID="tr_4">
                                                 <asp:TableCell>
+                                                    <asp:Literal runat="server" ID="tr_4_Id" Visible="false"></asp:Literal>
                                                     <asp:DropDownList AppendDataBoundItems="true" OnSelectedIndexChanged="ddtr4_SelectedIndexChanged"
                                                         ID="ddtr4" runat="server" DataSourceID="ddProjectCodeDataSource"
                                                         DataTextField="PACode" DataValueField="AccountId" AutoPostBack="True">
@@ -233,6 +237,7 @@
 
                                             <asp:TableRow runat="server" ID="tr_5">
                                                 <asp:TableCell>
+                                                     <asp:Literal runat="server" ID="tr_5_Id" Visible="false"></asp:Literal>
                                                     <asp:DropDownList AppendDataBoundItems="true" OnSelectedIndexChanged="ddtr5_SelectedIndexChanged"
                                                         ID="ddtr5" runat="server" DataSourceID="ddProjectCodeDataSource"
                                                         DataTextField="PACode" DataValueField="AccountId" AutoPostBack="True">
@@ -264,7 +269,7 @@
                                     <div class="row">
 
                                         <div style="margin-top: 16px" class="col-4-medium">
-                                            <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" />
+                                            <asp:Button ID="btnSubmit" runat="server" Text="Update" OnClick="btnSubmit_Click" />
                                         </div>
                                         <div style="margin-left: 20%;" class="col-4-medium">
                                             <asp:Label ID="lblTotalDebit" runat="server" Text="Tota Debit"></asp:Label>

@@ -256,6 +256,15 @@ namespace AcccountInventory.Transaction.CP {
         protected global::System.Web.UI.WebControls.TableRow tr_1;
         
         /// <summary>
+        /// tr_1_Id control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal tr_1_Id;
+        
+        /// <summary>
         /// ddtr1 control.
         /// </summary>
         /// <remarks>
@@ -317,6 +326,15 @@ namespace AcccountInventory.Transaction.CP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TableRow tr_2;
+        
+        /// <summary>
+        /// tr_2_Id control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal tr_2_Id;
         
         /// <summary>
         /// ddtr2 control.
@@ -382,6 +400,15 @@ namespace AcccountInventory.Transaction.CP {
         protected global::System.Web.UI.WebControls.TableRow tr_3;
         
         /// <summary>
+        /// tr_3_Id control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal tr_3_Id;
+        
+        /// <summary>
         /// ddtr3 control.
         /// </summary>
         /// <remarks>
@@ -445,6 +472,15 @@ namespace AcccountInventory.Transaction.CP {
         protected global::System.Web.UI.WebControls.TableRow tr_4;
         
         /// <summary>
+        /// tr_4_Id control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal tr_4_Id;
+        
+        /// <summary>
         /// ddtr4 control.
         /// </summary>
         /// <remarks>
@@ -506,6 +542,15 @@ namespace AcccountInventory.Transaction.CP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TableRow tr_5;
+        
+        /// <summary>
+        /// tr_5_Id control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal tr_5_Id;
         
         /// <summary>
         /// ddtr5 control.
