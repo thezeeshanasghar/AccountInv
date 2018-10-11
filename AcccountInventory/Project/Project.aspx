@@ -117,8 +117,8 @@
                             </asp:SqlDataSource>
                         </div>
                     </section>
-                    <asp:Button ID="btnOnConfirm" OnClick="btnOnConfirm_Click" Text="test" runat="server" />
-                    <asp:Button ID="btnCancel" OnClick="btnCancel_Click" Text="test" runat="server" />
+                    <asp:Button ID="btnOnConfirm" OnClick="btnOnConfirm_Click" style="display:none;" Text="test" runat="server" />
+                    <asp:Button ID="btnCancel" OnClick="btnCancel_Click" style="display:none;" Text="test" runat="server" />
                 </form>
             </div>
         </div>

@@ -86,15 +86,15 @@
                                         <div class="col-md-6">
                                             Debit:
                                  <asp:TextBox ID="DebitTextBox" onkeypress="return isNumberKey(event)" OnTextChanged="DebitTextBox_TextChanged" AutoPostBack="true" runat="server" Text='<%# Bind("Debit") %>' />
-                                            <asp:RequiredFieldValidator ID="regdebit" runat="server" ValidationGroup="insert" Display="Dynamic" ForeColor="Red" ControlToValidate="DebitTextBox" ErrorMessage="Required"></asp:RequiredFieldValidator>
+<%--                                            <asp:RequiredFieldValidator ID="regdebit" runat="server" ValidationGroup="insert" Display="Dynamic" ForeColor="Red" ControlToValidate="DebitTextBox" ErrorMessage="Required"></asp:RequiredFieldValidator>--%>
 
                                         </div>
                                         <div class="col-md-6">
                                             Credit:
                                  <asp:TextBox ID="CreditTextBox" onkeypress="return isNumberKey(event)" OnTextChanged="CreditTextBox_TextChanged" AutoPostBack="true" runat="server" Text='<%# Bind("Credit") %>' />
-                                            <asp:RequiredFieldValidator ID="regxcridet" ValidationGroup="insert" Display="Dynamic"
+                                          <%--  <asp:RequiredFieldValidator ID="regxcridet" ValidationGroup="insert" Display="Dynamic"
                                                 runat="server" ForeColor="Red" ControlToValidate="CreditTextBox"
-                                                ErrorMessage="Required"></asp:RequiredFieldValidator>
+                                                ErrorMessage="Required"></asp:RequiredFieldValidator>--%>
 
                                         </div>
 
