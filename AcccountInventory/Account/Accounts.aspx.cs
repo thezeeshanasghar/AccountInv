@@ -33,10 +33,19 @@ namespace AcccountInventory
 
         protected void chkActive_CheckedChanged(object sender, EventArgs e)
         {
+
             CheckBox status = (CheckBox)sender;
             GridViewRow row = (GridViewRow)status.NamingContainer;
             int id = Convert.ToInt32(((Label)(row.FindControl("ID"))).Text);
-            bool active = status.Checked;
+            bool active = status.Checked; 
+            ViewState["status"] = active;
+            ViewState["selectedRowId"] = id; 
+            ClientScript.RegisterStartupScript(typeof(Page), "Confirm", "<script type='text/javascript'>callConfirm();</script>");
+        }
+        protected void btnOnConfirm_Click(object sender, EventArgs e)
+        {
+            bool active = Convert.ToBoolean(ViewState["status"]);
+            int id = (int)(ViewState["selectedRowId"]);
             string connectionString = ConfigurationManager.ConnectionStrings["AccountConnectionString"].ToString();
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -47,6 +56,12 @@ namespace AcccountInventory
                 command.ExecuteNonQuery();
                 con.Close();
             }
+            Page.Response.Redirect(Page.Request.Url.ToString(), true);
+        }
+
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            Page.Response.Redirect(Page.Request.Url.ToString(), true);
         }
     }
 }

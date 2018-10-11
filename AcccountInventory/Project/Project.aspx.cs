@@ -36,16 +36,31 @@ namespace AcccountInventory
             GridViewRow row = (GridViewRow)status.NamingContainer;
             int id = Convert.ToInt32(((Label)(row.FindControl("ID"))).Text);
             bool active = status.Checked;
+            ViewState["status"] = active;
+            ViewState["selectedRowId"] = id;
+            ClientScript.RegisterStartupScript(typeof(Page), "Confirm", "<script type='text/javascript'>callConfirm();</script>");
+        }
+
+        protected void btnOnConfirm_Click(object sender, EventArgs e)
+        {
+            bool active = Convert.ToBoolean(ViewState["status"]);
+            int id = (int)(ViewState["selectedRowId"]);
             string connectionString = ConfigurationManager.ConnectionStrings["AccountConnectionString"].ToString();
             using (SqlConnection con = new SqlConnection(connectionString))
             {
-                string query = "UPDATE PROJECT SET Active = @active Where ID ="+id;
+                string query = "UPDATE PROJECT SET Active = @active Where ID =" + id;
                 SqlCommand command = new SqlCommand(query, con);
                 command.Parameters.AddWithValue("@active", active);
                 con.Open();
                 command.ExecuteNonQuery();
                 con.Close();
             }
+            Page.Response.Redirect(Page.Request.Url.ToString(), true);
+        }
+
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            Page.Response.Redirect(Page.Request.Url.ToString(), true);
         }
     }
 }

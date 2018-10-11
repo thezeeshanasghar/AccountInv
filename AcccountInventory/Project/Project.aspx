@@ -25,6 +25,17 @@
             padding: 1.75em 5px !important;
         }
     </style>
+        <script src="../assets/js/jquery.min.js"></script>
+    <script>
+        function callConfirm() {
+            if (confirm('Would you like to change the status of Project?, press Ok to continue.')) {
+                $("#btnOnConfirm").click();
+            }
+            else {
+                $("#btnCancel").click();
+            }
+        }
+    </script>
 </head>
 <body class="is-preload">
 
@@ -106,6 +117,8 @@
                             </asp:SqlDataSource>
                         </div>
                     </section>
+                    <asp:Button ID="btnOnConfirm" OnClick="btnOnConfirm_Click" Text="test" runat="server" />
+                    <asp:Button ID="btnCancel" OnClick="btnCancel_Click" Text="test" runat="server" />
                 </form>
             </div>
         </div>

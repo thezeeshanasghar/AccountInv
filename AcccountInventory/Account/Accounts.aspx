@@ -17,6 +17,17 @@
             padding: 1.75em 5px !important;
         }
     </style>
+    <script src="../assets/js/jquery.min.js"></script>
+    <script>
+        function callConfirm() {
+            if (confirm('Would you like to change the status of Account, press OK to continue.')) {
+                $("#btnOnConfirm").click();
+            }
+            else {
+                $("#btnCancel").click();
+            }
+        }
+    </script>
 </head>
 <body class="is-preload">
 
@@ -38,16 +49,15 @@
                         <br />
                         <br />
                         <div class="table-wrapper">
-                             <%--OnRowDataBound="accountGrid_RowDataBound"--%>
+                            <%--OnRowDataBound="accountGrid_RowDataBound"--%>
                             <asp:GridView ID="accountGrid" AutoGenerateColumns="False" runat="server"
-                               
                                 DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#CC9966"
                                 BorderStyle="None" BorderWidth="1px" CellPadding="4" DataKeyNames="ID">
                                 <Columns>
                                     <asp:TemplateField>
                                         <ItemTemplate>
                                             <asp:Label ID="ID" runat="server" Text='<%# Eval("ID") %>' Style="display: none;"></asp:Label>
-<%--                                            <asp:Label ID="lblActive" Visible="false" runat="server" Text='<%# Eval("Active") %>' />--%>
+                                            <%--                                            <asp:Label ID="lblActive" Visible="false" runat="server" Text='<%# Eval("Active") %>' />--%>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Code-Proj Code" HeaderStyle-Width="170" SortExpression="Name">
@@ -106,6 +116,8 @@
 
                         </div>
                     </section>
+                    <asp:Button ID="btnOnConfirm" OnClick="btnOnConfirm_Click" Text="test" runat="server" />
+                    <asp:Button ID="btnCancel" OnClick="btnCancel_Click" Text="test" runat="server" />
                 </form>
             </div>
         </div>
