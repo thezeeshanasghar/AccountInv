@@ -43,10 +43,12 @@ namespace AcccountInventory
         }
         protected void AccountInserted(object sender, SqlDataSourceStatusEventArgs e)
         {
-            lblSuccessMessage.Text = "Your account has been successfully created";
-            lblSuccessMessage.ForeColor = Color.Green;
-            lblSuccessMessage.Visible = true;
-            
+            if(e.AffectedRows > 0)
+            {
+                lblSuccessMessage.Text = "Your account has been successfully created";
+                lblSuccessMessage.ForeColor = Color.Green;
+                lblSuccessMessage.Visible = true;
+            }
         }
 
         protected void DebitTextBox_TextChanged(object sender, EventArgs e)

@@ -142,8 +142,10 @@
                         </asp:UpdatePanel>
                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
                             SelectCommand="SELECT [ID], [Code] FROM [Project] Where Active=1"
-                            InsertCommand="INSERT INTO [Account] ([Name], [ProjectCode], [Phone], [Email], [YearStart], [Type], [Address],[AccountCode],[Active],[Debit],[Credit]) 
-      VALUES (@Name, @ProjectCode, @Phone, @Email, @YearStart, @Type, @Address,@AccountCode,'true',@Debit,@Credit)"
+                            InsertCommand="IF NOT EXISTS(SELECT * FROM Account ac 
+                            WHERE ac.ProjectCode = @ProjectCode and ac.AccountCode = @AccountCode)
+                            INSERT INTO [Account] ([Name], [ProjectCode], [Phone], [Email], [YearStart], [Type], [Address],[AccountCode],[Active],[Debit],[Credit]) 
+                            VALUES (@Name, @ProjectCode, @Phone, @Email, @YearStart, @Type, @Address,@AccountCode,'true',@Debit,@Credit)"
                             OnInserted="AccountInserted">
                             <SelectParameters>
                                 <asp:QueryStringParameter DefaultValue="0" Name="ID" QueryStringField="ID" Type="Int32" />
