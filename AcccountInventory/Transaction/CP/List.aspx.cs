@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -16,7 +19,26 @@ namespace AcccountInventory.Transaction.CP
 
         protected void btnSearchTransaction_Click(object sender, EventArgs e)
         {
-            //TODO: Generate datatable and set data source property of gridview and call databind func
+            string query = "SELECT cpp.*,CONCAT(a.AccountCode, '-', p.Code) AS PACode FROM CPParent cpp INNER JOIN "
+                            + "Account a  ON cpp.AccountID = a.ID INNER JOIN Project p ON a.ProjectCode = p.ID";
+
+            DataTable dt = new DataTable();
+            string connectionString = ConfigurationManager.ConnectionStrings["AccountConnectionString"].ToString();
+            SqlConnection con = new SqlConnection(connectionString);
+            con.Open();
+            if (!string.IsNullOrEmpty(txtSearch.Text.ToString()))
+            {
+                int searchTerm = Convert.ToInt32(txtSearch.Text);
+                query += " where cpp.ID=" + searchTerm + "";
+            }
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader sdr = cmd.ExecuteReader();
+            dt.Load(sdr);
+            //bind the grid
+            GridView1.DataSourceID = null;
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+            con.Close();
         }
     }
 }
