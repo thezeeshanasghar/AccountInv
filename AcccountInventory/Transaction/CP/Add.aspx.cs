@@ -157,51 +157,62 @@ namespace AcccountInventory.Transaction.CP
                 float totalDebit = float.Parse(txtTotalDebit.Text, CultureInfo.InvariantCulture);
                 float totalCredit = float.Parse(txtTotalCredit.Text, CultureInfo.InvariantCulture);
                 float difference = float.Parse(txtDifference.Text, CultureInfo.InvariantCulture);
-                string connectionString = ConfigurationManager.ConnectionStrings["AccountConnectionString"].ToString();
-                SqlConnection con = new SqlConnection(connectionString);
-                con.Open();
-                string query = "INSERT INTO CPParent(Date,AccountID,Description,Ref1,Ref2,TotalDebit,TotalCredit,Difference)"
-                    + "VALUES('" + pDate.ToString("yyyy-MM-dd hh:mm:ss") + "'," + pAccountId + ",'" + description + "','" + ref1 + "','" + ref2 + "'," + totalDebit + "," + totalCredit + "," + difference + "); SELECT CAST(SCOPE_IDENTITY() AS int)";
-                SqlCommand cmd = new SqlCommand(query, con);
-                int cpParentId = (int)cmd.ExecuteScalar();
 
-                if (cpParentId > 0)
+                if (difference >= 0)
                 {
+                    string connectionString = ConfigurationManager.ConnectionStrings["AccountConnectionString"].ToString();
+                    SqlConnection con = new SqlConnection(connectionString);
+                    con.Open();
+                    string query = "INSERT INTO CPParent(Date,AccountID,Description,Ref1,Ref2,TotalDebit,TotalCredit,Difference)"
+                        + "VALUES('" + pDate.ToString("yyyy-MM-dd hh:mm:ss") + "'," + pAccountId + ",'" + description + "','" + ref1 + "','" + ref2 + "'," + totalDebit + "," + totalCredit + "," + difference + "); SELECT CAST(SCOPE_IDENTITY() AS int)";
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    int cpParentId = (int)cmd.ExecuteScalar();
 
-
-                    for (int i = 1; i <= 5; i++)
+                    if (cpParentId > 0)
                     {
-                        DropDownList ddl = (DropDownList)Page.Form.FindControl("ddtr" + i);
-                        if (ddl.SelectedValue != "")
+
+
+                        for (int i = 1; i <= 5; i++)
                         {
+                            DropDownList ddl = (DropDownList)Page.Form.FindControl("ddtr" + i);
+                            if (ddl.SelectedValue != "")
+                            {
 
-                            TextBox txtDescriptiontr = (TextBox)Page.Form.FindControl("txtDescriptiontr_" + i);
-                            TextBox txtDebitTr = (TextBox)Page.Form.FindControl("txtDebittr_" + i);
-                            TextBox txtCreditTr = (TextBox)Page.Form.FindControl("txtCredittr_" + i);
+                                TextBox txtDescriptiontr = (TextBox)Page.Form.FindControl("txtDescriptiontr_" + i);
+                                TextBox txtDebitTr = (TextBox)Page.Form.FindControl("txtDebittr_" + i);
+                                TextBox txtCreditTr = (TextBox)Page.Form.FindControl("txtCredittr_" + i);
 
-                            int accountId = Convert.ToInt32(ddl.SelectedValue);
-                            string desc = Convert.ToString(txtDescriptiontr.Text);
-                            float debit = float.Parse(txtDebitTr.Text, CultureInfo.InvariantCulture);
-                            float credit = float.Parse(txtCreditTr.Text, CultureInfo.InvariantCulture);
+                                int accountId = Convert.ToInt32(ddl.SelectedValue);
+                                string desc = Convert.ToString(txtDescriptiontr.Text);
+                                float debit = float.Parse(txtDebitTr.Text, CultureInfo.InvariantCulture);
+                                float credit = float.Parse(txtCreditTr.Text, CultureInfo.InvariantCulture);
 
-                            //insert in transchild
-                            string q = "INSERT INTO CPChild(CPParentID,AccountID,Description,Debit,Credit,Date)"
-                              + "VALUES(" + cpParentId + "," + accountId + ",'" + desc + "'," + debit + "," + credit + ",'" + pDate.ToString("yyyy-MM-dd hh:mm:ss") + "')";
-                            SqlCommand cmd1 = new SqlCommand(q, con);
-                            cmd1.ExecuteNonQuery();
+                                //insert in transchild
+                                string q = "INSERT INTO CPChild(CPParentID,AccountID,Description,Debit,Credit,Date)"
+                                  + "VALUES(" + cpParentId + "," + accountId + ",'" + desc + "'," + debit + "," + credit + ",'" + pDate.ToString("yyyy-MM-dd hh:mm:ss") + "')";
+                                SqlCommand cmd1 = new SqlCommand(q, con);
+                                cmd1.ExecuteNonQuery();
+                            }
+                            if (i == 5)
+                            {
+                                lblDateError.Text = "Your transaction is saved successfully with voucher # " + cpParentId + ", see result in <a href='/Transaction/CP/List.aspx'>Transactions</a>";
+                                lblDateError.ForeColor = Color.Green;
+                                lblDateError.Visible = true;
+                                form.Visible = false;
+
+                            }
+
                         }
-                        if (i == 5)
-                        {
-                            lblDateError.Text = "Your transaction is saved successfully with voucher # " + cpParentId + ", see result in <a href='/Transaction/CP/List.aspx'>Transactions</a>";
-                            lblDateError.ForeColor = Color.Green;
-                            lblDateError.Visible = true;
-                            form.Visible = false;
-
-                        }
-
                     }
+            
                     if (con.State == System.Data.ConnectionState.Open)
                         con.Close();
+                }
+                else
+                {
+                    lblDateError.Text = "Sum of Debit must be greater than sum of Credit";
+                    lblDateError.ForeColor = Color.Red;
+                    lblDateError.Visible = true;
                 }
             }
             else

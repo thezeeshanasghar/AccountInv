@@ -232,40 +232,52 @@ namespace AcccountInventory.Transaction.CP
             //DateTime pDate = DateTime.Now;
             dbChildIds = (List<int>)ViewState["dbChildIDs"];
             cpParentId = (int)ViewState["cpParentID"];
-            string connectionString = ConfigurationManager.ConnectionStrings["AccountConnectionString"].ToString();
-            SqlConnection con = new SqlConnection(connectionString);
-            con.Open();
-
-            for (int i = 1; i <= 5; i++)
+            float tDebit = float.Parse(txtTotalDebit.Text, CultureInfo.InvariantCulture);
+            float tCredit = float.Parse(txtTotalCredit.Text, CultureInfo.InvariantCulture);
+            float tDifference = float.Parse(txtDifference.Text, CultureInfo.InvariantCulture);
+            if(tDifference >= 0 )
             {
-                if (dbChildIds.Count > 0)
-                    if (i <= dbChildIds.Count)
-                    {
+                string connectionString = ConfigurationManager.ConnectionStrings["AccountConnectionString"].ToString();
+                SqlConnection con = new SqlConnection(connectionString);
+                con.Open();
 
-                        int cpChildTrId = Convert.ToInt32(((Literal)FindControl("tr_" + i + "_Id")).Text);
-                        if (!dbChildIds.Contains(cpChildTrId))
-                            addNewChildren(i, con);
-                    }
-                else
-                    addNewChildren(i, con);
-                if (i == 5)
+                for (int i = 1; i <= 5; i++)
                 {
-                    lblDateError.Text = "Your transaction with voucher # " + cpParentId + " is updated successfully, see result in <a href='/Transaction/CP/List.aspx'>Transactions</a>";
-                    lblDateError.ForeColor = Color.Green;
-                    lblDateError.Visible = true;
-                    form.Visible = false;
-                    //update parent table
-                    float totalDebit = float.Parse(txtTotalDebit.Text, CultureInfo.InvariantCulture);
-                    float totalCredit = float.Parse(txtTotalCredit.Text, CultureInfo.InvariantCulture);
-                    float difference = float.Parse(txtDifference.Text, CultureInfo.InvariantCulture);
-                    string qParent = "UPDATE CPParent SET TotalDebit=" + totalDebit + ",TotalCredit="
-                        + totalCredit + ",Difference=" + difference+" WHERE ID="+cpParentId;
-                    SqlCommand cmd = new SqlCommand(qParent, con);
-                    cmd.ExecuteNonQuery();
+                    if (dbChildIds.Count > 0)
+                        if (i <= dbChildIds.Count)
+                        {
+
+                            int cpChildTrId = Convert.ToInt32(((Literal)FindControl("tr_" + i + "_Id")).Text);
+                            if (!dbChildIds.Contains(cpChildTrId))
+                                addNewChildren(i, con);
+                        }
+                        else
+                            addNewChildren(i, con);
+                    if (i == 5)
+                    {
+                        lblDateError.Text = "Your transaction with voucher # " + cpParentId + " is updated successfully, see result in <a href='/Transaction/CP/List.aspx'>Transactions</a>";
+                        lblDateError.ForeColor = Color.Green;
+                        lblDateError.Visible = true;
+                        form.Visible = false;
+                        //update parent table
+                        float totalDebit = float.Parse(txtTotalDebit.Text, CultureInfo.InvariantCulture);
+                        float totalCredit = float.Parse(txtTotalCredit.Text, CultureInfo.InvariantCulture);
+                        float difference = float.Parse(txtDifference.Text, CultureInfo.InvariantCulture);
+                        string qParent = "UPDATE CPParent SET TotalDebit=" + totalDebit + ",TotalCredit="
+                            + totalCredit + ",Difference=" + difference + " WHERE ID=" + cpParentId;
+                        SqlCommand cmd = new SqlCommand(qParent, con);
+                        cmd.ExecuteNonQuery();
+                    }
                 }
+                if (con.State == System.Data.ConnectionState.Open)
+                    con.Close();
             }
-            if (con.State == System.Data.ConnectionState.Open)
-                con.Close();
+            else
+            {
+                lblDateError.Text = "Sum of Debit must be greater than sum of Credit";
+                lblDateError.ForeColor = Color.Red;
+                lblDateError.Visible = true;
+            }
         }
 
         protected void addNewChildren(int i, SqlConnection con)
