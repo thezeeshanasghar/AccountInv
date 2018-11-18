@@ -49,6 +49,12 @@ namespace AcccountInventory
                 lblSuccessMessage.ForeColor = Color.Green;
                 lblSuccessMessage.Visible = true;
             }
+            else
+            {
+                lblSuccessMessage.Text = "Code must be different";
+                lblSuccessMessage.ForeColor = Color.Red;
+                lblSuccessMessage.Visible = true;
+            }
         }
 
         protected void DebitTextBox_TextChanged(object sender, EventArgs e)
@@ -113,7 +119,8 @@ namespace AcccountInventory
             TextBox address = (TextBox)row.FindControl("AddressTextBox");
             TextBox phone = (TextBox)row.FindControl("PhoneTextBox");
             TextBox email = (TextBox)row.FindControl("EmailTextBox");
-            
+            TextBox debit = (TextBox)row.FindControl("DebitTextBox");
+            TextBox creidt = (TextBox)row.FindControl("CreditTextBox");
             string type = selected.SelectedItem.Value;
             if (type == "H-1" || type == "H-2")
             {
@@ -126,12 +133,20 @@ namespace AcccountInventory
                 address.BackColor = Color.FromName("#d6d1cb");
                 phone.BackColor = Color.FromName("#d6d1cb");
                 email.BackColor = Color.FromName("#d6d1cb");
+                debit.Text = "0";
+                creidt.Text = "0";
+                debit.Enabled = false;
+                creidt.Enabled = false;
+                debit.BackColor = Color.FromName("#d6d1cb");
+                creidt.BackColor = Color.FromName("#d6d1cb");
             }
             else
             {
                 address.Enabled = true;
                 phone.Enabled = true;
                 email.Enabled = true;
+                debit.Enabled = true;
+                creidt.Enabled = true;
             }
         }
       
