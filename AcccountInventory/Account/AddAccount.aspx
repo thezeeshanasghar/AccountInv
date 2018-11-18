@@ -141,7 +141,7 @@
                             </ContentTemplate>
                         </asp:UpdatePanel>
                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
-                            SelectCommand="SELECT [ID], [Code] FROM [Project] Where Active=1"
+                            SelectCommand="SELECT [ID], [Code] FROM [Project] Where Active=1 order by [Code]"
                             InsertCommand="IF NOT EXISTS(SELECT * FROM Account ac 
                             WHERE ac.ProjectCode = @ProjectCode and ac.AccountCode = @AccountCode)
                             INSERT INTO [Account] ([Name], [ProjectCode], [Phone], [Email], [YearStart], [Type], [Address],[AccountCode],[Active],[Debit],[Credit]) 
