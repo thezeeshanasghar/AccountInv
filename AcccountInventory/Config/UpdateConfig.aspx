@@ -44,7 +44,9 @@
                                 <asp:Label ID="lblerror" runat="server" Text="" ForeColor="Red"> </asp:Label>
 
                                 <asp:FormView ID="FormView1" runat="server" DefaultMode="Edit"
-                                    DataKeyNames="ID" DataSourceID="SqlDataSource1">
+                                    DataKeyNames="ID" DataSourceID="SqlDataSource1"
+                                    onitemupdating="FormView1_ItemUpdating" OnItemUpdated="FormView1_ItemUpdated"
+                                    >
 
                                     <EditItemTemplate>
                                         <div class="col-md-6">
@@ -95,16 +97,14 @@
                                             <asp:TextBox ID="txtFax" runat="server" Text='<%# Bind("Fax") %>' />
                                         </div>
                                         <br />
-                                        <asp:LinkButton ID="UpdateButton" runat="server" OnClick="UpdateButton_Click" CausesValidation="True" CommandName="Update" Text="Update" />
+                                        <asp:LinkButton ID="UpdateButton" runat="server" OnClick="FormView1_ItemUpdated"  CausesValidation="True" CommandName="Update" Text="Update" />
                                     </EditItemTemplate>
 
 
                                 </asp:FormView>
                                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AccountConnectionString %>"
                                     SelectCommand="SELECT * FROM [Config] WHERE ([ID] = @ID)"
-                                    UpdateCommand="UPDATE [Config] SET [StartDate] = @StartDate, [EndDate] = @EndDate,[CompanyName]=@CompanyName
-                                                    ,[Address]=@Address,[Email]=@Email,[Phone]=@Phone,[Fax]=@Fax
-                                                     WHERE [ID] = @ID">
+                                    OnUpdated="FormView1_ItemUpdated" OnUpdating="FormView1_ItemUpdating">
                                     
                                     <SelectParameters>
                                         <asp:QueryStringParameter DefaultValue="0" Name="ID" QueryStringField="ID" Type="Int32" />

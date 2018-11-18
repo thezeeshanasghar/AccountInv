@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,14 +13,14 @@ namespace AcccountInventory
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
                 lblSuccessMessage.Visible = false;
                 lblerror.Visible = false;
             }
         }
 
-      
+
 
         protected void EndDateTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -43,11 +45,38 @@ namespace AcccountInventory
 
             }
         }
+  
 
-        protected void UpdateButton_Click(object sender, EventArgs e)
+        protected void FormView1_ItemUpdated(object sender, EventArgs e)
         {
             lblSuccessMessage.Text = "Record updated successfully";
             lblSuccessMessage.Visible = true;
+        }
+
+        protected void FormView1_ItemUpdating(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(Request.QueryString["ID"]);
+            FormViewRow row = FormView1.Row;
+            TextBox StartDate = (TextBox)row.FindControl("StartDateTextBox");
+            TextBox EndDate = (TextBox)row.FindControl("EndDateTextBox");
+            TextBox companyName = (TextBox)row.FindControl("CompanyNameTextBox");
+            TextBox address = (TextBox)row.FindControl("txtAddress");
+            TextBox email = (TextBox)row.FindControl("txtEmail");
+            TextBox phone = (TextBox)row.FindControl("txtPhone");
+            TextBox fax = (TextBox)row.FindControl("txtFax");
+
+            DateTime startDate = DateTime.ParseExact(StartDate.Text, "dd/MM/yyyy", null);
+            DateTime endDate = DateTime.ParseExact(EndDate.Text, "dd/MM/yyyy", null);
+
+            string connectionString = ConfigurationManager.ConnectionStrings["AccountConnectionString"].ToString();
+            SqlConnection con = new SqlConnection(connectionString);
+            con.Open();
+            string query = "UPDATE Config SET StartDate ='" + startDate.ToString("yyyy-MM-dd hh:mm:ss")
+                + "',EndDate ='" + endDate.ToString("yyyy - MM - dd hh: mm: ss") + "',CompanyName='" + companyName.Text + "',Address ='" + address.Text
+                + "',Email ='" + email.Text + "',Phone ='" + phone.Text + "',Fax ='" + fax.Text + "' WHERE ID =" + id;
+            SqlCommand cmd = new SqlCommand(query, con);
+            cmd.ExecuteNonQuery();
+            con.Close();
         }
     }
 }
