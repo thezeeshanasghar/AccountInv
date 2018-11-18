@@ -45,8 +45,7 @@
 
                                 <asp:FormView ID="FormView1" runat="server" DefaultMode="Edit"
                                     DataKeyNames="ID" DataSourceID="SqlDataSource1"
-                                    onitemupdating="FormView1_ItemUpdating" OnItemUpdated="FormView1_ItemUpdated"
-                                    >
+                                    onitemupdating="FormView1_ItemUpdating" OnItemUpdated="FormView1_ItemUpdated">
 
                                     <EditItemTemplate>
                                         <div class="col-md-6">
@@ -97,7 +96,7 @@
                                             <asp:TextBox ID="txtFax" runat="server" Text='<%# Bind("Fax") %>' />
                                         </div>
                                         <br />
-                                        <asp:LinkButton ID="UpdateButton" runat="server" OnClick="FormView1_ItemUpdated"  CausesValidation="True" CommandName="Update" Text="Update" />
+                                        <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" CommandName="Update" Text="Update" />
                                     </EditItemTemplate>
 
 
