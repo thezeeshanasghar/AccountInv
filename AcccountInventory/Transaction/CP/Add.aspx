@@ -262,6 +262,9 @@
                                             </asp:TableRow>
                                         </asp:Table>
                                     </div>
+                                    <div class="col-12">
+                                    <asp:Label ID="lblDifferenceError" runat="server" Text="Label"></asp:Label>
+                                </div>
                                     <div class="row">
 
                                         <div style="margin-top: 16px" class="col-4-medium">

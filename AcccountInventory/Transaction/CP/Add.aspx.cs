@@ -22,6 +22,7 @@ namespace AcccountInventory.Transaction.CP
                 lblStartDate.Visible = false;
                 lblEndDate.Visible = false;
                 lblDateError.Visible = false;
+                lblDifferenceError.Visible = false;
                 tr_1.Visible = false;
                 tr_2.Visible = false;
                 tr_3.Visible = false;
@@ -210,9 +211,9 @@ namespace AcccountInventory.Transaction.CP
                 }
                 else
                 {
-                    lblDateError.Text = "Sum of Debit must be greater than sum of Credit";
-                    lblDateError.ForeColor = Color.Red;
-                    lblDateError.Visible = true;
+                    lblDifferenceError.Text = "Sum of Debit must be greater than sum of Credit";
+                    lblDifferenceError.ForeColor = Color.Red;
+                    lblDifferenceError.Visible = true;
                 }
             }
             else

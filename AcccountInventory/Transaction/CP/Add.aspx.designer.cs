@@ -562,6 +562,15 @@ namespace AcccountInventory.Transaction.CP {
         protected global::System.Web.UI.WebControls.TextBox txtCredittr_5;
         
         /// <summary>
+        /// lblDifferenceError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDifferenceError;
+        
+        /// <summary>
         /// btnSubmit control.
         /// </summary>
         /// <remarks>
